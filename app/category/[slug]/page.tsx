@@ -25,7 +25,7 @@ export default function CategoryPage({ params }: Props) {
   // Get parameters from URL
   const page = searchParams.get("page") ? parseInt(searchParams.get("page") || "1") : 1;
   const category = searchParams.get("category") || "";
-  const size = searchParams.get("size") || "";
+
   
   // Generate pagination links
   const prevPage = page > 1 ? page - 1 : null;
@@ -37,7 +37,6 @@ export default function CategoryPage({ params }: Props) {
     params.set("page", pageNum.toString());
     
     if (category) params.set("category", category);
-    if (size) params.set("size", size);
     
     return `/category/${slug}?${params.toString()}`;
   };
@@ -66,13 +65,7 @@ export default function CategoryPage({ params }: Props) {
           });
         }
         
-        // Handle size filter - convert comma-separated string to individual parameters
-        if (size) {
-          const sizeIds = size.split(",");
-          sizeIds.forEach(id => {
-            queryParams.append("size", id);
-          });
-        }
+      
         
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/products?${queryParams.toString()}`
@@ -97,10 +90,10 @@ export default function CategoryPage({ params }: Props) {
     };
     
     fetchCategoryProducts();
-  }, [slug, page, category, size]);
+  }, [slug, page, category]);
   
   return (
-    <div className="max-w-[100rem] mx-auto px-4 py-12">
+    <div className="max-w-[100rem] mx-auto px-10 lg:px-24 py-12">
       <h1 className="text-3xl font-bold mb-2">{title}</h1>
       <p className="mb-4 text-gray-600">Lorem ipsum</p>
       <p className="mb-8 text-sm">{totalCount} Products</p>

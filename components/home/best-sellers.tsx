@@ -15,7 +15,7 @@ export default function BestSellers() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products?limit=4`);
         const data = await response.json();
         setProducts(data.products);
         setLoading(false);
@@ -39,7 +39,9 @@ export default function BestSellers() {
                 Explore <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
             </div>
-            <div>Loading...</div>
+            <div className="col-span-full flex justify-center py-12">
+              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-black"></div>
+            </div>
           </div>
         </div>
       </section>

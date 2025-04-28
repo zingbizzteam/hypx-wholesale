@@ -22,7 +22,7 @@ const Headermenu: React.FC<CategoryMenuProps> = ({ categories }) => {
                 <div className="flex gap-10 w-[90%]">
                     {categories.map((category) => (
                         <div key={category.title}>
-                            <h3 className="text-base font-bo mb-3">{category.title}</h3>
+                            <h3 className="text-base font-bold mb-3">{category.title}</h3>
                             <ul className="space-y-1 text-sm font-normal">
                                 {category.items.map((item) => (
                                     <li key={item.label}>

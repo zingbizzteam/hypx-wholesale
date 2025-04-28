@@ -1,6 +1,4 @@
 "use client"
-
-import { Size } from "@/lib/sanity";
 import { useEffect, useState, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -20,12 +18,10 @@ const CategoryFilters = () => {
   
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [categories, setCategories] = useState<Category[]>([]);
-  const [sizes, setSizes] = useState<Size[]>([]);
   const [processedCategories, setProcessedCategories] = useState<Category[]>([]);
   
   // Changed from single selection to multiple selections
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
 
   // Use a debounce flag to prevent multiple URL updates
   const [updateTimeout, setUpdateTimeout] = useState<NodeJS.Timeout | null>(null);
@@ -33,19 +29,13 @@ const CategoryFilters = () => {
   // Load initial selections from URL params
   useEffect(() => {
     const categoryParam = searchParams.get("category");
-    const sizeParam = searchParams.get("size");
     
     if (categoryParam) {
       setSelectedCategories(categoryParam.split(","));
     } else {
       setSelectedCategories([]);
     }
-    
-    if (sizeParam) {
-      setSelectedSizes(sizeParam.split(","));
-    } else {
-      setSelectedSizes([]);
-    }
+ 
   }, [searchParams]);
 
   const fetchCategories = async () => {
@@ -134,20 +124,9 @@ const CategoryFilters = () => {
     return null;
   };
 
-  const fetchSizes = async () => {
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/sizes`);
-      if (!res.ok) throw new Error('Failed to fetch sizes');
-      const data = await res.json();
-      setSizes(data.sizes);
-    } catch (error) {
-      console.error("Error fetching sizes:", error);
-    }
-  };
 
   useEffect(() => {
     fetchCategories();
-    fetchSizes();
   }, []);
 
   const toggleCategory = useCallback((categoryId: string, e: React.MouseEvent) => {
@@ -183,26 +162,7 @@ const CategoryFilters = () => {
     setUpdateTimeout(timeout);
   }, [updateTimeout]);
 
-  // Update to handle multiple size selections
-  const handleSizeSelect = useCallback((sizeId: string) => {
-    setSelectedSizes(prev => {
-      if (prev.includes(sizeId)) {
-        return prev.filter(id => id !== sizeId);
-      }
-      return [...prev, sizeId];
-    });
-    
-    // Schedule the URL update with debounce
-    if (updateTimeout) {
-      clearTimeout(updateTimeout);
-    }
-    
-    const timeout = setTimeout(() => {
-      updateFiltersInURL();
-    }, 300);
-    
-    setUpdateTimeout(timeout);
-  }, [updateTimeout]);
+ 
 
   // Apply filters to the URL
   const updateFiltersInURL = useCallback(() => {
@@ -216,13 +176,7 @@ const CategoryFilters = () => {
       params.delete("category");
     }
     
-    // Update size parameter if we have selections
-    if (selectedSizes.length > 0) {
-      params.set("size", selectedSizes.join(","));
-    } else {
-      params.delete("size");
-    }
-    
+
     // Reset to page 1 when filters change
     params.set("page", "1");
     
@@ -232,13 +186,11 @@ const CategoryFilters = () => {
     
     // Push the new URL to the router
     router.push(newUrl);
-  }, [router, searchParams, selectedCategories, selectedSizes]);
+  }, [router, searchParams, selectedCategories]);
 
   // Clear all filters
   const clearAllFilters = useCallback(() => {
     setSelectedCategories([]);
-    setSelectedSizes([]);
-    
     // Remove all filter parameters from URL
     const pathname = window.location.pathname;
     router.push(`${pathname}?page=1`);
@@ -306,7 +258,7 @@ const CategoryFilters = () => {
     <div className="pb-4">
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-medium text-lg">Filters</h2>
-        {(selectedCategories.length > 0 || selectedSizes.length > 0) && (
+        {(selectedCategories.length > 0  ) && (
           <button 
             onClick={clearAllFilters}
             className="text-sm text-gray-600 hover:text-black"
@@ -325,27 +277,7 @@ const CategoryFilters = () => {
           </div>
         </div>
 
-        {/* Sizes Section
-        <div>
-          <h3 className="font-medium mb-4">Sizes</h3>
-          <div className="flex flex-wrap gap-2">
-            {sizes.map((size) => (
-              <button
-                key={size._id}
-                type="button"
-                onClick={() => handleSizeSelect(size._id)}
-                className={`
-                  px-3 py-1 text-sm border rounded-md transition-colors
-                  ${selectedSizes.includes(size._id) 
-                    ? 'bg-black text-white border-black' 
-                    : 'bg-white text-black border-gray-300 hover:border-gray-400'}
-                `}
-              >
-                {size.name}
-              </button>
-            ))}
-          </div>
-        </div> */}
+     
       </div>
     </div>
   );

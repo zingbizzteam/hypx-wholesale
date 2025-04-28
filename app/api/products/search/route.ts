@@ -24,8 +24,6 @@ export async function GET(req: Request) {
         images,
         description,
         category,
-        sizes,
-        colors
       }`
     );
 

@@ -34,7 +34,7 @@ interface CategoryCardProps {
 
 function CategoryCard({ category, className }: CategoryCardProps) {
   return (
-    <Link href={`/${category.name.toLowerCase()}`} className={`relative overflow-hidden ${className}`}>
+    <Link href={`category/${category.name.toLowerCase()}`} className={`relative overflow-hidden ${className}`}>
       <div className="relative aspect-[16/9] md:aspect-[16/10]">
         <Image
           src={category.image || "/placeholder.svg"}

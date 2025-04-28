@@ -1,133 +1,69 @@
-// lib/email.ts
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
-// Configure your email service
+// Configure your SMTP server
 const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST || 'smtp.example.com',
-  port: parseInt(process.env.EMAIL_PORT || '587'),
-  secure: process.env.EMAIL_SECURE === 'true',
+  host: process.env.SMTP_HOST,
+  port: Number(process.env.SMTP_PORT),
+  secure: false, // true for 465, false for other ports
   auth: {
-    user: process.env.EMAIL_USER || 'your-email@example.com',
-    pass: process.env.EMAIL_PASSWORD || 'your-password',
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
   },
 });
 
-/**
- * Sends verification email to new users
- */
-export async function sendVerificationEmail(
-  email: string, 
-  name: string, 
-  token: string
-) {
-  const verificationUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/verify-email?token=${token}`;
-  
-  await transporter.sendMail({
-    from: `"${process.env.EMAIL_FROM_NAME || 'Your Store'}" <${process.env.EMAIL_FROM || 'noreply@example.com'}>`,
-    to: email,
-    subject: 'Verify Your Email Address',
-    html: `
-      <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-        <h2>Welcome to Our Store!</h2>
-        <p>Hello ${name},</p>
-        <p>Thank you for registering. Please verify your email address by clicking the button below:</p>
-        <div style="text-align: center; margin: 30px 0;">
-          <a href="${verificationUrl}" style="background-color: #4CAF50; color: white; padding: 15px 25px; text-decoration: none; border-radius: 4px;">
-            Verify Email
-          </a>
+// Customer email HTML
+export function getCustomerEmailHtml(order: any, customer: any) {
+  return `
+    <div style="font-family:Inter,sans-serif;background:#f9fafb;padding:32px;">
+      <div style="background:#fff;border-radius:8px;max-width:480px;margin:auto;padding:32px;box-shadow:0 2px 8px #e5e7eb;">
+        <h2 style="font-size:24px;font-weight:700;color:#111827;margin-bottom:16px;">Thank you for your order!</h2>
+        <p style="color:#374151;margin-bottom:24px;">Hi ${customer.name},<br>Your order <b>${order.orderNumber}</b> has been received.</p>
+        <div style="margin-bottom:16px;">
+          <h3 style="font-size:18px;font-weight:600;margin-bottom:8px;">Order Summary</h3>
+          <ul style="padding-left:0;list-style:none;">
+            ${order.items.map((item: { name: any; quantity: any; }) => `<li style="margin-bottom:4px;">${item.name} x ${item.quantity}</li>`).join("")}
+          </ul>
         </div>
-        <p>If the button doesn't work, you can also copy and paste this link into your browser:</p>
-        <p>${verificationUrl}</p>
-        <p>This link will expire in 24 hours.</p>
-        <p>Best regards,<br>The Store Team</p>
+        <div style="margin-bottom:16px;">
+          <span style="font-weight:600;">Total:</span> ₹${order.total}
+        </div>
+        <p style="color:#6b7280;font-size:14px;">We will contact you soon for confirmation and shipping details.</p>
       </div>
-    `,
-  });
+    </div>
+  `;
 }
 
-/**
- * Sends order confirmation email
- */
-export async function sendOrderConfirmationEmail(
-  email: string,
-  name: string,
-  orderNumber: string,
-  orderDetails: any
-) {
-  const orderUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/account/orders/${orderNumber}`;
-  
-  // Generate HTML for order items
-  const itemsHtml = orderDetails.items.map((item: any) => `
-    <tr>
-      <td style="padding: 10px; border-bottom: 1px solid #eee;">${item.product.name}</td>
-      <td style="padding: 10px; border-bottom: 1px solid #eee;">${item.quantity}</td>
-      <td style="padding: 10px; border-bottom: 1px solid #eee;">$${item.price.toFixed(2)}</td>
-      <td style="padding: 10px; border-bottom: 1px solid #eee;">$${(item.price * item.quantity).toFixed(2)}</td>
-    </tr>
-  `).join('');
-  
-  await transporter.sendMail({
-    from: `"${process.env.EMAIL_FROM_NAME || 'Your Store'}" <${process.env.EMAIL_FROM || 'noreply@example.com'}>`,
-    to: email,
-    subject: `Order Confirmation #${orderNumber}`,
-    html: `
-      <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-        <h2>Order Confirmation</h2>
-        <p>Hello ${name},</p>
-        <p>Thank you for your order! We've received your order and are processing it now.</p>
-        
-        <div style="margin: 20px 0; padding: 15px; background-color: #f8f9fa; border-radius: 4px;">
-          <p><strong>Order Number:</strong> ${orderNumber}</p>
-          <p><strong>Order Date:</strong> ${new Date().toLocaleDateString()}</p>
+// Quote team email HTML
+export function getQuoteTeamEmailHtml(order: any, customer: any) {
+  return `
+    <div style="font-family:Inter,sans-serif;background:#f9fafb;padding:32px;">
+      <div style="background:#fff;border-radius:8px;max-width:480px;margin:auto;padding:32px;box-shadow:0 2px 8px #e5e7eb;">
+        <h2 style="font-size:24px;font-weight:700;color:#111827;margin-bottom:16px;">New Quote Request</h2>
+        <p style="color:#374151;margin-bottom:24px;">Order <b>${order.orderNumber}</b> received from ${customer.name} (${customer.email}, ${customer.phone})</p>
+        <div style="margin-bottom:16px;">
+          <h3 style="font-size:18px;font-weight:600;margin-bottom:8px;">Order Details</h3>
+          <ul style="padding-left:0;list-style:none;">
+            ${order.items.map((item: { name: any; quantity: any; price: any; }) => `<li style="margin-bottom:4px;">${item.name} x ${item.quantity} (₹${item.price})</li>`).join("")}
+          </ul>
         </div>
-        
-        <h3>Order Summary</h3>
-        <table style="width: 100%; border-collapse: collapse;">
-          <thead>
-            <tr style="background-color: #f3f3f3;">
-              <th style="padding: 10px; text-align: left;">Product</th>
-              <th style="padding: 10px; text-align: left;">Quantity</th>
-              <th style="padding: 10px; text-align: left;">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${itemsHtml}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="3" style="padding: 10px; text-align: right;"><strong>Subtotal:</strong></td>
-              <td style="padding: 10px;">$${orderDetails.subtotal.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td colspan="3" style="padding: 10px; text-align: right;"><strong>Shipping:</strong></td>
-              <td style="padding: 10px;">$${orderDetails.shippingFee.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td colspan="3" style="padding: 10px; text-align: right;"><strong>Tax:</strong></td>
-              <td style="padding: 10px;">$${orderDetails.tax.toFixed(2)}</td>
-            </tr>
-            ${orderDetails.discount > 0 ? `
-              <tr>
-                <td colspan="3" style="padding: 10px; text-align: right;"><strong>Discount:</strong></td>
-                <td style="padding: 10px;">-$${orderDetails.discount.toFixed(2)}</td>
-              </tr>
-            ` : ''}
-            <tr>
-              <td colspan="3" style="padding: 10px; text-align: right;"><strong>Total:</strong></td>
-              <td style="padding: 10px;"><strong>$${orderDetails.total.toFixed(2)}</strong></td>
-            </tr>
-          </tfoot>
-        </table>
-        
-        <div style="text-align: center; margin: 30px 0;">
-          <a href="${orderUrl}" style="background-color: #4CAF50; color: white; padding: 15px 25px; text-decoration: none; border-radius: 4px;">
-            View Order Details
-          </a>
+        <div style="margin-bottom:16px;">
+          <span style="font-weight:600;">Total:</span> ₹${order.total}
         </div>
-        
-        <p>If you have any questions about your order, please contact our customer service.</p>
-        <p>Best regards,<br>The Store Team</p>
+        <div style="margin-bottom:8px;">
+          <span style="font-weight:600;">Shipping Address:</span> ${order.shippingAddress}
+        </div>
+        <p style="color:#6b7280;font-size:14px;">Check Sanity Studio for full order details.</p>
       </div>
-    `,
+    </div>
+  `;
+}
+
+// Send email
+export async function sendEmail(to: string, subject: string, html: string) {
+  return transporter.sendMail({
+    from: `"HYXP Wholesale" <${process.env.SMTP_FROM}>`,
+    to,
+    subject,
+    html,
   });
 }

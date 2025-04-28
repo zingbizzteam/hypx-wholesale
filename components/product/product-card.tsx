@@ -2,21 +2,19 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
-import { fetchColors } from "@/lib/productFeatureFetch";
 import { Product } from "@/lib/sanity";
 import { urlFor } from "@/lib/sanity"; // Make sure you import `urlFor` to build the image URL
 import { updateCart } from "@/lib/localStorage";
 import { toast } from "react-toastify"; // Import toast
 
 const ProductCard = ({ product }: { product: Product }) => {
-  const [fetchedColors, setFetchedColors] = useState<any[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [intervalId, setIntervalId] = useState<any>(null);
 
   const handleAddToCart = () => {
     // Add the product to cart
-    updateCart(product, product.colors[0], product.sizes[0], 10);
-    
+    updateCart(product, 10);
+
     // Show a toast notification when an item is added to the cart
     toast.success(`Product added to cart!`, {
       position: "top-right",
@@ -42,17 +40,8 @@ const ProductCard = ({ product }: { product: Product }) => {
     }
   };
 
-  // Fetch colors asynchronously when the component mounts
-  useEffect(() => {
-    const fetchProductColors = async () => {
-      const colors = await fetchColors(product.colors);
-      setFetchedColors(colors);
-    };
-    fetchProductColors();
-  }, [product.colors]);
-
   return (
-    <Link href={`/product/${product.slug.current}`} passHref className="group bg-white border border-[#B5B5B5]">
+    <div className="group bg-white border border-[#B5B5B5]">
       <div
         className="relative aspect-square mb-3 overflow-hidden"
         onMouseEnter={handleMouseEnter}
@@ -70,10 +59,10 @@ const ProductCard = ({ product }: { product: Product }) => {
           />
         </Link>
       </div>
-      <div className="relative flex flex-col min-h-[100px] px-2 pb-2 justify-between">
-        <h3 className="font-medium">{product.name}</h3>
-
-
+      <div className="relative flex flex-col h-[130px]  px-4 pb-4 pt-3 gap-4">
+        <Link href={`/product/${product.slug.current}`} passHref>
+          <h3 className="font-medium">{product.name}</h3>
+        </Link>
         <div className="flex space-x-2 mt-auto">
           <button
             className="flex-1 rounded border border-black py-1.5 text-sm flex items-center justify-center hover:bg-gray-100"
@@ -90,7 +79,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           </Link>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
