@@ -37,7 +37,6 @@ export default function Cart() {
     );
   };
 
-  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <section className="container1">

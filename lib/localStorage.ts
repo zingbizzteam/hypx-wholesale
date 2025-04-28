@@ -6,12 +6,21 @@ import { Product } from "./sanity";
 export const updateCart = (product: { _id: any; }, selectedColor: any, selectedSize: any, quantity: any) => {
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
     
-    // Use the product._id for comparison, not productId
     const existingProductIndex = existingCart.findIndex(
-      (cartProduct: any) =>
-        (cartProduct.productId === product._id || cartProduct._id === product._id) &&
-        cartProduct.selectedColor === selectedColor &&
-        cartProduct.selectedSize === selectedSize
+      (cartProduct: any) => {
+        // Check if product ID matches
+        const idMatch = (cartProduct.productId === product._id || cartProduct._id === product._id);
+        
+        // Check if color matches by comparing _ref
+        const colorMatch = cartProduct.selectedColor && selectedColor && 
+                          cartProduct.selectedColor._ref === selectedColor._ref;
+        
+        // Check if size matches by comparing _ref
+        const sizeMatch = cartProduct.selectedSize && selectedSize && 
+                         cartProduct.selectedSize._ref === selectedSize._ref;
+        
+        return idMatch && colorMatch && sizeMatch;
+      }
     );
   
     if (existingProductIndex !== -1) {
@@ -29,7 +38,7 @@ export const updateCart = (product: { _id: any; }, selectedColor: any, selectedS
     }
   
     localStorage.setItem("cart", JSON.stringify(existingCart));
-    return existingCart; // Return the updated cart
+    return existingCart;
 };
 
 // Add a function to remove items from the cart
@@ -38,14 +47,23 @@ export const removeFromCart = (productId: any, selectedColor: any, selectedSize:
     
     // Filter out the item that matches the criteria
     const updatedCart = existingCart.filter(
-      (cartProduct: any) => 
-        !(
-          (cartProduct.productId === productId || cartProduct._id === productId) && 
-          cartProduct.selectedColor === selectedColor && 
-          cartProduct.selectedSize === selectedSize
-        )
+      (cartProduct: any) => {
+        // Check if product ID matches
+        const idMatch = (cartProduct.productId === productId || cartProduct._id === productId);
+        
+        // Check if color matches by comparing _ref
+        const colorMatch = cartProduct.selectedColor && selectedColor && 
+                          cartProduct.selectedColor._ref === selectedColor._ref;
+        
+        // Check if size matches by comparing _ref
+        const sizeMatch = cartProduct.selectedSize && selectedSize && 
+                         cartProduct.selectedSize._ref === selectedSize._ref;
+        
+        // Only keep items that don't match all criteria
+        return !(idMatch && colorMatch && sizeMatch);
+      }
     );
     
     localStorage.setItem("cart", JSON.stringify(updatedCart));
-    return updatedCart; // Return the updated cart
+    return updatedCart;
 };
