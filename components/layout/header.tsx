@@ -201,7 +201,7 @@ const Header = () => {
             </div>
             <ul className='absolute hidden group-hover:block bg-[#F4F4F4] text-[#333333] left-0 top-10 w-44'>
               <li className='hover:bg-black hover:text-white w-full px-3 py-3'><a href={'sustainability'}>Sustainability</a></li>
-              <li className='hover:bg-black hover:text-white w-full px-3 py-3'><a href={'our-policy'}>Our policy</a></li>
+              <li className='hover:bg-black hover:text-white w-full px-3 py-3'><a href={'our-policies'}>Our policy</a></li>
               <li className='hover:bg-black hover:text-white w-full px-3 py-3'><a href={'about-us'}>About</a></li>
               <li className='hover:bg-black hover:text-white w-full px-3 py-3'><a href={'terms-and-conditions'}>Terms and Conditions</a></li>
             </ul>
