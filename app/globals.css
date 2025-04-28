@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+}
+
+body {
+  font-family: var(--font-roboto);
+  color: #000;
+  background-color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-space-grotesk);
+}
+
+.container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+  max-width: 1280px;
+}
+
+
+/* Form Elements */
+input,
+textarea {
+  @apply border-b border-gray-300 focus:border-black outline-none py-2 w-full bg-transparent;
+}
+
+.btn {
+  @apply px-6 py-3 font-medium transition-colors duration-200;
+}
+
+.btn-primary {
+  @apply bg-black text-white hover:bg-gray-800;
+}
+
+.btn-outline {
+  @apply border border-black text-black hover:bg-black hover:text-white;
+}
+
+/* Footer */
+.footer-heading {
+  @apply text-lg font-medium mb-4;
+}
+
+.footer-link {
+  @apply block py-1 text-gray-600 hover:text-black transition-colors;
+}
+
+/* Custom Styles */
+.policy-tab {
+  @apply pb-2 mr-8 cursor-pointer relative;
+}
+
+.policy-tab.active {
+  @apply border-b-2 border-black font-medium;
+}
+
+.color-option {
+  @apply w-6 h-6 rounded-full cursor-pointer border border-gray-300;
+}
+
+.color-option.selected {
+  @apply ring-2 ring-offset-2 ring-black;
+}
+
+.size-option {
+  @apply px-3 py-1 border border-gray-300 text-sm cursor-pointer;
+}
+
+.size-option.selected {
+  @apply border-black bg-black text-white;
+}
+
+.quantity-control {
+  @apply flex items-center;
+}
+
+.quantity-btn {
+  @apply w-8 h-8 flex items-center justify-center border border-gray-300 cursor-pointer;
+}
+
+.quantity-input {
+  @apply w-16 h-8 text-center border-t border-b border-gray-300;
+}
+
+.newsletter-input {
+  @apply bg-transparent border-b border-gray-600 text-white placeholder-gray-400 py-2 pr-10;
+}
+
+.newsletter-btn {
+  @apply absolute right-0 top-1/2 -translate-y-1/2 text-white;
+}
