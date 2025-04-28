@@ -2,25 +2,28 @@ import Link from "next/link"
 
 export default function ValueProposition() {
   return (
-    <section className="py-12">
-      <div className="container-custom">
-        <div className="bg-gray-100 p-8 md:p-16 rounded-lg text-center md:text-left">
-          <div className="max-w-3xl mx-auto md:mx-0">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              HYPX - where bulk
-              <br />
-              meets value !
-            </h2>
-            <Link href="/learn-more" className="inline-block bg-black text-white px-6 py-3 rounded-md font-medium mb-8">
+    <section className="container1">
+      <div className="container2">
+        <div className="container3 flex flex-col">
+          <h2 className='ch2 mb-2'>About us</h2>
+          <div className="w-full bg-[#B3AEAE] bg-blend-overlay bg-[url(../public/home/home-about-sec.jpg)] bg-no-repeat 
+            bg-cover bg-center text-left y-10 p-7 h-[65vh] flex flex-col gap-4 justify-center place-items-start">
+            <h1 className="ch1 leading-normal">
+              HYPX - where bulk <br /> meets value!
+            </h1>
+            <Link href={'/about-us'}
+              className='bg-black text-[#FFF6EC] rounded-[8px] py-3 px-8 text-center text-xl font-bold
+             hover:bg-[#333333] hover:shadow-[#33333380] hover:shadow-md transition-shadow 
+             ease-in-out duration-2'>
               Learn more
             </Link>
-            <p className="text-gray-700 leading-relaxed">
-              At HYPX, we believe that style is personal, and your clothes should reflect who you are. That's why we
-              specialize in customized apparel, crafted to match your unique vision. Whether you want to tweak the
-              design, play with colors, or add that personal touch, we bring your ideas to life with precision and
-              flair.
-            </p>
           </div>
+          <p className="roboto-text font-normal text-left mt-5 mb-32">
+            <span className='font-bold'>At HYPX</span>, we believe that style is personal, and your clothes should reflect who you are.
+            That’s why we specialize in customized apparel, crafted to match your unique vision.
+            Whether you want to tweak the design, play with colors, or add that personal touch,
+            we bring your ideas to life with precision and flair.
+          </p>
         </div>
       </div>
     </section>

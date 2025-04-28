@@ -11,15 +11,8 @@ const ManagementPolicy = () => {
         customer satisfaction, and sustainable business growth.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div className="relative h-[200px] bg-gray-100">
-          <Image
-            src="/placeholder.svg?height=200&width=400"
-            alt="Leadership and Governance"
-            fill
-            className="object-cover"
-          />
-        </div>
+      <div className="grid grid-cols-1 gap-8 mb-8">
+    
         <div>
           <h3 className="text-xl font-bold mb-4">1. Leadership and Governance</h3>
           <ul className="space-y-2">
@@ -33,10 +26,7 @@ const ManagementPolicy = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div className="relative h-[200px] bg-gray-100">
-          <Image src="/placeholder.svg?height=200&width=400" alt="Quality Assurance" fill className="object-cover" />
-        </div>
+      <div className="grid grid-cols-1 gap-8 mb-8">
         <div>
           <h3 className="text-xl font-bold mb-4">2. Quality Assurance</h3>
           <ul className="space-y-2">
@@ -49,15 +39,7 @@ const ManagementPolicy = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div className="relative h-[200px] bg-gray-100">
-          <Image
-            src="/placeholder.svg?height=200&width=400"
-            alt="Employee Welfare & Development"
-            fill
-            className="object-cover"
-          />
-        </div>
+      <div className="grid grid-cols-1 gap-8 mb-8">
         <div>
           <h3 className="text-xl font-bold mb-4">3. Employee Welfare & Development</h3>
           <ul className="space-y-2">
@@ -70,15 +52,7 @@ const ManagementPolicy = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div className="relative h-[200px] bg-gray-100">
-          <Image
-            src="/placeholder.svg?height=200&width=400"
-            alt="Employee Welfare & Development"
-            fill
-            className="object-cover"
-          />
-        </div>
+      <div className="grid grid-cols-1 gap-8 mb-8">
         <div>
           <h3 className="text-xl font-bold mb-4">4. Employee Welfare & Development</h3>
           <ul className="space-y-2">
@@ -91,15 +65,7 @@ const ManagementPolicy = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div className="relative h-[200px] bg-gray-100">
-          <Image
-            src="/placeholder.svg?height=200&width=400"
-            alt="Ethical Business Practices"
-            fill
-            className="object-cover"
-          />
-        </div>
+      <div className="grid grid-cols-1 gap-8 mb-8">
         <div>
           <h3 className="text-xl font-bold mb-4">5. Ethical Business Practices</h3>
           <ul className="space-y-2">
@@ -112,17 +78,9 @@ const ManagementPolicy = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div className="relative h-[200px] bg-gray-100">
-          <Image
-            src="/placeholder.svg?height=200&width=400"
-            alt="Ethical Business Practices"
-            fill
-            className="object-cover"
-          />
-        </div>
+      <div className="grid grid-cols-1 gap-8 mb-8">
         <div>
-          <h3 className="text-xl font-bold mb-4">6. Ethical Business Practices</h3>
+          <h3 className="text-xl font-bold mb-4">6. Sustainability & Social Responsibilities</h3>
           <ul className="space-y-2">
             <li>
               • We are committed to minimizing our environmental footprint through sustainable sourcing and production

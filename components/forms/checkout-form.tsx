@@ -34,8 +34,8 @@ const CheckoutForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
+    <form onSubmit={handleSubmit} className="flex flex-col space-y-6 w-full items-center">
+      <div className="w-full">
         <label htmlFor="name" className="block text-sm font-medium mb-1">
           Name
         </label>
@@ -51,7 +51,8 @@ const CheckoutForm = () => {
         />
       </div>
 
-      <div>
+      <div className="flex w-full justify-between gap-5">
+        <div className="w-full">
         <label htmlFor="email" className="block text-sm font-medium mb-1">
           E-mail
         </label>
@@ -65,10 +66,9 @@ const CheckoutForm = () => {
           required
           className="w-full"
         />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
+        </div>
+        <div className="grid grid-cols-1 md:flex md:w-full gap-4">
+        <div className="self-end">
           <label htmlFor="phone" className="block text-sm font-medium mb-1">
             Phone Number
           </label>
@@ -99,8 +99,9 @@ const CheckoutForm = () => {
           </div>
         </div>
       </div>
+      </div>
 
-      <div>
+      <div className="w-full">
         <label htmlFor="address" className="block text-sm font-medium mb-1">
           Address
         </label>
@@ -118,7 +119,7 @@ const CheckoutForm = () => {
 
       <button
         type="submit"
-        className="w-full bg-black text-white py-3 font-medium hover:bg-gray-800 transition-colors"
+        className="w-[60%] bg-black text-white py-3 font-medium rounded hover:bg-gray-800 transition-colors"
         disabled={isSubmitting}
       >
         {isSubmitting ? "Processing..." : "Get Quote"}

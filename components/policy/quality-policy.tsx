@@ -11,15 +11,7 @@ const QualityPolicy = () => {
         structured around key principles to ensure excellence in every aspect of our operations.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div className="relative h-[200px] bg-gray-100">
-          <Image
-            src="/placeholder.svg?height=200&width=400"
-            alt="Commitment to Excellence"
-            fill
-            className="object-cover"
-          />
-        </div>
+      <div className="grid grid-cols-1 gap-8 mb-8">
         <div>
           <h3 className="text-xl font-bold mb-4">1. Commitment to Excellence</h3>
           <ul className="space-y-2">
@@ -39,15 +31,7 @@ const QualityPolicy = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div className="relative h-[200px] bg-gray-100">
-          <Image
-            src="/placeholder.svg?height=200&width=400"
-            alt="Supplier & Material Standards"
-            fill
-            className="object-cover"
-          />
-        </div>
+      <div className="grid grid-cols-1 gap-8 mb-8">
         <div>
           <h3 className="text-xl font-bold mb-4">2. Supplier & Material Standards</h3>
           <ul className="space-y-2">
@@ -67,15 +51,7 @@ const QualityPolicy = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div className="relative h-[200px] bg-gray-100">
-          <Image
-            src="/placeholder.svg?height=200&width=400"
-            alt="Customer Satisfaction"
-            fill
-            className="object-cover"
-          />
-        </div>
+      <div className="grid grid-cols-1 gap-8 mb-8">
         <div>
           <h3 className="text-xl font-bold mb-4">3. Customer Satisfaction</h3>
           <ul className="space-y-2">
@@ -91,15 +67,7 @@ const QualityPolicy = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div className="relative h-[200px] bg-gray-100">
-          <Image
-            src="/placeholder.svg?height=200&width=400"
-            alt="Continuous Improvement"
-            fill
-            className="object-cover"
-          />
-        </div>
+      <div className="grid grid-cols-1 gap-8 mb-8">
         <div>
           <h3 className="text-xl font-bold mb-4">4. Continuous Improvement</h3>
           <ul className="space-y-2">
@@ -118,15 +86,7 @@ const QualityPolicy = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div className="relative h-[200px] bg-gray-100">
-          <Image
-            src="/placeholder.svg?height=200&width=400"
-            alt="Compliance & Sustainability"
-            fill
-            className="object-cover"
-          />
-        </div>
+      <div className="grid grid-cols-1 gap-8 mb-8">
         <div>
           <h3 className="text-xl font-bold mb-4">5. Compliance & Sustainability</h3>
           <ul className="space-y-2">

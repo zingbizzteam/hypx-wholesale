@@ -16,9 +16,11 @@ type CartItemProps = {
     quantity: number;
     slug: { current: string };
     images: { asset: { _ref: string }; hotspot: boolean }[];
-    selectedColor: any;
-    selectedSize: any;
-    productId?: number;
+
+    selectedColor: string;
+    selectedSize: string;
+    productId?: number; // Added this in case item already has a productId property
+
   };
   onRemove: (id: number, color: any, size: any) => void;
 };
@@ -95,52 +97,57 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
   const truncatedDescription = truncateText(item.description, 100);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center border-b border-gray-200 pb-8">
-      <Link
-        href={`/product/${item.slug.current}`}
-        className="flex items-center space-x-4"
-      >
-        <div className="relative w-24 h-24 flex-shrink-0">
-          <Image src={imageUrl} alt={item.name} fill className="object-cover" />
-        </div>
-        <div>
-          <h3 className="text-xl font-medium">{item.name}</h3>
-          <p className="text-sm text-gray-600 mt-1">{truncatedDescription}</p>
-          <p className="flex text-sm text-gray-600 mt-1">
-            {colorName && <span><b>Color:</b> {colorName}</span>}
-            {sizeName && <span className="ml-2"><b>Size:</b> {sizeName}</span>}
-          </p>
-        </div>
-      </Link>
+    <div className="grid grid-cols-1 md:flex gap-4 items-center border-b border-[#B5B5B5] pb-8">
+      <div className="md:flex justify-between md:w-5/6">
+        <Link href={`/product/${item.slug.current}`} className="flex items-center space-x-4">
+          <div className="relative w-24 h-24 flex-shrink-0">
+            <Image
+              src={imageUrl}
+              alt={item.name}
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <h3 className="text-xl font-medium">{item.name}</h3>
+            <p className="text-sm text-gray-600 mt-1">
+              {item.description}
+            </p>
+          </div>
+        </Link>
 
-      <div className="flex items-center justify-end space-x-4">
-        <div className="flex items-center">
-          <button
-            onClick={decreaseQuantity}
-            className="quantity-btn"
-            aria-label="Decrease quantity"
-          >
-            -
-          </button>
-          <span className="quantity-input">{quantity}</span>
-          <button
-            onClick={increaseQuantity}
-            className="quantity-btn"
-            aria-label="Increase quantity"
-          >
-            +
-          </button>
+
+        <div className="flex items-center justify-end space-x-4">
+          <div className="flex items-center">
+            <button
+              onClick={decreaseQuantity}
+              className="quantity-btn"
+              aria-label="Decrease quantity"
+            >
+              -
+            </button>
+            <span className="w-16 text-center">{quantity}</span>
+            <button
+              onClick={increaseQuantity}
+              className="quantity-btn"
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
+          </div>
         </div>
       </div>
 
-      <button
-        className="text-red-500 flex gap-2 flex-col items-center justify-end mt-2 text-sm"
-        aria-label="Remove item"
-        onClick={handleRemoveItem}
-      >
-        <Trash2 size={22} className="text-black" />
-        <span className="mr-1">Remove</span>
-      </button>
+      <div className="md:w-1/6 md:flex md:justify-center">
+        <button
+          className="text-[#FF0000] flex gap-2 flex-col items-center justify-end mt-2 text-sm"
+          aria-label="Remove item"
+          onClick={handleRemoveItem}
+        >
+          <Trash2 size={22} className="text-black" />
+          <span className="mr-1">Remove</span>
+        </button>
+      </div>
     </div>
   );
 };

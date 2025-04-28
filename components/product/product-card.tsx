@@ -52,7 +52,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   }, [product.colors]);
 
   return (
-    <Link href={`/product/${product.slug.current}`} passHref className="group bg-white">
+    <Link href={`/product/${product.slug.current}`} passHref className="group bg-white border border-[#B5B5B5]">
       <div
         className="relative aspect-square mb-3 overflow-hidden"
         onMouseEnter={handleMouseEnter}
@@ -70,22 +70,13 @@ const ProductCard = ({ product }: { product: Product }) => {
           />
         </Link>
       </div>
-      <div className="relative p-3">
+      <div className="relative flex flex-col min-h-[100px] px-2 pb-2 justify-between">
         <h3 className="font-medium">{product.name}</h3>
 
-        <div className="flex items-center mt-2 mb-3">
-          {fetchedColors.map((color, i) => (
-            <div
-              key={i}
-              className="w-6 h-6 rounded-full mr-2 cursor-pointer border border-gray-300"
-              style={{ backgroundColor: `#${color.value}` }}
-            />
-          ))}
-        </div>
 
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 mt-auto">
           <button
-            className="flex-1 border border-black py-1.5 text-sm flex items-center justify-center hover:bg-gray-100"
+            className="flex-1 rounded border border-black py-1.5 text-sm flex items-center justify-center hover:bg-gray-100"
             onClick={handleAddToCart}
           >
             <ShoppingCart size={16} className="mr-1" />
@@ -93,7 +84,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           </button>
           <Link
             href={`/contact-us?product=${product.slug}`}
-            className="flex-1 bg-black text-white py-1.5 text-sm text-center hover:bg-gray-800"
+            className="flex-1 bg-black text-white py-1.5 text-sm rounded text-center hover:bg-gray-800"
           >
             Get Quote
           </Link>

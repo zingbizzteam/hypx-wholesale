@@ -30,34 +30,38 @@ export default function BestSellers() {
 
   if (loading) {
     return (
-      <section className="bg-gray-100 py-12">
-        <div className="container-custom">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold">Best Sellers</h2>
-            <Link href="/category/all" className="flex items-center text-sm font-medium">
-              Explore <ChevronRight className="h-4 w-4 ml-1" />
-            </Link>
+      <section className="container1 bg-[#F0F0F0] py-12">
+        <div className="container2">
+          <div className="container3">
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold">Best Sellers</h2>
+              <Link href="/category/all" className="text-base flex items-center text-black hover:text-[#333333]">
+                Explore <ChevronRight className="h-4 w-4 ml-1" />
+              </Link>
+            </div>
+            <div>Loading...</div>
           </div>
-          <div>Loading...</div>
         </div>
       </section>
     );
   }
 
   return (
-    <section className="bg-gray-100 py-12">
-      <div className="container-custom">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold">Best Sellers</h2>
-          <Link href="/category/all" className="flex items-center text-sm font-medium">
-            Explore <ChevronRight className="h-4 w-4 ml-1" />
-          </Link>
-        </div>
+    <section className="container1 bg-[#F0F0F0] py-12">
+      <div className="container2">
+        <div className="container3">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold">Best Sellers</h2>
+            <Link href="/category/all" className="flex items-center text-sm font-medium">
+              Explore <ChevronRight className="h-4 w-4 ml-1" />
+            </Link>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product: any) => (
-            <ProductCard key={product.name} product={product} />
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {products.map((product: any) => (
+              <ProductCard key={product.name} product={product} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
