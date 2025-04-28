@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp, ShoppingCart } from "lucide-react";
+import Gsm from './gsm'
 import { Product, urlFor } from "@/lib/sanity";
 import {
   fetchSizes,
@@ -12,6 +13,7 @@ import ProductGallery from "./product-gallery";
 import { useRouter } from "next/navigation"; // To handle redirection
 import { updateCart } from "@/lib/localStorage"; // Import the helper functions
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 const ProductDetails = ({ product }: { product: Product }) => {
   const [selectedColor, setSelectedColor] = useState<any>(null);
@@ -111,6 +113,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
 
         <p className="mt-6 text-gray-700">{product.description}</p>
 
+        {/* colour
         <div className="mt-8">
           <h2 className="text-sm font-medium mb-2">Colours available:</h2>
           <div className="flex space-x-2 mb-6">
@@ -127,9 +130,10 @@ const ProductDetails = ({ product }: { product: Product }) => {
               );
             })}
           </div>
-        </div>
+        </div> */}
 
-        <div className="mt-4">
+        {/* size
+         <div className="mt-4">
           <h2 className="text-sm font-medium mb-2">Sizes:</h2>
           <div className="flex flex-wrap gap-2 mb-6">
             {resolvedSizes.map((size, index) => {
@@ -145,9 +149,10 @@ const ProductDetails = ({ product }: { product: Product }) => {
               );
             })}
           </div>
-        </div>
+        </div> */}
 
-        <div className="mt-4 flex items-center space-x-4">
+        {/* quantity
+         <div className="mt-4 flex items-center space-x-4">
           <button onClick={decrementQuantity} className="p-2 border border-gray-300 rounded-lg">
             -
           </button>
@@ -155,6 +160,28 @@ const ProductDetails = ({ product }: { product: Product }) => {
           <button onClick={incrementQuantity} className="p-2 border border-gray-300 rounded-lg">
             +
           </button>
+        </div> */}
+
+        {/* Fabric field */}
+        <div className="mt-8">
+          <h2 className="text-base font-semibold mb-2">Fabrics:</h2>
+          <div className="flex w-full space-x-2">
+            <h3 className="font-light text-base border border-[#B9B9B9] 
+            rounded py-2 px-6 hover:border-black
+            transition-all ease-in-out duration-200">
+              <Link href={'/our-prints-and-embroidery'}
+              >Trims / Colours</Link></h3>
+            <h3 className="font-light text-base border border-[#B9B9B9] 
+            rounded py-2 px-6 hover:border-black
+            transition-all ease-in-out duration-200">
+              <Link href={'/our-prints-and-embroidery'}
+              >Fabrics</Link></h3>
+            <h3 className="font-light text-base border border-[#B9B9B9] 
+            rounded py-2 px-6 hover:border-black
+            transition-all ease-in-out duration-200">
+              <Link href={'/our-prints-and-embroidery'}
+              >Printing / Embroidery</Link></h3>
+          </div>
         </div>
 
         <div className="mt-8 space-y-4">
@@ -192,7 +219,8 @@ const ProductDetails = ({ product }: { product: Product }) => {
 
           {isGSMOpen && (
             <div className="py-4 px-2">
-              <p className="text-gray-700">{product.gsm || "No GSM information available."}</p>
+              <Gsm/>
+              {/* <p className="text-gray-700">{product.gsm || "No GSM information available."}</p> */}
             </div>
           )}
         </div>

@@ -3,19 +3,21 @@ import Link from "next/link"
 
 export default function CategoryGrid() {
   const categories = [
-    { name: "Men", image: "/placeholder.svg?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
-    { name: "Women", image: "/placeholder.svg?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
-    { name: "Kids", image: "/placeholder.svg?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
-    { name: "ACCESSORIES", image: "/placeholder.svg?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
+    { name: "Men", image: "/home/men-home.webp?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
+    { name: "Women", image: "/home/women-home.webp?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
+    { name: "Kids", image: "/home/kids-home.webp?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
+    { name: "ACCESSORIES", image: "/home/acc-home.webp?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
   ]
 
   return (
-    <section className="py-12">
-      <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {categories.map((category, index) => (
-            <CategoryCard key={index} category={category} className={index < 2 ? "md:col-span-2" : "md:col-span-2"} />
-          ))}
+    <section className="container1 py-12">
+      <div className="container2">
+        <div className="container3">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {categories.map((category, index) => (
+              <CategoryCard key={index} category={category} className={index < 2 ? "md:col-span-2" : "md:col-span-2"} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
