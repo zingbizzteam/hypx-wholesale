@@ -37,12 +37,11 @@ export default function Cart() {
     );
   };
 
-  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <div className="container mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold mb-8">Your Cart</h1>
-      <p className="text-right mb-4">({totalQuantity}) Items</p>
+      
 
       <div className="border-b border-gray-200 pb-2 mb-6">
         <div className="grid grid-cols-3 gap-4">

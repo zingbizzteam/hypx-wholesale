@@ -1,12 +1,12 @@
-// CartItem.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
-import { updateCart, removeFromCart } from "@/lib/localStorage"; 
-import { urlFor } from "@/lib/sanity"; 
+import { updateCart, removeFromCart } from "@/lib/localStorage";
+import { urlFor } from "@/lib/sanity";
 import Link from "next/link";
+import { fetchColors } from "@/lib/productFeatureFetch";
 
 type CartItemProps = {
   item: {
@@ -15,16 +15,48 @@ type CartItemProps = {
     description: string;
     quantity: number;
     slug: { current: string };
-    images: {asset: { _ref: string }; hotspot: boolean }[];
-    selectedColor: string;
-    selectedSize: string;
-    productId?: number; // Added this in case item already has a productId property
+    images: { asset: { _ref: string }; hotspot: boolean }[];
+    selectedColor: any;
+    selectedSize: any;
+    productId?: number;
   };
-  onRemove: (id: number, color: string, size: string) => void;
+  onRemove: (id: number, color: any, size: any) => void;
 };
 
 const CartItem = ({ item, onRemove }: CartItemProps) => {
   const [quantity, setQuantity] = useState(item.quantity);
+  const [colorName, setColorName] = useState<string>("");
+  const [sizeName, setSizeName] = useState<string>("");
+
+  // Function to truncate text with ellipsis
+  const truncateText = (text: string, maxLength: number = 100) => {
+    if (!text) return "";
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + "...";
+  };
+
+  // Fetch color and size information when component mounts
+  useEffect(() => {
+    const fetchColorAndSizeInfo = async () => {
+      try {
+        // This would normally be an API call, but for simplicity we'll just use the _ref
+        if (item.selectedColor && item.selectedColor._ref) {
+           const colors = await fetchColors([item.selectedColor]);
+           console.log(colors);
+          setColorName(colors[0].name);
+        }
+
+        if (item.selectedSize && item.selectedSize._ref) {
+          const sizes = await fetchColors([item.selectedSize]);
+          setSizeName(sizes[0].name);
+        }
+      } catch (error) {
+        console.error("Error fetching color and size info:", error);
+      }
+    };
+
+    fetchColorAndSizeInfo();
+  }, [item.selectedColor, item.selectedSize]);
 
   // Update the cart in localStorage when quantity is changed
   const updateQuantityInCart = (newQuantity: number) => {
@@ -57,23 +89,26 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
   };
 
   // Use urlFor to build the correct image URL
-  const imageUrl = urlFor(item.images[0].asset).url() || "/placeholder.svg"; // Fallback to placeholder if image URL is empty
+  const imageUrl = urlFor(item.images[0].asset).url() || "/placeholder.svg";
+
+  // Truncate the description
+  const truncatedDescription = truncateText(item.description, 100);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center border-b border-gray-200 pb-8">
-      <Link href={`/product/${item.slug.current}`} className="flex items-center space-x-4">
+      <Link
+        href={`/product/${item.slug.current}`}
+        className="flex items-center space-x-4"
+      >
         <div className="relative w-24 h-24 flex-shrink-0">
-          <Image
-            src={imageUrl}
-            alt={item.name}
-            fill
-            className="object-cover"
-          />
+          <Image src={imageUrl} alt={item.name} fill className="object-cover" />
         </div>
         <div>
           <h3 className="text-xl font-medium">{item.name}</h3>
-          <p className="text-sm text-gray-600 mt-1">
-            {item.description}
+          <p className="text-sm text-gray-600 mt-1">{truncatedDescription}</p>
+          <p className="flex text-sm text-gray-600 mt-1">
+            {colorName && <span><b>Color:</b> {colorName}</span>}
+            {sizeName && <span className="ml-2"><b>Size:</b> {sizeName}</span>}
           </p>
         </div>
       </Link>
