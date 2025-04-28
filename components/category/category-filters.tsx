@@ -259,7 +259,7 @@ const CategoryFilters = () => {
           onClick={(e) => toggleCategory(category._id, e)}
         >
           <div className="flex items-center">
-            <div className="relative flex items-center mr-2">
+            <div className="relative flex place-content-center place-items-center mr-2">
               <input
                 type="checkbox"
                 id={`category-${category._id}`}
@@ -325,7 +325,7 @@ const CategoryFilters = () => {
           </div>
         </div>
 
-        {/* Sizes Section */}
+        {/* Sizes Section
         <div>
           <h3 className="font-medium mb-4">Sizes</h3>
           <div className="flex flex-wrap gap-2">
@@ -345,7 +345,7 @@ const CategoryFilters = () => {
               </button>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

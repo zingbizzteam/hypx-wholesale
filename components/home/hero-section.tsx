@@ -4,7 +4,7 @@ import Link from "next/link"
 export default function HeroSection() {
   return (
     <section className="relative w-full bg-[#1E1E1E] text-white">
-      <div className="container-custom py-16 md:py-24 lg:py-32 flex flex-col md:flex-row items-center">
+      <div className="container-custom lg:pl-20 py-16 md:py-24 lg:py-32 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 z-10 space-y-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">Modern & Trendy</h1>
           <p className="text-xl md:text-2xl">HYPX Wholesale – Stock Smart, Save Big</p>

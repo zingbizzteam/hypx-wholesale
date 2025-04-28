@@ -1,18 +1,21 @@
 import Image from "next/image"
 import Link from "next/link"
+import AboutHover from "@/components/about/AboutHover"
+import ButtonWhite from "@/components/about/ButtonWhite"
+import Aboutcard from "@/components/about/Aboutcard"
 
 export default function AboutUs() {
   return (
     <div>
       {/* Hero Section */}
       <section className="relative h-[50vh] bg-black flex items-center">
-        <div className="container mx-auto px-4 text-white z-10">
+        <div className="container mx-auto px-4 text-white z-10 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">About Us</h1>
           <p className="text-xl">Welcome to a world where fashion is limitless.</p>
         </div>
         <div className="absolute inset-0 opacity-70">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/HYPX%20-%20ABOUT%20US.png-UPP3nRtR7TEtdPawhifgwgHyEdywyz.jpeg"
+            src="/Images/About/hero_section.png"
             alt="About HYPX"
             fill
             className="object-cover"
@@ -26,7 +29,7 @@ export default function AboutUs() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <Image
-                src="/placeholder.svg?height=400&width=500"
+                src="/Images/About/section2.png"
                 alt="Welcome to HYPX"
                 width={500}
                 height={400}
@@ -73,7 +76,7 @@ export default function AboutUs() {
             </div>
             <div className="order-1 md:order-2">
               <Image
-                src="/placeholder.svg?height=400&width=500"
+                src="/Images/About/section3.png"
                 alt="Our Mission"
                 width={500}
                 height={400}
@@ -83,144 +86,39 @@ export default function AboutUs() {
           </div>
         </div>
       </section>
-
-      {/* Our Collections */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-12">Our Collections</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="relative h-80 group overflow-hidden">
-              <Image
-                src="/placeholder.svg?height=400&width=300"
-                alt="T-Shirts"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <h3 className="text-white text-2xl font-bold">T-Shirts</h3>
-              </div>
-            </div>
-            <div className="relative h-80 group overflow-hidden">
-              <Image
-                src="/placeholder.svg?height=400&width=300"
-                alt="Hoodies"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <h3 className="text-white text-2xl font-bold">Hoodies</h3>
-              </div>
-            </div>
-            <div className="relative h-80 group overflow-hidden">
-              <Image
-                src="/placeholder.svg?height=400&width=300"
-                alt="Caps"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <h3 className="text-white text-2xl font-bold">Caps</h3>
-              </div>
-            </div>
-            <div className="relative h-80 group overflow-hidden">
-              <Image
-                src="/placeholder.svg?height=400&width=300"
-                alt="Streetwear"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <h3 className="text-white text-2xl font-bold">Streetwear</h3>
+      {/* Section 4 */}
+      <div className='container2 justify-items-center'>
+        <div className='w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3'>
+          <div className='h-[500px]'>
+            <AboutHover Text='T-Shirts' InvisibleText='View' ImageUrl='/Images/About/section4_1.png'></AboutHover>
+            <AboutHover Text='Caps' InvisibleText='View' ImageUrl='/Images/About/section4_2.png'></AboutHover>
+          </div>
+          <div className='bg-[url(/Images/About/section4_3.png)] bg-cover bg-center h-[500px]'>
+            <div className='bg-black/70 place-content-center justify-items-center grid gird-cols-3 gap-1 h-full'>
+              <p className='ch3 text-white'>Our Collections</p>
+              <p className='cp3 text-white text-justify w-[60%]'>Our collection suits Men, Women, Adults, and Kids, blending customization with the latest streetwear trends for a perfect fit.</p>
+              <div className='pt-6'>
+                <ButtonWhite link='/men' child='Shop Now' className=''></ButtonWhite>
               </div>
             </div>
           </div>
-          <p className="mt-8 text-gray-600">
-            Our collection suits Men, Women, Adults, and Kids. Browse through our catalog for a perfect fit.
-          </p>
-          <Link href="/men" className="btn btn-outline mt-6 inline-block">
-            Shop Now
-          </Link>
-        </div>
-      </section>
-
-      {/* Our Customizations */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-12">Our Customizations</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded shadow-sm">
-              <div className="relative h-60 mb-4">
-                <Image
-                  src="/placeholder.svg?height=300&width=400"
-                  alt="Prints and Embroidery"
-                  fill
-                  className="object-cover rounded"
-                />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Our Prints and Embroidery</h3>
-              <Link href="/customizations" className="btn btn-outline mt-4 inline-block text-sm">
-                Learn More
-              </Link>
-            </div>
-            <div className="bg-white p-6 rounded shadow-sm">
-              <div className="relative h-60 mb-4">
-                <Image
-                  src="/placeholder.svg?height=300&width=400"
-                  alt="Trims and Colours"
-                  fill
-                  className="object-cover rounded"
-                />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Trims and Colours</h3>
-              <Link href="/customizations" className="btn btn-outline mt-4 inline-block text-sm">
-                Learn More
-              </Link>
-            </div>
-            <div className="bg-white p-6 rounded shadow-sm">
-              <div className="relative h-60 mb-4">
-                <Image
-                  src="/placeholder.svg?height=300&width=400"
-                  alt="Our Fabrics"
-                  fill
-                  className="object-cover rounded"
-                />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Our Fabrics</h3>
-              <Link href="/customizations" className="btn btn-outline mt-4 inline-block text-sm">
-                Learn More
-              </Link>
-            </div>
+          <div className='h-[500px]'>
+            <AboutHover Text='Hoodies' InvisibleText='View' ImageUrl='/Images/About/section4_4.png'></AboutHover>
+            <AboutHover Text='Streetstyle Wear' InvisibleText='View' ImageUrl='/Images/About/section4_5.png'></AboutHover>
           </div>
         </div>
-      </section>
-
-      {/* Luxury Streetwear */}
-      <section className="py-16 bg-black text-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">LUXURY STREETWEAR MARKETPLACE</h2>
-              <p className="mb-6">
-                Beyond customization, HYPX is a hub for luxury streetwear, connecting you with exclusive brands that
-                redefine urban elegance. We've curated a selection of high-end pieces, giving you access to the latest
-                trends and timeless classics that elevate your style.
-              </p>
-              <Link href="/men" className="btn bg-white text-black hover:bg-gray-200 inline-block">
-                Shop Now
-              </Link>
-            </div>
-            <div>
-              <Image
-                src="/placeholder.svg?height=500&width=600"
-                alt="Luxury Streetwear"
-                width={600}
-                height={500}
-                className="rounded"
-              />
-            </div>
-          </div>
+      </div>
+      
+{/* Section 5 */}
+<div className='container2 justify-items-center pt-10'>
+        <p className='ch3 text-center pb-5'>Our Customizations</p>
+        <div className='w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3'>
+          <Aboutcard text='Our Prints and Embroidery' ImageUrl='/Images/About/section5_1.png' linkabt='our-prints-and-embroidery'></Aboutcard>
+          <Aboutcard text='Trims and Colours' ImageUrl='/Images/About/section5_2.png' linkabt='trims-and-colours'></Aboutcard>
+          <Aboutcard text='Our Fabrics' ImageUrl='/Images/About/section5_3.png' linkabt='our-fabrics'></Aboutcard>
         </div>
-      </section>
+      </div>
+
 
       {/* Contact Section */}
       <section className="py-16">

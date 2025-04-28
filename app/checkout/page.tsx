@@ -27,9 +27,10 @@ export default function Checkout() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-8">
         <div>
+          <div className="flex justify-between place-content-center">
           <h2 className="text-2xl font-bold mb-6">Product Summary</h2>
-          <p className="text-right mb-4">(2) Items</p>
-
+          <p className="">(2) Items</p>
+          </div>
           <div className="space-y-6">
             {cartItems.map((item) => (
               <div key={item.id} className="flex items-center space-x-4 border-b border-gray-200 pb-6">
@@ -40,7 +41,7 @@ export default function Checkout() {
                   <h3 className="text-lg font-medium">{item.name}</h3>
                   <p className="text-sm text-gray-600 mt-1">Total Quantity : {item.quantity}</p>
                 </div>
-                <div className="ml-auto">
+                <div className="ml-auto mt-8">
                   <button className="text-sm font-medium">EDIT</button>
                 </div>
               </div>
@@ -48,8 +49,8 @@ export default function Checkout() {
           </div>
         </div>
 
-        <div>
-          <h2 className="text-2xl font-bold mb-6">Complete Your Quote Submission</h2>
+        <div className="p-5 bg-[#FFF6EC]">
+          <h2 className="text-2xl font-bold mb-6 text-center">Complete Your Quote Submission</h2>
           <CheckoutForm />
         </div>
       </div>

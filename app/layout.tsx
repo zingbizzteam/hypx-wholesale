@@ -36,7 +36,7 @@ export default function RootLayout({
       <body className={`${spaceGrotesk.variable} ${roboto.variable}`}>
       <ToastContainer />
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="">{children}</main>
         <Footer />
       </body>
     </html>
