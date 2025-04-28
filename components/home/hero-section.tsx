@@ -3,27 +3,20 @@ import Link from "next/link"
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full bg-[#1E1E1E] text-white">
-      <div className="container-custom py-16 md:py-24 lg:py-32 flex flex-col md:flex-row items-center">
-        <div className="md:w-1/2 z-10 space-y-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">Modern & Trendy</h1>
-          <p className="text-xl md:text-2xl">HYPX Wholesale – Stock Smart, Save Big</p>
-          <Link href="/shop" className="inline-block bg-white text-black px-6 py-3 rounded-md font-medium">
+      <section className="container1 bg-[url(../public/home/hero-sample.png)] bg-no-repeat bg-cover bg-center text-white">
+        <div className="container2 h-[90vh] flex flex-col place-items-center justify-center">
+          <div className="container3 text-center lg:text-left flex flex-col place-items-start">
+            <h1 className="ch1 text-white">Modern & Trendy</h1>
+            <span className="cp1 text-white pb-14">
+              HYPX Wholesale – Stock Smart, Save Big
+            </span>
+            <h2><Link href="/shop" className="bg-[#FFF6EC] text-black rounded-[8px] py-3 px-8 text-center
+             hover:bg-[#F5DDC3] hover:shadow-[#33333380] hover:shadow-md transition-shadow text-xl font-bold
+             ease-in-out duration-2">
             Shop now
-          </Link>
-        </div>
-        <div className="md:w-1/2 md:absolute md:right-0 md:h-full mt-8 md:mt-0">
-          <div className="relative h-[300px] md:h-full w-full">
-            <Image
-              src="/placeholder.svg?height=600&width=500"
-              alt="Models wearing trendy clothing"
-              fill
-              className="object-contain object-right"
-              priority
-            />
+          </Link></h2>
           </div>
         </div>
-      </div>
     </section>
   )
 }

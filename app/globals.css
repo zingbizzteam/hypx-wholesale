@@ -27,6 +27,39 @@ h6 {
   max-width: 1280px;
 }
 
+.container1{
+  width: 100%;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.container2{
+  min-width: 1250px;
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-items: center;
+}
+
+.container3{
+  width: 80%;
+}
+
+.ch1{
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.ch2{
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.ch3{
+  font-size: 24px;
+  font-weight: 700;
+}
 
 /* Form Elements */
 input,
@@ -85,11 +118,11 @@ textarea {
 }
 
 .quantity-btn {
-  @apply w-8 h-8 flex items-center justify-center border border-gray-300 cursor-pointer;
+  @apply w-8 h-8 flex items-center justify-center border rounded border-gray-300 cursor-pointer;
 }
 
 .quantity-input {
-  @apply w-16 h-8 text-center border-t border-b border-gray-300;
+  @apply w-16 text-center;
 }
 
 .newsletter-input {
