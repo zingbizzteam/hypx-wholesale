@@ -173,7 +173,7 @@ const Header = () => {
         {/* Desktop Navigation */}
         <div className='hidden md:flex gap-11 text-sm text-[#333333] justify-between'>
           <div className="relative group  h-10 flex justify-center items-center">
-            <Link href="/category/men" className="hover:text-[#858585]">Men</Link>
+            <Link href={"/category/men"} className="hover:text-[#858585]">Men</Link>
             <div className="fixed hidden group-hover:flex left-0 top-16 w-screen h-[65vh] bg-white justify-center items-start z-40">
               <div className='flex gap-10 justify-center items-start w-full h-full'>
                 <Headermenu categories={Men} />
@@ -182,7 +182,7 @@ const Header = () => {
           </div>
 
           <div className="relative group  h-10 flex justify-center items-center">
-            <Link href={'women'} className='hover:text-[#858585]'>Women</Link>
+            <Link href={'/category/women'} className='hover:text-[#858585]'>Women</Link>
             <div className="fixed hidden group-hover:flex left-0 top-16 w-screen h-[65vh] bg-white justify-center items-start z-40">
               <div className='flex gap-10 justify-center items-start w-full h-full'>
                 <Headermenu categories={Women} />
@@ -190,9 +190,8 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="relative group  h-10 flex justify-center items-center"><Link href={'kids'} className='hover:text-[#858585]'>Kids</Link></div>
-          <div className="relative group  h-10 flex justify-center items-center"><Link href={'accessories'} className='hover:text-[#858585]'>Accessories</Link></div>
-          <div className="relative group  h-10 flex justify-center items-center"><Link href={'uniforms'} className='hover:text-[#858585]'>Uniforms</Link></div>
+          <div className="relative group  h-10 flex justify-center items-center"><Link href={'/category/accessories'} className='hover:text-[#858585]'>Accessories</Link></div>
+          <div className="relative group  h-10 flex justify-center items-center"><Link href={'/category/uniforms'} className='hover:text-[#858585]'>Uniforms</Link></div>
           
           {/* Dropdown Menu */}
           <div className='relative group h-10 flex justify-center items-center'>
