@@ -34,64 +34,19 @@ export default defineType({
       of: [{ type: 'image', options: { hotspot: true } }]
     }),
     defineField({
-      name: 'category',
-      title: 'Category',
-      type: 'reference',
-      to: [{ type: 'category' }]
-    }),
-    defineField({
-      name: 'sizes',
-      title: 'Available Sizes',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'size' }] }]
-    }),
-    defineField({
-      name: 'colors',
-      title: 'Available Colors',
+      name: 'categories',
+      title: 'Categories',
       type: 'array',
       of: [
         {
           type: 'reference',
-          to: [{ type: 'color' }]
+          to: [{ type: 'category' }]
         }
       ]
     }),
-    defineField({
-      name: 'colorImages',
-      title: 'Color Images',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'color',
-              title: 'Color',
-              type: 'reference',
-              to: [{ type: 'color' }],
-            }),
-            defineField({
-              name: 'image',
-              title: 'Image',
-              type: 'image',
-              options: { hotspot: true },
-            }),
-          ],
-        },
-      ],
-    }),
-    defineField({
-      name: 'stock',
-      title: 'In Stock',
-      type: 'number',
-      validation: (Rule) => Rule.required().min(0)
-    }),
-    defineField({
-      name: 'featured',
-      title: 'Featured Product',
-      type: 'boolean',
-      initialValue: false
-    }),
+    
+
+
     // Add the new fields here
     defineField({
       name: 'productDetails',
@@ -99,10 +54,6 @@ export default defineType({
       type: 'array',
       of: [{ type: 'string' }],
     }),
-    defineField({
-      name: 'gsm',
-      title: 'GSM Description',
-      type: 'text',
-    }),
+ 
   ]
 })

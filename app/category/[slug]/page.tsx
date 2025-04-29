@@ -1,171 +1,63 @@
-// app/category/[slug]/page.tsx
-"use client"
-
-import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
-import CategoryFilters from "@/components/category/category-filters";
-import ProductCard from "@/components/product/product-card";
-import { Product } from "@/lib/sanity";
+import CategoryPageClient from "./CategoryPageClient";
+import { Metadata } from "next";
 
 type Props = {
   params: { slug: string };
 };
 
+// Server component – renders the client component
 export default function CategoryPage({ params }: Props) {
+  return <CategoryPageClient params={params} />;
+}
+
+// Dynamic metadata generation
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = params;
-  const searchParams = useSearchParams();
-  const title = slug.charAt(0).toUpperCase() + slug.slice(1);
-  
-  const [products, setProducts] = useState<Product[]>([]);
-  const [totalCount, setTotalCount] = useState(0);
-  const [totalPages, setTotalPages] = useState(1);
-  const [loading, setLoading] = useState(true);
-  
-  // Get parameters from URL
-  const page = searchParams.get("page") ? parseInt(searchParams.get("page") || "1") : 1;
-  const category = searchParams.get("category") || "";
-  const size = searchParams.get("size") || "";
-  
-  // Generate pagination links
-  const prevPage = page > 1 ? page - 1 : null;
-  const nextPage = page < totalPages ? page + 1 : null;
-  
-  // Function to build the URL with preserved filters
-  const buildPageUrl = (pageNum: number) => {
-    const params = new URLSearchParams();
-    params.set("page", pageNum.toString());
-    
-    if (category) params.set("category", category);
-    if (size) params.set("size", size);
-    
-    return `/category/${slug}?${params.toString()}`;
+  const capitalizedTitle = slug.charAt(0).toUpperCase() + slug.slice(1);
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  if (!baseUrl) {
+    throw new Error("Missing NEXT_PUBLIC_BASE_URL in environment variables");
+  }
+
+  return {
+    title: `${capitalizedTitle} | HYPX Wholesale`,
+    description: `Explore high-quality wholesale ${capitalizedTitle} at unbeatable prices from HYPX. Perfect for resellers, boutiques, and retailers.`,
+    generator: "v0.dev",
+    keywords: [
+      "wholesale clothing",
+      "bulk apparel",
+      "fashion for retailers",
+      "HYPX wholesale",
+      "cheap clothing bulk",
+      "ecommerce wholesale store",
+      "retail fashion supply"
+    ],
+    authors: [{ name: "HYPX", url: baseUrl }],
+    creator: "HYPX Team",
+    publisher: "HYPX",
+    openGraph: {
+      title: `${capitalizedTitle} | HYPX Wholesale`,
+      description: `Discover the best wholesale ${capitalizedTitle} at HYPX. Shop now for exclusive deals.`,
+      url: `${baseUrl}/category/${slug}`,
+      siteName: "HYPX",
+      images: [
+        {
+          url: `${baseUrl}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `${capitalizedTitle} Category Image`
+        }
+      ],
+      type: "website"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${capitalizedTitle} | HYPX Wholesale`,
+      description: `Shop bulk ${capitalizedTitle} for your store at HYPX.`,
+      images: [`${baseUrl}/og-image.jpg`]
+    },
+    metadataBase: new URL(baseUrl),
   };
-  
-  // Fetch products based on filters
-  useEffect(() => {
-    const fetchCategoryProducts = async () => {
-      try {
-        setLoading(true);
-        
-        // Build query params
-        const queryParams = new URLSearchParams();
-        queryParams.set("page", page.toString());
-        queryParams.set("limit", "12");
-        
-        // Handle slug parameter
-        if (slug !== "all") {
-          queryParams.set("slug", slug);
-        }
-        
-        // Handle category filter - convert comma-separated string to individual parameters
-        if (category) {
-          const categoryIds = category.split(",");
-          categoryIds.forEach(id => {
-            queryParams.append("category", id);
-          });
-        }
-        
-        // Handle size filter - convert comma-separated string to individual parameters
-        if (size) {
-          const sizeIds = size.split(",");
-          sizeIds.forEach(id => {
-            queryParams.append("size", id);
-          });
-        }
-        
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/products?${queryParams.toString()}`
-        );
-        
-        if (!response.ok) {
-          throw new Error(`Failed to fetch products: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        setProducts(data.products);
-        setTotalCount(data.totalCount);
-        setTotalPages(data.totalPages);
-      } catch (error) {
-        console.error("Failed to fetch products", error);
-        setProducts([]);
-        setTotalCount(0);
-        setTotalPages(1);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchCategoryProducts();
-  }, [slug, page, category, size]);
-  
-  return (
-    <div className="max-w-[100rem] mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold mb-2">{title}</h1>
-      <p className="mb-4 text-gray-600">Lorem ipsum</p>
-      <p className="mb-8 text-sm">{totalCount} Products</p>
-      
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div className="md:col-span-1">
-          <CategoryFilters />
-        </div>
-        
-        <div className="md:col-span-3">
-          {loading ? (
-            <div className="col-span-full flex justify-center py-12">
-              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-black"></div>
-            </div>
-          ) : (
-            <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {products.length === 0 ? (
-                  <div className="col-span-full text-center py-12">
-                    <p className="text-gray-500">No products found with the selected filters.</p>
-                  </div>
-                ) : (
-                  products.map((product: Product) => (
-                    <ProductCard key={product._id || product.name} product={product} />
-                  ))
-                )}
-              </div>
-              
-              {products.length > 0 && (
-                <div className="mt-8 flex justify-between items-center">
-                  {prevPage ? (
-                    <Link 
-                      href={buildPageUrl(prevPage)}
-                      className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
-                    >
-                      Previous
-                    </Link>
-                  ) : (
-                    <button className="px-4 py-2 bg-gray-200 rounded-lg opacity-50 cursor-not-allowed">
-                      Previous
-                    </button>
-                  )}
-                  
-                  <span>
-                    Page {page} of {totalPages}
-                  </span>
-                  
-                  {nextPage ? (
-                    <Link 
-                      href={buildPageUrl(nextPage)}
-                      className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
-                    >
-                      Next
-                    </Link>
-                  ) : (
-                    <button className="px-4 py-2 bg-gray-200 rounded-lg opacity-50 cursor-not-allowed">
-                      Next
-                    </button>
-                  )}
-                </div>
-              )}
-            </>
-          )}
-        </div>
-      </div>
-    </div>
-  );
 }

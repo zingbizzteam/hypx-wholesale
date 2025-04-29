@@ -5,8 +5,6 @@ import { ChevronDown, ChevronUp, ShoppingCart } from "lucide-react";
 import Gsm from './gsm'
 import { Product, urlFor } from "@/lib/sanity";
 import {
-  fetchSizes,
-  fetchColors,
   fetchCategories,
 } from "@/lib/productFeatureFetch"; // Import the functions from the API file
 import ProductGallery from "./product-gallery";
@@ -14,85 +12,31 @@ import { useRouter } from "next/navigation"; // To handle redirection
 import { updateCart } from "@/lib/localStorage"; // Import the helper functions
 import { toast } from "react-toastify";
 import Link from "next/link";
+import QuantityAdjuster from "./QuantityAdjuster";
 
 const ProductDetails = ({ product }: { product: Product }) => {
-  const [selectedColor, setSelectedColor] = useState<any>(null);
-  const [selectedSize, setSelectedSize] = useState<any>(null);
   const [isProductDetailsOpen, setIsProductDetailsOpen] = useState(false);
   const [isGSMOpen, setIsGSMOpen] = useState(false);
-
-  const [resolvedSizes, setResolvedSizes] = useState<any[]>([]);
-  const [resolvedColors, setResolvedColors] = useState<any[]>([]);
   const [resolvedCategories, setResolvedCategories] = useState<any[]>([]);
-
-  const [filteredImages, setFilteredImages] = useState<any[]>([]); // Store filtered images based on selected color
-
-  const [quantity, setQuantity] = useState<number>(10); // Default quantity is 10
 
   const router = useRouter(); // Router for redirection
 
-  // Function to resolve sizes, colors, and categories by fetching data from Sanity
   const resolveData = async () => {
-    const fetchedSizes = await fetchSizes(product.sizes);
-    const fetchedColors = await fetchColors(product.colors);
     const fetchedCategories = await fetchCategories([product.category]);
-
-    setResolvedSizes(fetchedSizes);
-    setResolvedColors(fetchedColors);
     setResolvedCategories(fetchedCategories);
-
-    // Set default size and color
-    const defaultColor = fetchedColors[0]?.value || null; // Use the first color as default
-    const defaultSize = fetchedSizes[0]?.name || null; // Use the first size as default
-
-    setSelectedColor(defaultColor);
-    setSelectedSize(defaultSize);
-
-    // Filter images based on default selected color
-    filterImagesByColor(defaultColor);
   };
 
-  const filterImagesByColor = (colorValue: string | null) => {
-    if (colorValue) {
-      const colorImages = product.colorImages.filter((colorImage) => {
-        // Dereference the color by fetching its `value` property
-        const color = resolvedColors.find(
-          (c) => c._id === colorImage.color?._ref
-        );
-        return color && color.value === colorValue;
-      });
-      setFilteredImages(
-        colorImages.map((colorImage) => urlFor(colorImage.image).url())
-      );
-    }
-  };
 
   useEffect(() => {
     resolveData();
   }, [product]); // Run the function when the product changes
 
-  const handleColorChange = (colorValue: string) => {
-    setSelectedColor(colorValue);
-    filterImagesByColor(colorValue); // Filter images when color is changed
-  };
 
-  const productImages =
-    filteredImages.length > 0
-      ? filteredImages
-      : product.images.map((image) => urlFor(image.asset).url());
-
-  // Handle quantity change
-  const incrementQuantity = () => {
-    if (quantity < 10000) setQuantity(quantity + 1);
-  };
-
-  const decrementQuantity = () => {
-    if (quantity > 10) setQuantity(quantity - 1);
-  };
+ 
 
   // Save product to localStorage when Add to Cart is clicked
   const handleAddToCart = () => {
-    updateCart(product, selectedColor, selectedSize, quantity);
+    updateCart(product,  100);
     toast.success(`Product added to cart!`, {
           position: "top-right",
           autoClose: 3000, // Toast disappears after 3 seconds
@@ -101,67 +45,19 @@ const ProductDetails = ({ product }: { product: Product }) => {
 
   // Save product to localStorage and redirect to the quote page when Get Quote is clicked
   const handleGetQuote = () => {
-    updateCart(product, selectedColor, selectedSize, quantity);
+    updateCart(product,  100);
     router.push("/checkout"); // Navigate to the quote page
   };
-
+ const imageUrls: string[] = product.images.map(img => urlFor(img.asset._ref).url());
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-      <ProductGallery images={productImages} thumbnails={productImages} />
+      <ProductGallery images={imageUrls} thumbnails={imageUrls} />
       <div>
         <h1 className="text-4xl font-bold">{product.name}</h1>
 
         <p className="mt-6 text-gray-700">{product.description}</p>
 
-        {/* colour
-        <div className="mt-8">
-          <h2 className="text-sm font-medium mb-2">Colours available:</h2>
-          <div className="flex space-x-2 mb-6">
-            {resolvedColors.map((color, index) => {
-              const colorValue = color?.value;
-              return (
-                <button
-                  key={index}
-                  className={`color-option ${selectedColor === colorValue ? "selected" : ""}`}
-                  style={{ backgroundColor: `#${colorValue}` }}
-                  onClick={() => handleColorChange(colorValue)}
-                  aria-label={`Select ${colorValue} color`}
-                />
-              );
-            })}
-          </div>
-        </div> */}
-
-        {/* size
-         <div className="mt-4">
-          <h2 className="text-sm font-medium mb-2">Sizes:</h2>
-          <div className="flex flex-wrap gap-2 mb-6">
-            {resolvedSizes.map((size, index) => {
-              const sizeValue = size?.name || size?._id;
-              return (
-                <button
-                  key={index}
-                  className={`size-option ${selectedSize === sizeValue ? "selected" : ""}`}
-                  onClick={() => setSelectedSize(sizeValue)}
-                >
-                  {sizeValue}
-                </button>
-              );
-            })}
-          </div>
-        </div> */}
-
-        {/* quantity
-         <div className="mt-4 flex items-center space-x-4">
-          <button onClick={decrementQuantity} className="p-2 border border-gray-300 rounded-lg">
-            -
-          </button>
-          <span>{quantity}</span>
-          <button onClick={incrementQuantity} className="p-2 border border-gray-300 rounded-lg">
-            +
-          </button>
-        </div> */}
-
+      
         {/* Fabric field */}
         <div className="mt-8">
           <h2 className="text-base font-semibold mb-2">Fabrics:</h2>
@@ -224,7 +120,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
             </div>
           )}
         </div>
-
+      
         <div className="mt-8 grid grid-cols-2 gap-4">
           <button className="flex items-center justify-center btn btn-outline" onClick={handleAddToCart}>
           <ShoppingCart size={16} className="mr-2" />

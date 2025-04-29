@@ -40,23 +40,11 @@ export default defineType({
             type: 'number',
             validation: (Rule) => Rule.required().min(1)
           },
-          { 
-            name: 'selectedSize', 
-            title: 'Selected Size', 
-            type: 'reference', 
-            to: [{ type: 'size' }]
-          },
-          { 
-            name: 'selectedColor', 
-            title: 'Selected Color', 
-            type: 'reference', 
-            to: [{ type: 'color' }]
-          },
+    
           { 
             name: 'price', 
             title: 'Price at Purchase', 
             type: 'number',
-            validation: (Rule) => Rule.required()
           }
         ]
       }],
@@ -118,28 +106,11 @@ export default defineType({
     defineField({
       name: 'shippingAddress',
       title: 'Shipping Address',
-      type: 'object',
-      fields: [
-        { name: 'street', title: 'Street', type: 'string' },
-        { name: 'city', title: 'City', type: 'string' },
-        { name: 'state', title: 'State/Province', type: 'string' },
-        { name: 'postalCode', title: 'Postal/Zip Code', type: 'string' },
-        { name: 'country', title: 'Country', type: 'string' }
-      ],
+      type: 'string',
+    
       validation: (Rule) => Rule.required()
     }),
-    defineField({
-      name: 'billingAddress',
-      title: 'Billing Address',
-      type: 'object',
-      fields: [
-        { name: 'street', title: 'Street', type: 'string' },
-        { name: 'city', title: 'City', type: 'string' },
-        { name: 'state', title: 'State/Province', type: 'string' },
-        { name: 'postalCode', title: 'Postal/Zip Code', type: 'string' },
-        { name: 'country', title: 'Country', type: 'string' }
-      ]
-    }),
+
     defineField({
       name: 'paymentMethod',
       title: 'Payment Method',
@@ -168,34 +139,9 @@ export default defineType({
       initialValue: 'pending'
     }),
     defineField({
-      name: 'subtotal',
-      title: 'Subtotal',
-      type: 'number',
-      validation: (Rule) => Rule.required()
-    }),
-    defineField({
-      name: 'tax',
-      title: 'Tax',
-      type: 'number',
-      validation: (Rule) => Rule.required()
-    }),
-    defineField({
-      name: 'shippingFee',
-      title: 'Shipping Fee',
-      type: 'number',
-      validation: (Rule) => Rule.required()
-    }),
-    defineField({
-      name: 'discount',
-      title: 'Discount',
-      type: 'number',
-      initialValue: 0
-    }),
-    defineField({
       name: 'total',
       title: 'Total',
       type: 'number',
-      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'trackingNumber',

@@ -1,8 +1,45 @@
 import Image from "next/image"
+import { Metadata } from "next";
 import Link from "next/link"
 import AboutHover from "@/components/about/AboutHover"
 import ButtonWhite from "@/components/about/ButtonWhite"
 import Aboutcard from "@/components/about/Aboutcard"
+
+// SEO 👇
+export async function generateMetadata(): Promise<Metadata> {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  if (!baseUrl) {
+    throw new Error("Missing NEXT_PUBLIC_BASE_URL in environment variables");
+  }
+
+  return {
+    title: "About Us | HYPX Wholesale",
+    description: "Learn more about HYPX, a wholesale platform where fashion meets individuality. Discover our mission, values, and unique offerings.",
+    openGraph: {
+      title: "About Us | HYPX Wholesale",
+      description: "Discover HYPX Wholesale's mission to revolutionize streetwear fashion and help you express your brand's identity.",
+      url: `${baseUrl}/about-us`,
+      siteName: "HYPX",
+      images: [
+        {
+          url: `${baseUrl}/og-image.jpg`, // You can customize this image for the About Us page
+          width: 1200,
+          height: 630,
+          alt: "About HYPX"
+        }
+      ],
+      type: "website"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "About Us | HYPX Wholesale",
+      description: "Learn about HYPX Wholesale, your partner in creating premium, customizable streetwear.",
+      images: [`${baseUrl}/og-image.jpg`]
+    },
+    metadataBase: new URL(baseUrl),
+  };
+}
 
 export default function AboutUs() {
   return (
@@ -98,7 +135,7 @@ export default function AboutUs() {
               <p className='ch3 text-white'>Our Collections</p>
               <p className='cp3 text-white text-justify w-[60%]'>Our collection suits Men, Women, Adults, and Kids, blending customization with the latest streetwear trends for a perfect fit.</p>
               <div className='pt-6'>
-                <ButtonWhite link='/men' child='Shop Now' className=''></ButtonWhite>
+                <ButtonWhite link='/category/men' child='Shop Now' className=''></ButtonWhite>
               </div>
             </div>
           </div>
@@ -195,7 +232,7 @@ export default function AboutUs() {
               </div>
               <h3 className="text-lg font-bold mb-2">Social Media</h3>
               <div className="flex justify-center space-x-2">
-                <a href="#" className="text-gray-600 hover:text-black">
+                <Link href="#" className="text-gray-600 hover:text-black">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -212,8 +249,8 @@ export default function AboutUs() {
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
                   </svg>
-                </a>
-                <a href="#" className="text-gray-600 hover:text-black">
+                </Link>
+                <Link href="#" className="text-gray-600 hover:text-black">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -229,8 +266,8 @@ export default function AboutUs() {
                     <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
                     <path d="m10 15 5-3-5-3z" />
                   </svg>
-                </a>
-                <a href="#" className="text-gray-600 hover:text-black">
+                </Link>
+                <Link href="#" className="text-gray-600 hover:text-black">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -245,7 +282,7 @@ export default function AboutUs() {
                   >
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                   </svg>
-                </a>
+                </Link>
               </div>
               <p className="text-sm text-gray-500 mt-2">Follow us for updates and inspiration</p>
             </div>

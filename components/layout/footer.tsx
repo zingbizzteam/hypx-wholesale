@@ -38,19 +38,19 @@ const Footer = () => {
           <div>
             <h3 className="footer-heading">Shop Now</h3>
             <nav>
-              <Link href="/men" className="footer-link">
+              <Link href="/category/men" className="footer-link">
                 Men
               </Link>
-              <Link href="/women" className="footer-link">
+              <Link href="/category/women" className="footer-link">
                 Women
               </Link>
-              <Link href="/kids" className="footer-link">
+              <Link href="/category/kids" className="footer-link">
                 Kids
               </Link>
-              <Link href="/uniforms" className="footer-link">
+              <Link href="/category/uniforms" className="footer-link">
                 Uniforms
               </Link>
-              <Link href="/accessories" className="footer-link">
+              <Link href="/category/accessories" className="footer-link">
                 Accessories
               </Link>
             </nav>
@@ -110,15 +110,15 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-gray-400">@HYPX.STORE 2025</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <Instagram size={20} />
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            </Link>
+            <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
               <Youtube size={20} />
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            </Link>
+            <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <Facebook size={20} />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
