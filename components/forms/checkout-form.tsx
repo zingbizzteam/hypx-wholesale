@@ -5,6 +5,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { ChevronDown } from "lucide-react"
 import { toast } from "react-toastify"
+import { urlFor } from "@/lib/sanity"
 
 const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/
 
@@ -63,9 +64,6 @@ const CheckoutForm = () => {
       return
     }
 
-    // Calculate subtotal and total
-    const subtotal = cartItems.reduce((sum: number, item: any) => sum + (item.price || 0) * item.quantity, 0)
-    const total = subtotal // Add tax/shipping if needed
 
     const payload = {
       customerName: formData.name,
@@ -74,15 +72,12 @@ const CheckoutForm = () => {
       shippingAddress: formData.address,
       items: cartItems.map((item: any) => ({
         productId: item.productId || item._id,
+        name: item.name, // Add this
+        imageUrl: urlFor(item.images[0]?.asset?._ref).url() ||
+                      "/placeholder.svg?height=400&width=400" , // Add this
+        slug: item.slug?.current || "", // Optional, for product link
         quantity: item.quantity,
-        price: item.price || 0,
       })),
-      subtotal,
-      tax: 0,
-      shippingFee: 0,
-      discount: 0,
-      total,
-      notes: "",
     }
 
     try {

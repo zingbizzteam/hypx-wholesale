@@ -139,28 +139,6 @@ export default defineType({
       initialValue: 'pending'
     }),
     defineField({
-      name: 'subtotal',
-      title: 'Subtotal',
-      type: 'number',
-      validation: (Rule) => Rule.required()
-    }),
-    defineField({
-      name: 'tax',
-      title: 'Tax',
-      type: 'number',
-    }),
-    defineField({
-      name: 'shippingFee',
-      title: 'Shipping Fee',
-      type: 'number',
-    }),
-    defineField({
-      name: 'discount',
-      title: 'Discount',
-      type: 'number',
-      initialValue: 0
-    }),
-    defineField({
       name: 'total',
       title: 'Total',
       type: 'number',

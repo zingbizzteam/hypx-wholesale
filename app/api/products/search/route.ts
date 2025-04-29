@@ -20,7 +20,6 @@ export async function GET(req: Request) {
       `*[_type == "product" && name match "${searchQuery}*"]{
         name,
         slug,
-        price,
         images,
         description,
         category,

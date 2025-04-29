@@ -12,7 +12,6 @@ export async function POST(req: NextRequest) {
       product: { _type: "reference", _ref: item.productId },
       quantity: item.quantity,
       price: item.price ?? 0,
-      name: item.name, // Make sure to include name for email summary
     }));
 
     const statusHistory = [
@@ -36,10 +35,6 @@ export async function POST(req: NextRequest) {
       shippingAddress: body.shippingAddress,
       paymentMethod: body.paymentMethod || "",
       paymentStatus: "pending",
-      subtotal: body.subtotal ?? 0,
-      tax: body.tax ?? 0,
-      shippingFee: body.shippingFee ?? 0,
-      discount: body.discount ?? 0,
       total: body.total ?? 0,
       trackingNumber: "",
       carrier: "",
@@ -47,29 +42,48 @@ export async function POST(req: NextRequest) {
       notes: body.notes || "",
     };
 
-    // Create the order in Sanity
+    // 1. Create the order in Sanity
     const createdOrder = await client.create(orderDoc);
 
-    // Prepare email data
+    // 2. Fetch product details for email
+    const productIds = items.map((item: any) => item.product._ref);
+    const products = await client.fetch(
+      `*[_type == "product" && _id in $ids]{_id, name, slug, "imageUrl": images[0].asset->url}`,
+      { ids: productIds }
+    );
+
+    // 3. Merge product details into items for email
+    const itemsWithDetails = items.map((item: any) => {
+      const prod = products.find((p: any) => p._id === item.product._ref);
+      return {
+        ...item,
+        name: prod?.name || "Product",
+        slug: prod?.slug?.current || "",
+        imageUrl: prod?.imageUrl || "",
+      };
+    });
+
+    // 4. Prepare email data
     const customer = {
       name: body.customerName,
       email: body.customerEmail,
       phone: body.customerPhone,
+      address: body.shippingAddress,
     };
     const orderForEmail = {
       orderNumber,
-      items,
-      total: body.total ?? 0,
+      items: itemsWithDetails,
       shippingAddress: body.shippingAddress,
+      total: body.total ?? 0,
     };
 
-    // Send emails
+    // 5. Send emails
     const customerHtml = getCustomerEmailHtml(orderForEmail, customer);
     const teamHtml = getQuoteTeamEmailHtml(orderForEmail, customer);
 
     await Promise.all([
-      sendEmail(customer.email, `Your Order Confirmation - ${orderNumber}`, customerHtml),
-      sendEmail("quote@hypx.com", `New Quote Request - ${orderNumber}`, teamHtml),
+      sendEmail(customer.email, `Your Quote Confirmation - ${orderNumber}`, customerHtml),
+      sendEmail("zingbizzteam@gmail.com", `New Quote Request - ${orderNumber}`, teamHtml),
     ]);
 
     return NextResponse.json({
