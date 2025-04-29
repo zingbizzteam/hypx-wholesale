@@ -1,283 +1,69 @@
-"use client"
-import { useEffect, useState, useCallback } from "react";
+"use client";
+import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-interface CategoryBase {
+interface Category {
   _id: string;
   name: string;
-  level?: number;
-}
-
-interface Category extends CategoryBase {
-  subcategories?: CategoryBase[];
 }
 
 const CategoryFilters = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  
-  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [categories, setCategories] = useState<Category[]>([]);
-  const [processedCategories, setProcessedCategories] = useState<Category[]>([]);
-  
-  // Changed from single selection to multiple selections
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
-  // Use a debounce flag to prevent multiple URL updates
-  const [updateTimeout, setUpdateTimeout] = useState<NodeJS.Timeout | null>(null);
-
-  // Load initial selections from URL params
   useEffect(() => {
-    const categoryParam = searchParams.get("category");
-    
-    if (categoryParam) {
-      setSelectedCategories(categoryParam.split(","));
-    } else {
-      setSelectedCategories([]);
-    }
- 
-  }, [searchParams]);
-
-  const fetchCategories = async () => {
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/categories`);
-      if (!res.ok) throw new Error('Failed to fetch categories');
+    const fetchCategories = async () => {
+      const res = await fetch("/api/products/categories/level1");
       const data = await res.json();
       setCategories(data.categories);
-      organizeCategories(data.categories);
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-    }
-  };
-
-  const organizeCategories = (categoriesData: Category[]) => {
-    // Find top-level categories (level 1 or undefined level)
-    const topLevelCategories = categoriesData.filter(cat => 
-      !cat.level || cat.level === 1
-    );
-    
-    // Create a deep copy of these categories
-    const processed = topLevelCategories.map(topCat => {
-      const processedTopCat: Category = {
-        _id: topCat._id,
-        name: topCat.name,
-        level: topCat.level,
-        subcategories: []
-      };
-      
-      // Find direct child categories
-      if (topCat.subcategories && topCat.subcategories.length > 0) {
-        const level2Categories = topCat.subcategories.map(subCatRef => {
-          const fullSubCat = categoriesData.find(c => c._id === subCatRef._id);
-          if (fullSubCat) {
-            const processedSubCat: Category = {
-              _id: fullSubCat._id,
-              name: fullSubCat.name,
-              level: fullSubCat.level,
-              subcategories: []
-            };
-            
-            // Find level 3 categories (if any)
-            if (fullSubCat.subcategories && fullSubCat.subcategories.length > 0) {
-              const level3Categories = fullSubCat.subcategories.map(subSubCatRef => {
-                return categoriesData.find(c => c._id === subSubCatRef._id);
-              }).filter(Boolean) as Category[];
-              
-              processedSubCat.subcategories = level3Categories;
-            }
-            
-            return processedSubCat;
-          }
-          return null;
-        }).filter(Boolean) as Category[];
-        
-        processedTopCat.subcategories = level2Categories;
-      }
-      
-      return processedTopCat;
-    });
-    
-    setProcessedCategories(processed);
-    
-    // Auto-expand any categories that are selected
-    const newExpandedState: Record<string, boolean> = {};
-    categories.forEach(cat => {
-      if (selectedCategories.includes(cat._id)) {
-        // Find parent categories and expand them
-        const parentCat = findParentCategory(categoriesData, cat._id);
-        if (parentCat) {
-          newExpandedState[parentCat._id] = true;
-        }
-      }
-    });
-    
-    setExpandedCategories(prev => ({...prev, ...newExpandedState}));
-  };
-  
-  // Helper function to find parent category
-  const findParentCategory = (categories: Category[], childId: string): Category | null => {
-    for (const cat of categories) {
-      if (cat.subcategories?.some(subcat => subcat._id === childId)) {
-        return cat;
-      }
-    }
-    return null;
-  };
-
-
-  useEffect(() => {
+      setSelectedCategories(searchParams.get("category")?.split(",") || []);
+    };
     fetchCategories();
-  }, []);
+  }, [searchParams]);
 
-  const toggleCategory = useCallback((categoryId: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setExpandedCategories(prev => ({
-      ...prev,
-      [categoryId]: !prev[categoryId]
-    }));
-  }, []);
+  const handleCategoryToggle = (categoryName: string) => {
+    const newSelected = selectedCategories.includes(categoryName)
+      ? selectedCategories.filter((c) => c !== categoryName)
+      : [...selectedCategories, categoryName];
 
-  // Update to handle multiple selections with checkboxes
-  const handleCategorySelect = useCallback((categoryId: string, e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent triggering the parent onClick
-    
-    setSelectedCategories(prev => {
-      // If already selected, remove it
-      if (prev.includes(categoryId)) {
-        return prev.filter(id => id !== categoryId);
-      }
-      // Otherwise add it
-      return [...prev, categoryId];
-    });
-    
-    // Schedule the URL update with debounce
-    if (updateTimeout) {
-      clearTimeout(updateTimeout);
+    // Build query parts manually to avoid encoding
+    const queryParts = [];
+    if (newSelected.length > 0) {
+      queryParts.push(`category=${newSelected.join(",")}`);
     }
-    
-    const timeout = setTimeout(() => {
-      updateFiltersInURL();
-    }, 300);
-    
-    setUpdateTimeout(timeout);
-  }, [updateTimeout]);
+    queryParts.push("page=1");
 
- 
-
-  // Apply filters to the URL
-  const updateFiltersInURL = useCallback(() => {
-    // Create a new URLSearchParams object
-    const params = new URLSearchParams(searchParams.toString());
-    
-    // Update category parameter if we have selections
-    if (selectedCategories.length > 0) {
-      params.set("category", selectedCategories.join(","));
-    } else {
-      params.delete("category");
-    }
-    
-
-    // Reset to page 1 when filters change
-    params.set("page", "1");
-    
-    // Construct the new URL with the same pathname but updated search params
-    const pathname = window.location.pathname;
-    const newUrl = `${pathname}?${params.toString()}`;
-    
-    // Push the new URL to the router
-    router.push(newUrl);
-  }, [router, searchParams, selectedCategories]);
-
-  // Clear all filters
-  const clearAllFilters = useCallback(() => {
-    setSelectedCategories([]);
-    // Remove all filter parameters from URL
-    const pathname = window.location.pathname;
-    router.push(`${pathname}?page=1`);
-  }, [router]);
-
-  // Recursive function to render categories and their subcategories
-  const renderCategory = useCallback((category: Category, depth: number = 0) => {
-    const isTopLevel = depth === 0;
-    const isSelected = selectedCategories.includes(category._id);
-    
-    return (
-      <div 
-        key={category._id} 
-        className={`${isTopLevel ? 'border-b border-gray-200 pb-3 mb-3' : 'mb-2'} ${depth > 0 ? 'ml-4' : ''}`}
-      >
-        <div 
-          className="flex justify-between items-center cursor-pointer py-1"
-          onClick={(e) => toggleCategory(category._id, e)}
-        >
-          <div className="flex items-center">
-            <div className="relative flex place-content-center place-items-center mr-2">
-              <input
-                type="checkbox"
-                id={`category-${category._id}`}
-                checked={isSelected}
-                onChange={() => {}} // Controlled component needs onChange
-                className="appearance-none w-4 h-4 border border-gray-300 rounded-sm bg-white checked:bg-black checked:border-black cursor-pointer"
-                onClick={(e) => handleCategorySelect(category._id, e)}
-              />
-              <svg 
-                className={`absolute w-3 h-3 text-white pointer-events-none ${isSelected ? 'opacity-100' : 'opacity-0'}`}
-                viewBox="0 0 17 12" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M1 4.5L6 9.5L15.5 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            <label 
-              htmlFor={`category-${category._id}`} 
-              className="text-sm cursor-pointer"
-              onClick={(e) => e.preventDefault()} // Prevent label from triggering checkbox twice
-            >
-              {category.name}
-            </label>
-          </div>
-          
-          {category.subcategories && category.subcategories.length > 0 && (
-            <span className="text-sm">
-              {expandedCategories[category._id] ? "(-)" : "(+)"}
-            </span>
-          )}
-        </div>
-
-        {expandedCategories[category._id] && category.subcategories && category.subcategories.length > 0 && (
-          <div className="pl-2 mt-2">
-            {category.subcategories.map(subcat => renderCategory(subcat as Category, depth + 1))}
-          </div>
-        )}
-      </div>
-    );
-  }, [selectedCategories, expandedCategories, handleCategorySelect, toggleCategory]);
+    router.push(`/shop?${queryParts.join("&")}`);
+  };
 
   return (
     <div className="pb-4">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="font-medium text-lg">Filters</h2>
-        {(selectedCategories.length > 0  ) && (
-          <button 
-            onClick={clearAllFilters}
-            className="text-sm text-gray-600 hover:text-black"
+        <h2 className="font-medium text-xl">Categories</h2>
+        {selectedCategories.length > 0 && (
+          <button
+            onClick={() => router.push("/shop?page=1")}
+            className="text-base text-gray-600 hover:text-black"
           >
             Clear All
           </button>
         )}
       </div>
+      <div className="space-y-3">
+        {categories.map((category) => (
+          <div key={category._id} className="flex items-center space-x-3">
+            <input
+              type="checkbox"
+              checked={selectedCategories.includes(category.name?.toLowerCase() ?? '')}
 
-      <div className="space-y-6">
-        {/* Categories Section */}
-        <div>
-          <h3 className="font-medium mb-4">Categories</h3>
-          <div>
-            {processedCategories.map(category => renderCategory(category))}
+              onChange={() => handleCategoryToggle(category.name?.toLowerCase() ?? '')}
+              className="w-5 h-5 border-gray-300 rounded accent-black cursor-pointer"
+            />
+            <label className="text-base cursor-pointer">{category.name}</label>
           </div>
-        </div>
-
-     
+        ))}
       </div>
     </div>
   );

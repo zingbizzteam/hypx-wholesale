@@ -1,5 +1,4 @@
-// app/category/[slug]/page.tsx
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -8,74 +7,60 @@ import CategoryFilters from "@/components/category/category-filters";
 import ProductCard from "@/components/product/product-card";
 import { Product } from "@/lib/sanity";
 
-type Props = {
-  params: { slug: string };
-};
-
-export default function CategoryPage({ params }: Props) {
-  const { slug } = params;
+export default function ShopPage() {
   const searchParams = useSearchParams();
-  const title = slug.charAt(0).toUpperCase() + slug.slice(1);
-  
   const [products, setProducts] = useState<Product[]>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
-  
-  // Get parameters from URL
-  const page = searchParams.get("page") ? parseInt(searchParams.get("page") || "1") : 1;
-  const category = searchParams.get("category") || "";
 
-  
+  // Get parameters from URL
+  const page = parseInt(searchParams.get("page") || "1");
+  const category = searchParams.get("category") || "all";
+  const limit = parseInt(searchParams.get("limit") || "12");
+
+  // Generate title from category
+  const title =
+    category === "all"
+      ? "All Products"
+      : `${category.split(",")[0].charAt(0).toUpperCase()}${category.split(",")[0].slice(1)}`;
+
   // Generate pagination links
   const prevPage = page > 1 ? page - 1 : null;
   const nextPage = page < totalPages ? page + 1 : null;
-  
+
   // Function to build the URL with preserved filters
   const buildPageUrl = (pageNum: number) => {
     const params = new URLSearchParams();
     params.set("page", pageNum.toString());
-    
-    if (category) params.set("category", category);
-    
-    return `/category/${slug}?${params.toString()}`;
+    params.set("category", category);
+    if (limit !== 12) params.set("limit", limit.toString());
+
+    return `/shop?${params.toString()}`;
   };
-  
+
   // Fetch products based on filters
   useEffect(() => {
-    const fetchCategoryProducts = async () => {
+    const fetchProducts = async () => {
       try {
         setLoading(true);
-        
-        // Build query params
         const queryParams = new URLSearchParams();
         queryParams.set("page", page.toString());
-        queryParams.set("limit", "12");
-        
-        // Handle slug parameter
-        if (slug !== "all") {
-          queryParams.set("slug", slug);
+        queryParams.set("limit", limit.toString());
+
+        // Only add category param if not 'all'
+        if (category !== "all") {
+          queryParams.set("category", category);
         }
-        
-        // Handle category filter - convert comma-separated string to individual parameters
-        if (category) {
-          const categoryIds = category.split(",");
-          categoryIds.forEach(id => {
-            queryParams.append("category", id);
-          });
-        }
-        
-      
-        
+
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/products?${queryParams.toString()}`
         );
-        
-        if (!response.ok) {
+        if (!response.ok)
           throw new Error(`Failed to fetch products: ${response.status}`);
-        }
-        
+
         const data = await response.json();
+
         setProducts(data.products);
         setTotalCount(data.totalCount);
         setTotalPages(data.totalPages);
@@ -88,21 +73,21 @@ export default function CategoryPage({ params }: Props) {
         setLoading(false);
       }
     };
-    
-    fetchCategoryProducts();
-  }, [slug, page, category]);
-  
+
+    fetchProducts();
+  }, [page, category, limit]);
+
   return (
     <div className="max-w-[100rem] mx-auto px-10 lg:px-24 py-12">
       <h1 className="text-3xl font-bold mb-2">{title}</h1>
-      <p className="mb-4 text-gray-600">Lorem ipsum</p>
+      <p className="mb-4 text-gray-600">Get a Quote Now</p>
       <p className="mb-8 text-sm">{totalCount} Products</p>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="md:col-span-1">
           <CategoryFilters />
         </div>
-        
+
         <div className="md:col-span-3">
           {loading ? (
             <div className="col-span-full flex justify-center py-12">
@@ -113,19 +98,21 @@ export default function CategoryPage({ params }: Props) {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {products.length === 0 ? (
                   <div className="col-span-full text-center py-12">
-                    <p className="text-gray-500">No products found with the selected filters.</p>
+                    <p className="text-gray-500">
+                      No products found with the selected filters.
+                    </p>
                   </div>
                 ) : (
                   products.map((product: Product) => (
-                    <ProductCard key={product._id || product.name} product={product} />
+                    <ProductCard key={product._id} product={product} />
                   ))
                 )}
               </div>
-              
+
               {products.length > 0 && (
                 <div className="mt-8 flex justify-between items-center">
                   {prevPage ? (
-                    <Link 
+                    <Link
                       href={buildPageUrl(prevPage)}
                       className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
                     >
@@ -136,13 +123,13 @@ export default function CategoryPage({ params }: Props) {
                       Previous
                     </button>
                   )}
-                  
+
                   <span>
                     Page {page} of {totalPages}
                   </span>
-                  
+
                   {nextPage ? (
-                    <Link 
+                    <Link
                       href={buildPageUrl(nextPage)}
                       className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
                     >

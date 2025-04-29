@@ -35,7 +35,7 @@ export default function Checkout() {
               <div className="flex flex-col items-center justify-center py-24">
                 <p className="text-2xl font-semibold mb-4">No items in cart</p>
                 <Link
-                  href="/category/all"
+                  href="/shop"
                   className="bg-black text-white rounded px-8 py-3 text-lg font-medium hover:bg-gray-800 transition"
                 >
                   Browse Products

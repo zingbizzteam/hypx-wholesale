@@ -74,7 +74,7 @@ export default function Cart() {
                   Looks like you haven't added anything to your cart yet.
                 </p>
                 <Link
-                  href="/category/all"
+                  href="/shop"
                   className="bg-black text-white rounded px-8 py-3 text-lg font-medium hover:bg-gray-800 transition"
                 >
                   Browse Products

@@ -10,8 +10,8 @@ type QuantityAdjusterProps = {
 const QuantityAdjuster = ({
   value,
   setValue,
-  min = 10,
-  max = 10000,
+  min = 100,
+  max = 100000,
 }: QuantityAdjusterProps) => {
   // Local state for input
   const [inputValue, setInputValue] = React.useState(value.toString());

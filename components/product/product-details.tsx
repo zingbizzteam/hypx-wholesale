@@ -12,7 +12,6 @@ import { useRouter } from "next/navigation"; // To handle redirection
 import { updateCart } from "@/lib/localStorage"; // Import the helper functions
 import { toast } from "react-toastify";
 import Link from "next/link";
-import QuantityAdjuster from "./QuantityAdjuster";
 
 const ProductDetails = ({ product }: { product: Product }) => {
   const [isProductDetailsOpen, setIsProductDetailsOpen] = useState(false);

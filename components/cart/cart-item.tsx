@@ -82,8 +82,8 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
         <QuantityAdjuster
           value={quantity}
           setValue={updateQuantityInCart}
-          min={10}
-          max={10000}
+          min={100}
+          max={100000}
         />
       </div>
 

@@ -4,48 +4,69 @@ import { client } from "@/lib/sanity";
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const categories = searchParams.getAll("category");
-    const slug = searchParams.get("slug");
     const page = parseInt(searchParams.get("page") || "1");
     const limit = parseInt(searchParams.get("limit") || "10");
+    const slug = searchParams.get("slug");
+    const categoryParam = searchParams.get("category");
 
+    // Handle category names
+    const categoryNames = categoryParam?.split(",") || [];
+    let categoryIds: string[] = [];
+
+    // Skip category filtering if "all" is specified
+    if (!categoryNames.includes("all") && categoryNames.length > 0) {
+      // Case-insensitive name match for categories
+      categoryIds = await client.fetch(
+        `*[_type == "category" && lower(name) in $names]._id`,
+        { names: categoryNames.map(n => n.toLowerCase()) }
+      );
+    }
+
+    // Base query with draft exclusion
     let query = '*[_type == "product" && !(_id in path("drafts.**"))';
+    const params: Record<string, any> = {};
+    const filters = [];
 
-    let filters = [];
-
+    // Slug filter
     if (slug && slug !== "all") {
-      filters.push(`slug.current == "${slug}"`);
+      filters.push(`slug.current == $slug`);
+      params.slug = slug;
     }
 
-    // Handle multiple category filters (OR logic between categories)
-    if (categories.length > 0) {
-      const categoryConditions = categories.map(cat => `references("${cat}")`).join(" || ");
-      filters.push(`(${categoryConditions})`);
+    // Category filter for ARRAY references
+    if (categoryIds.length > 0) {
+      filters.push(`count(categories[@._ref in $categoryIds]) > 0`);
+      params.categoryIds = categoryIds;
     }
 
-    // Add all filters to the query
+    // Build final query
     if (filters.length > 0) {
       query += " && " + filters.join(" && ");
     }
-
-    // Close the query condition
     query += "]";
 
-    // Select the fields to return
-    query += "{_id, name, slug, images, description, category, productDetails}";
+    // Field selection
+    query += `{
+      _id,
+      name,
+      "slug": slug.current,
+      images,
+      description,
+      categories,
+      productDetails
+    }`;
 
-    // Build the totalCount query
-    let countQuery = `count(*[_type == "product"`;
-    if (filters.length > 0) {
-      countQuery += " && " + filters.join(" && ");
-    }
-    countQuery += "])";
+    // Count query
+    const countQuery = `count(${query})`;
 
     // Execute queries
-    const totalCount = await client.fetch(countQuery);
-    const products = await client.fetch(
-      query + ` | order(name asc) [${(page - 1) * limit}...${page * limit}]`
-    );
+    const [totalCount, products] = await Promise.all([
+      client.fetch(countQuery, params),
+      client.fetch(
+        `${query} | order(name asc) [${(page - 1) * limit}...${page * limit}]`,
+        params
+      )
+    ]);
 
     return NextResponse.json({
       products,

@@ -98,7 +98,7 @@ export default function AboutUs() {
               <p className='ch3 text-white'>Our Collections</p>
               <p className='cp3 text-white text-justify w-[60%]'>Our collection suits Men, Women, Adults, and Kids, blending customization with the latest streetwear trends for a perfect fit.</p>
               <div className='pt-6'>
-                <ButtonWhite link='/category/men' child='Shop Now' className=''></ButtonWhite>
+                <ButtonWhite link='/shop?category=men' child='Shop Now' className=''></ButtonWhite>
               </div>
             </div>
           </div>

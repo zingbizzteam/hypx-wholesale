@@ -47,11 +47,12 @@ const ProductCard = ({ product }: { product: Product }) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <Link href={`/product/${product.slug.current}`}>
+        <Link href={`/product/${product.slug}`}>
           <Image
             src={
-              urlFor(product.images[currentImageIndex]?.asset?._ref).url() ||
-              "/placeholder.svg?height=400&width=400"
+              product.images?.[currentImageIndex]?.asset?._ref
+                ? urlFor(product.images[currentImageIndex].asset).url()
+                : "/placeholder.svg?height=400&width=400"
             }
             alt={product.name}
             fill
@@ -59,8 +60,9 @@ const ProductCard = ({ product }: { product: Product }) => {
           />
         </Link>
       </div>
+
       <div className="relative flex flex-col h-[130px]  px-4 pb-4 pt-3 gap-4">
-        <Link href={`/product/${product.slug.current}`} passHref>
+        <Link href={`/product/${product.slug}`} passHref>
           <h3 className="font-medium">{product.name}</h3>
         </Link>
         <div className="flex space-x-2 mt-auto">

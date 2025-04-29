@@ -10,70 +10,70 @@ const Men = [
   {
     title: "T-Shirts",
     items: [
-      { label: "Basic Tee", href: "/category/basic-tee" },
-      { label: "Dri-Fit Tee", href: "/category/dri-fit-tee" },
-      { label: "Drop Shoulder Tee", href: "/category/drop-shoulder-tee" },
-      { label: "Oversized Tee", href: "/category/oversized-tee" },
-      { label: "Polo Tee", href: "/category/polo-tee" },
-      { label: "Raglan Tee", href: "/category/raglan-tee" },
-      { label: "Sports Jersey", href: "/category/sports-jersey" },
-      { label: "Tie-Dye Tee", href: "/category/tie-dye-tee" },
+      { label: "Basic Tee", href: "/shop?category=basic-tee" },
+      { label: "Dri-Fit Tee", href: "/shop?category=dri-fit-tee" },
+      { label: "Drop Shoulder Tee", href: "/shop?category=drop-shoulder-tee" },
+      { label: "Oversized Tee", href: "/shop?category=oversized-tee" },
+      { label: "Polo Tee", href: "/shop?category=polo-tee" },
+      { label: "Raglan Tee", href: "/shop?category=raglan-tee" },
+      { label: "Sports Jersey", href: "/shop?category=sports-jersey" },
+      { label: "Tie-Dye Tee", href: "/shop?category=tie-dye-tee" },
     ],
   },
   {
     title: "Tank",
     items: [
-      { label: "Muscle Tank Top", href: "/category/muscle-tank-top" },
-      { label: "Oversized Tank Top", href: "/category/oversized-tank-top" },
+      { label: "Muscle Tank Top", href: "/shop?category=muscle-tank-top" },
+      { label: "Oversized Tank Top", href: "/shop?category=oversized-tank-top" },
     ],
   },
   {
     title: "Jacket",
     items: [
-      { label: "Bomber Jacket", href: "/category/bomber-jacket" },
-      { label: "Varsity Jacket", href: "/category/varsity-jacket" },
+      { label: "Bomber Jacket", href: "/shop?category=bomber-jacket" },
+      { label: "Varsity Jacket", href: "/shop?category=varsity-jacket" },
     ],
   },
   {
     title: "Sweatshirt",
     items: [
-      { label: "Drop Shoulder", href: "/category/drop-shoulder" },
-      { label: "Cropped Sweatshirt", href: "/category/cropped-sweatshirt" },
+      { label: "Drop Shoulder", href: "/shop?category=drop-shoulder" },
+      { label: "Cropped Sweatshirt", href: "/shop?category=cropped-sweatshirt" },
       {
         label: "Crew Neck with invisible zip",
-        href: "/category/crew-neck-with-invisible-zip",
+        href: "/shop?category=crew-neck-with-invisible-zip",
       },
     ],
   },
   {
     title: "Hoodie",
     items: [
-      { label: "Oversized", href: "/category/oversized" },
+      { label: "Oversized", href: "/shop?category=oversized" },
       {
         label: "Oversized with drawsting",
-        href: "/category/oversized-with-drawstring",
+        href: "/shop?category=oversized-with-drawstring",
       },
-      { label: "Oversized with zip", href: "/category/oversized-with-zip" },
+      { label: "Oversized with zip", href: "/shop?category=oversized-with-zip" },
     ],
   },
   {
     title: "Shorts",
     items: [
-      { label: "Cotton", href: "/category/cotton-shorts" },
-      { label: "Dri-Fit", href: "/category/dri-fit" },
+      { label: "Cotton", href: "/shop?category=cotton-shorts" },
+      { label: "Dri-Fit", href: "/shop?category=dri-fit" },
     ],
   },
   {
     title: "Pants",
     items: [
-      { label: "Straight pants", href: "/category/straight-pants" },
-      { label: "Track pants", href: "/category/track-pants" },
-      { label: "Baggy Pants", href: "/category/baggy-pants" },
+      { label: "Straight pants", href: "/shop?category=straight-pants" },
+      { label: "Track pants", href: "/shop?category=track-pants" },
+      { label: "Baggy Pants", href: "/shop?category=baggy-pants" },
       {
         label: "Heavyweight sweatpants",
-        href: "/category/heavyweight-sweatpants",
+        href: "/shop?category=heavyweight-sweatpants",
       },
-      { label: "Joggers", href: "/category/joggers" },
+      { label: "Joggers", href: "/shop?category=joggers" },
     ],
   },
 ];
@@ -82,88 +82,88 @@ const Women = [
   {
     title: "T-Shirts",
     items: [
-      { label: "Basic Tee", href: "/category/basic-tee" },
-      { label: "Dri-Fit Tee", href: "/category/dri-fit-tee" },
-      { label: "Drop Shoulder Tee", href: "/category/drop-shoulder-tee" },
-      { label: "Oversized Tee", href: "/category/oversized-tee" },
-      { label: "Polo Tee", href: "/category/polo-tee" },
-      { label: "Raglan Tee", href: "/category/raglan-tee" },
-      { label: "Sports Jersey", href: "/category/sports-jersey" },
-      { label: "Tie-Dye Tee", href: "/category/tie-dye-tee" },
-      { label: "Slim fit", href: "/category/slim-fit" },
+      { label: "Basic Tee", href: "/shop?category=basic-tee" },
+      { label: "Dri-Fit Tee", href: "/shop?category=dri-fit-tee" },
+      { label: "Drop Shoulder Tee", href: "/shop?category=drop-shoulder-tee" },
+      { label: "Oversized Tee", href: "/shop?category=oversized-tee" },
+      { label: "Polo Tee", href: "/shop?category=polo-tee" },
+      { label: "Raglan Tee", href: "/shop?category=raglan-tee" },
+      { label: "Sports Jersey", href: "/shop?category=sports-jersey" },
+      { label: "Tie-Dye Tee", href: "/shop?category=tie-dye-tee" },
+      { label: "Slim fit", href: "/shop?category=slim-fit" },
     ],
   },
   {
     title: "Tank",
     items: [
-      { label: "Muscle Tank Top", href: "/category/muscle-tank-top" },
-      { label: "Oversized Tank Top", href: "/category/oversized-tank-top" },
-      { label: "Flowy Scoop muscle", href: "/category/flowy-scoop-muscle" },
-      { label: "Rib muscle", href: "/category/rib-muscle" },
-      { label: "Slouchy tank", href: "/category/slouchy-tank" },
-      { label: "Sports jersey tank", href: "/category/sports-jersey-tank" },
-      { label: "Racerback", href: "/category/racerback" },
+      { label: "Muscle Tank Top", href: "/shop?category=muscle-tank-top" },
+      { label: "Oversized Tank Top", href: "/shop?category=oversized-tank-top" },
+      { label: "Flowy Scoop muscle", href: "/shop?category=flowy-scoop-muscle" },
+      { label: "Rib muscle", href: "/shop?category=rib-muscle" },
+      { label: "Slouchy tank", href: "/shop?category=slouchy-tank" },
+      { label: "Sports jersey tank", href: "/shop?category=sports-jersey-tank" },
+      { label: "Racerback", href: "/shop?category=racerback" },
     ],
   },
   {
     title: "Crop Tee",
     items: [
-      { label: "Dri-fit", href: "/category/dri-fit-crop-tee" },
-      { label: "Rib raglan", href: "/category/rib-raglan" },
-      { label: "Sports Jersey", href: "/category/sports-jersey-crop-tee" },
+      { label: "Dri-fit", href: "/shop?category=dri-fit-crop-tee" },
+      { label: "Rib raglan", href: "/shop?category=rib-raglan" },
+      { label: "Sports Jersey", href: "/shop?category=sports-jersey-crop-tee" },
     ],
   },
   {
     title: "Jacket",
     items: [
-      { label: "Bomber Jacket", href: "/category/bomber-jacket" },
-      { label: "Varsity Jacket", href: "/category/varsity-jacket" },
+      { label: "Bomber Jacket", href: "/shop?category=bomber-jacket" },
+      { label: "Varsity Jacket", href: "/shop?category=varsity-jacket" },
     ],
   },
   {
     title: "Sweatshirt",
     items: [
-      { label: "Drop Shoulder", href: "/category/drop-shoulder" },
-      { label: "Cropped Sweatshirt", href: "/category/cropped-sweatshirt" },
+      { label: "Drop Shoulder", href: "/shop?category=drop-shoulder" },
+      { label: "Cropped Sweatshirt", href: "/shop?category=cropped-sweatshirt" },
       {
         label: "Crew Neck with invisible zip",
-        href: "/category/crew-neck-with-invisible-zip",
+        href: "/shop?category=crew-neck-with-invisible-zip",
       },
     ],
   },
   {
     title: "Hoodie",
     items: [
-      { label: "Oversized", href: "/category/oversized" },
+      { label: "Oversized", href: "/shop?category=oversized" },
       {
         label: "Oversized with drawsting",
-        href: "/category/oversized-with-drawstring",
+        href: "/shop?category=oversized-with-drawstring",
       },
-      { label: "Oversized with zip", href: "/category/oversized-with-zip" },
+      { label: "Oversized with zip", href: "/shop?category=oversized-with-zip" },
     ],
   },
   {
     title: "Shorts",
     items: [
-      { label: "Cotton", href: "/category/cotton-shorts" },
-      { label: "Dri-Fit", href: "/category/dri-fit" },
+      { label: "Cotton", href: "/shop?category=cotton-shorts" },
+      { label: "Dri-Fit", href: "/shop?category=dri-fit" },
     ],
   },
   {
     title: "Pants",
     items: [
-      { label: "Straight pants", href: "/category/straight-pants" },
-      { label: "Track pants", href: "/category/track-pants" },
-      { label: "Baggy Pants", href: "/category/baggy-pants" },
+      { label: "Straight pants", href: "/shop?category=straight-pants" },
+      { label: "Track pants", href: "/shop?category=track-pants" },
+      { label: "Baggy Pants", href: "/shop?category=baggy-pants" },
       {
         label: "Heavyweight sweatpants",
-        href: "/category/heavyweight-sweatpants",
+        href: "/shop?category=heavyweight-sweatpants",
       },
-      { label: "Joggers", href: "/category/joggers" },
-      { label: "Flare track pants", href: "/category/flare-track-pants" },
+      { label: "Joggers", href: "/shop?category=joggers" },
+      { label: "Flare track pants", href: "/shop?category=flare-track-pants" },
       {
         label: "High waisted gym pants",
-        href: "/category/high-waisted-gym-pants",
+        href: "/shop?category=high-waisted-gym-pants",
       },
     ],
   },
@@ -199,7 +199,7 @@ const Header = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-11 text-sm text-[#333333] justify-between">
           <div className="relative group  h-10 flex justify-center items-center">
-            <Link href="/category/men" className="hover:text-[#858585]">
+            <Link href="/shop?category=men" className="hover:text-[#858585]">
               Men
             </Link>
             <div className="fixed hidden group-hover:flex left-0 top-16 w-screen h-[65vh] bg-white justify-center items-start z-40">
@@ -210,7 +210,7 @@ const Header = () => {
           </div>
 
           <div className="relative group  h-10 flex justify-center items-center">
-            <Link href={"/category/women"} className="hover:text-[#858585]">
+            <Link href={"/shop?category=women"} className="hover:text-[#858585]">
               Women
             </Link>
             <div className="fixed hidden group-hover:flex left-0 top-16 w-screen h-[65vh] bg-white justify-center items-start z-40">
@@ -221,17 +221,17 @@ const Header = () => {
           </div>
 
           <div className="relative group  h-10 flex justify-center items-center">
-            <Link href={"/category/kids"} className="hover:text-[#858585]">
+            <Link href={"/shop?category=kids"} className="hover:text-[#858585]">
               Kids
             </Link>
           </div>
           <div className="relative group  h-10 flex justify-center items-center">
-            <Link href={"/category/accessories"} className="hover:text-[#858585]">
+            <Link href={"/shop?category=accessories"} className="hover:text-[#858585]">
               Accessories
             </Link>
           </div>
           <div className="relative group  h-10 flex justify-center items-center">
-            <Link href={"/category/uniforms"} className="hover:text-[#858585]">
+            <Link href={"/shop?category=uniform"} className="hover:text-[#858585]">
               Uniforms
             </Link>
           </div>

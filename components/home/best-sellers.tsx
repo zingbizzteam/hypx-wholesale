@@ -35,7 +35,7 @@ export default function BestSellers() {
           <div className="container3">
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-2xl md:text-3xl font-bold">Best Sellers</h2>
-              <Link href="/category/all" className="text-base flex items-center text-black hover:text-[#333333]">
+              <Link href="/shop" className="text-base flex items-center text-black hover:text-[#333333]">
                 Explore <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
             </div>
@@ -54,7 +54,7 @@ export default function BestSellers() {
         <div className="container3">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl md:text-3xl font-bold">Best Sellers</h2>
-            <Link href="/category/all" className="flex items-center text-sm font-medium">
+            <Link href="/shop" className="flex items-center text-sm font-medium">
               Explore <ChevronRight className="h-4 w-4 ml-1" />
             </Link>
           </div>

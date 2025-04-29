@@ -38,19 +38,19 @@ const Footer = () => {
           <div>
             <h3 className="footer-heading">Shop Now</h3>
             <nav>
-              <Link href="/category/men" className="footer-link">
+              <Link href="/shop?category=men" className="footer-link">
                 Men
               </Link>
-              <Link href="/category/women" className="footer-link">
+              <Link href="/shop?category=women" className="footer-link">
                 Women
               </Link>
-              <Link href="/category/kids" className="footer-link">
+              <Link href="/shop?category=kids" className="footer-link">
                 Kids
               </Link>
-              <Link href="/category/uniforms" className="footer-link">
+              <Link href="/shop?category=uniforms" className="footer-link">
                 Uniforms
               </Link>
-              <Link href="/category/accessories" className="footer-link">
+              <Link href="/shop?category=accessories" className="footer-link">
                 Accessories
               </Link>
             </nav>
