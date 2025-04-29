@@ -103,7 +103,7 @@ const Tabs = () => {
     <div>
       <HeroSection Title="Our Policies" ImageUrl="/Images/OurPolicy/hero_section.png" />
       <div className="container2">
-        <div className="container3">
+        <div className="lg:container3">
           <div className="tab-header mt-6">
             <button
               className={activeTab === "ourprints" ? "active" : ""}

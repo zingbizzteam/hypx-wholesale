@@ -27,40 +27,6 @@ h6 {
   max-width: 1280px;
 }
 
-.container1{
-  width: 100%;
-  justify-items: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.container2{
-  min-width: 1250px;
-  max-width: 1920px;
-  margin-left: auto;
-  margin-right: auto;
-  justify-items: center;
-}
-
-.container3{
-  width: 80%;
-}
-
-.ch1{
-  font-size: 48px;
-  font-weight: 700;
-}
-
-.ch2{
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.ch3{
-  font-size: 24px;
-  font-weight: 700;
-}
-
 /* Form Elements */
 input,
 textarea {
@@ -226,6 +192,50 @@ textarea {
     justify-items: center;
     place-content: center;
   }
+}
+
+@media (max-width: 764px){
+  .ch1{
+    font-size: 32px;
+    font-weight: 700;
+  }
+  
+  .ch2{
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  .ch3{
+    font-size: 16px;
+    font-weight: 700;
+  }
+  
+  .cp1{
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'roboto', sans-serif;
+  }
+  
+  .cp2{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'roboto', sans-serif;
+  }
+
+  .cp3{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'roboto', sans-serif;
+  }
+  .cp3b{
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'roboto', sans-serif;
+  }
+  .container3{
+    width: 95%;
+  }
+
 }
 
 dd {

@@ -40,7 +40,7 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 flex flex-col w-full ">
       <div>
         <label htmlFor="name" className="block text-sm font-medium mb-1">
           Name
@@ -57,51 +57,53 @@ const ContactForm = () => {
         />
       </div>
 
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium mb-1">
-          E-mail
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Enter Your E-mail"
-          required
-          className="w-full"
-        />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium mb-1">
-            Phone Number
+      <div className="flex justify-between gap-4 w-full">
+        <div className="w-full">
+          <label htmlFor="email" className="block text-sm font-medium mb-1">
+            E-mail
           </label>
-          <div className="flex">
-            <div className="relative">
-              <select
-                name="countryCode"
-                value={formData.countryCode}
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter Your E-mail"
+            required
+            className="w-full"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:flex md:w-full gap-4">
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium mb-1">
+              Phone Number
+            </label>
+            <div className="flex">
+              <div className="relative">
+                <select
+                  name="countryCode"
+                  value={formData.countryCode}
+                  onChange={handleChange}
+                  className="appearance-none bg-transparent border-b border-gray-300 pr-8 py-2"
+                >
+                  <option value="+91">+91</option>
+                  <option value="+1">+1</option>
+                  <option value="+44">+44</option>
+                  <option value="+61">+61</option>
+                </select>
+                <ChevronDown size={16} className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" />
+              </div>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
                 onChange={handleChange}
-                className="appearance-none bg-transparent border-b border-gray-300 pr-8 py-2"
-              >
-                <option value="+91">+91</option>
-                <option value="+1">+1</option>
-                <option value="+44">+44</option>
-                <option value="+61">+61</option>
-              </select>
-              <ChevronDown size={16} className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" />
+                className="flex-1 ml-2"
+                required
+              />
             </div>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="flex-1 ml-2"
-              required
-            />
           </div>
         </div>
       </div>

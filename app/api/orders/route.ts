@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
 
     await Promise.all([
       sendEmail(customer.email, `Your Quote Confirmation - ${orderNumber}`, customerHtml),
-      sendEmail("zingbizzteam@gmail.com", `New Quote Request - ${orderNumber}`, teamHtml),
+      sendEmail("hypxwholesaleofficial@gmail.com", `New Quote Request - ${orderNumber}`, teamHtml),
     ]);
 
     return NextResponse.json({

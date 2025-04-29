@@ -6,7 +6,7 @@ export default function ContactUs() {
     <div className="">
       <div className="grid grid-cols-1 md:flex">
         <div className="p-8 md:p-16 flex items-center md:w-[70%]">
-          <div className="w-full max-w-md">
+          <div className="ml-[10%] max-w-md">
             <h1 className="text-4xl font-bold mb-8">Contact Us</h1>
             <ContactForm />
           </div>

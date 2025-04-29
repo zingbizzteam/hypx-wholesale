@@ -170,7 +170,7 @@ const Tabs = () => {
       <HeroSection Title="Our Fabrics" ImageUrl="/Images/Our-fabrics/.png" />
       <div className="container1">
         <div className="container2">
-          <div className="container3">
+          <div className="lg:container3">
             <div className="tab-header mt-6">
               <button
                 className={activeTab === "fabricmaterial" ? "active" : ""}

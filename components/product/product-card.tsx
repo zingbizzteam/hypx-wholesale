@@ -43,7 +43,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <div className="group bg-white border border-[#B5B5B5]">
       <div
-        className="relative aspect-square mb-3 overflow-hidden"
+        className="relative aspect-square overflow-hidden"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -59,7 +59,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           />
         </Link>
       </div>
-      <div className="relative flex flex-col min-h-28  px-4 pb-4 pt-3 gap-4">
+      <div className="relative flex flex-col min-h-24  px-2.5 pb-2.5 gap-3">
         <Link href={`/product/${product.slug.current}`} passHref>
           <h3 className="font-medium">{product.name}</h3>
         </Link>
