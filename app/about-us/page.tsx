@@ -124,7 +124,7 @@ export default function AboutUs() {
         </div>
       </section>
       {/* Section 4 */}
-      <div className='container2 justify-items-center'>
+      <div className='lg:container2 justify-items-center'>
         <div className='w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3'>
           <div className='h-[500px]'>
             <AboutHover Text='T-Shirts' InvisibleText='View' ImageUrl='/Images/About/section4_1.png'></AboutHover>
@@ -147,7 +147,7 @@ export default function AboutUs() {
       </div>
       
 {/* Section 5 */}
-<div className='container2 justify-items-center pt-10'>
+<div className='lg:container2 justify-items-center pt-10'>
         <p className='ch3 text-center pb-5'>Our Customizations</p>
         <div className='w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3'>
           <Aboutcard text='Our Prints and Embroidery' ImageUrl='/Images/About/section5_1.png' linkabt='our-prints-and-embroidery'></Aboutcard>

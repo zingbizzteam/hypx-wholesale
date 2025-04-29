@@ -18,7 +18,7 @@ type CategoryMenuProps = {
 const Headermenu: React.FC<CategoryMenuProps> = ({ categories }) => {
     return (
         <div className="w-full h-full -mt-4 py-6 px-10 flex justify-center">
-            <div className='container2'>
+            <div className='lg:container2'>
                 <div className="flex gap-10 w-[90%]">
                     {categories.map((category) => (
                         <div key={category.title}>

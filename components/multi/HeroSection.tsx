@@ -5,7 +5,7 @@ const HeroSection = ({Title='', Description='', ImageUrl=''}) => {
     <div className={`bg-cover bg-center h-[55vh]`} style={{backgroundImage: `url('${ImageUrl}')
     `}}>
       <div className='bg-black/50 h-full w-full cc'>
-        <div className='container2 justify-items-center'>
+        <div className='lg:container2 justify-items-center'>
           <h1 className='ch1 text-white'>{Title}</h1>
           <p className='cp1 text-white'>{Description}</p>
         </div>

@@ -6,6 +6,7 @@ import Link from "next/link";
 import CategoryFilters from "@/components/category/category-filters";
 import ProductCard from "@/components/product/product-card";
 import { Product } from "@/lib/sanity";
+import SkeletonLoader from "@/components/layout/sekelton3";
 
 type Props = {
   params: { slug: string };
@@ -91,9 +92,7 @@ export default function CategoryPageClient({ params }: Props) {
 
         <div className="md:col-span-3">
           {loading ? (
-            <div className="col-span-full flex justify-center py-12">
-              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-black"></div>
-            </div>
+              <SkeletonLoader/>
           ) : (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

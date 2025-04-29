@@ -10,9 +10,9 @@ export default function CategoryGrid() {
   ]
 
   return (
-    <section className="container1 py-12">
-      <div className="container2">
-        <div className="container3">
+    <section className="lg:container1 py-12">
+      <div className="lg:container2">
+        <div className="lg:container3">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {categories.map((category, index) => (
               <CategoryCard key={index} category={category} className={index < 2 ? "md:col-span-2" : "md:col-span-2"} />

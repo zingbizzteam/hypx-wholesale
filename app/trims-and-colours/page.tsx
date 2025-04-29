@@ -43,9 +43,9 @@ const page = () => {
     <div>
       <HeroSection ImageUrl='/Images/Trims&colours/trims-cover.png' Title='Trims & Colours' />
       {/*Section-2*/}
-      <div className='container1'>
-        <div className='container2'>
-          <div className='container3'>
+      <div className='lg:container1'>
+        <div className='lg:container2'>
+          <div className='lg:container3'>
             <div className="flex flex-col items-center justify-center mb-8">
               <p className="ch2 py-3">Trims</p>
               <p className="cp3 text-justify">

@@ -276,8 +276,6 @@ const CategoryFilters = () => {
             {processedCategories.map(category => renderCategory(category))}
           </div>
         </div>
-
-     
       </div>
     </div>
   );

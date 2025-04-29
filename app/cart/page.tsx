@@ -48,9 +48,9 @@ export default function Cart() {
   // Calculate total quantity
 
   return (
-    <section className="container1">
-      <div className="container2">
-        <div className="container3 px-4 py-12">
+    <section className="lg:container1">
+      <div className="lg:container2">
+        <div className="lg:container3 px-4 py-12">
           <div className="flex justify-between">
             <h1 className="text-4xl font-bold mb-8">Your Cart</h1>
             <p className="mt-3">({cartLength}) Items</p>
