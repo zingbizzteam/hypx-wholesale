@@ -1,33 +1,23 @@
-// app/api/products/search/route.ts
-
-import { NextResponse } from 'next/server';
-import { createClient } from '@sanity/client'; // Import sanity client
-import { client } from '@/lib/sanity';
-
-
+// /app/api/products/search/route.ts
+import { NextResponse } from "next/server";
+import { client } from "@/lib/sanity";
 
 export async function GET(req: Request) {
-  try {
-    const { searchParams } = new URL(req.url);
-    const searchQuery = searchParams.get('query');  // Get the search query parameter
+  const { searchParams } = new URL(req.url);
+  const q = searchParams.get("q") || "";
 
-    if (!searchQuery) {
-      return NextResponse.json({ error: 'Search query is required' }, { status: 400 });
-    }
-
-    // Fetch products that match the search query
-    const products = await client.fetch(
-      `*[_type == "product" && name match "${searchQuery}*"]{
-        name,
-        slug,
-        images,
-        description,
-        category,
-      }`
-    );
-
-    return NextResponse.json(products);
-  } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 });
+  if (!q) {
+    return NextResponse.json({ products: [] });
   }
+
+  // Search by product name (case-insensitive), you can also add other fields
+  const query = `*[_type == "product" && name match $q]{
+    _id, name, slug, images
+  }[0...10]`;
+
+  const params = { q: `*${q}*` };
+
+  const products = await client.fetch(query, params);
+
+  return NextResponse.json({ products });
 }
