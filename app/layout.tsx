@@ -21,10 +21,47 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: "HYPX | Wholesale",
-  description: "Wholesale clothing and apparel for retailers",
-    generator: 'v0.dev'
-}
+  title: "HYPX | Wholesale Clothing & Apparel for Retailers",
+  description: "Discover top-quality wholesale fashion at unbeatable prices. Shop HYPX for bulk clothing, trendy apparel, and accessories perfect for retailers and resellers.",
+  generator: "v0.dev",
+  keywords: [
+    "wholesale clothing",
+    "bulk apparel",
+    "fashion for retailers",
+    "HYPX wholesale",
+    "cheap clothing bulk",
+    "ecommerce wholesale store",
+    "retail fashion supply"
+  ],
+  authors: [{ name: "HYPX", url: "" }],
+  creator: "HYPX Team",
+  publisher: "HYPX",
+  themeColor: "#000000",
+  colorScheme: "light",
+  openGraph: {
+    title: "HYPX | Wholesale Clothing & Apparel for Retailers",
+    description: "Shop HYPX for top-quality wholesale fashion apparel, perfect for resellers and boutique owners.",
+    url: "https://hypx.com",
+    siteName: "HYPX",
+    images: [
+      {
+        url: "https://hypx.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "HYPX Wholesale Clothing Banner"
+      }
+    ],
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "HYPX | Wholesale Clothing",
+    description: "Wholesale fashion & apparel at the best prices for resellers. Shop HYPX today.",
+    images: ["https://hypx.com/og-image.jpg"]
+  },
+  metadataBase: new URL("https://hypx.com")
+};
+
 
 export default function RootLayout({
   children,
@@ -36,7 +73,7 @@ export default function RootLayout({
       <body className={`${spaceGrotesk.variable} ${roboto.variable}`}>
       <ToastContainer />
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="">{children}</main>
         <Footer />
       </body>
     </html>

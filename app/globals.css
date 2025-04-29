@@ -132,3 +132,147 @@ textarea {
 .newsletter-btn {
   @apply absolute right-0 top-1/2 -translate-y-1/2 text-white;
 }
+
+@media (min-width: 1024px){
+  .ch1{
+    font-size: 48px;
+    font-weight: 700;
+  }
+  
+  .ch2{
+    font-size: 32px;
+    font-weight: 700;
+  }
+  
+  .ch3{
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  .cp1{
+    font-size: 32px;
+    font-weight: 400;
+    font-family: 'roboto', sans-serif;
+  }
+  
+  .cp2{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'roboto', sans-serif;
+  }
+
+  .cp3{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'roboto', sans-serif;
+  }
+  .cp3b{
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'roboto', sans-serif;
+  }
+
+  .ah1{
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Worksans', sans-serif;
+  }
+
+  .ah1b{
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Worksans', sans-serif;
+  }
+
+  .ap1{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Worksans', sans-serif;
+  }
+
+  .ap2{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Worksans', sans-serif;
+  }
+
+  .ap2b{
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Worksans', sans-serif;
+  }
+
+
+  .container1{
+    width: 100%;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container2{
+    min-width: 1250px;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-items: center;
+  }
+
+  .container3{
+    width: 80%;
+  }
+
+  .cc{
+    justify-items: center;
+    place-content: center;
+  }
+}
+
+dd {
+  display: list-item;
+  list-style-type: "•";
+  padding-inline-start: 1ch;
+}
+
+/* ourpolicy */
+.tab-header {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 20px;
+  color: #858585;
+  line-height: 0px;
+}
+.tab-header button {
+  padding: 10px 0px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+.tab-header button.active {
+  text-decoration: underline 2px solid #000000;
+  text-underline-offset: 10px;
+  font-weight: bold;
+  color: black;
+}
+.tab-content .content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.react-phone-number-input{
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+

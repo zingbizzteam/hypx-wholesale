@@ -12,7 +12,7 @@ export default function TermsAndConditionsPage() {
       <section className="relative h-[40vh] flex items-center">
         <div className="absolute inset-0">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/HYPX%20-%20TERMS%20AND%20CONDITIONS%20%281%29-isfLzSeD1kSigJfndVfoOAAGL6bqjq.png"
+            src="/Images/Terms&Conditions/term&condition.png"
             alt="Terms and Conditions"
             fill
             className="object-cover"

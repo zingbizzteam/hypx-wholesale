@@ -102,7 +102,7 @@ export default function CategoryPage({ params }: Props) {
   return (
     <div className="max-w-[100rem] mx-auto px-4 py-12">
       <h1 className="text-3xl font-bold mb-2">{title}</h1>
-      <p className="mb-4 text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p className="mb-4 text-gray-600">Lorem ipsum</p>
       <p className="mb-8 text-sm">{totalCount} Products</p>
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">

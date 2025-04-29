@@ -1,12 +1,12 @@
-// CartItem.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
 import { updateCart, removeFromCart } from "@/lib/localStorage";
 import { urlFor } from "@/lib/sanity";
 import Link from "next/link";
+import { fetchColors } from "@/lib/productFeatureFetch";
 
 type CartItemProps = {
   item: {
@@ -16,15 +16,49 @@ type CartItemProps = {
     quantity: number;
     slug: { current: string };
     images: { asset: { _ref: string }; hotspot: boolean }[];
+
     selectedColor: string;
     selectedSize: string;
     productId?: number; // Added this in case item already has a productId property
+
   };
-  onRemove: (id: number, color: string, size: string) => void;
+  onRemove: (id: number, color: any, size: any) => void;
 };
 
 const CartItem = ({ item, onRemove }: CartItemProps) => {
   const [quantity, setQuantity] = useState(item.quantity);
+  const [colorName, setColorName] = useState<string>("");
+  const [sizeName, setSizeName] = useState<string>("");
+
+  // Function to truncate text with ellipsis
+  const truncateText = (text: string, maxLength: number = 100) => {
+    if (!text) return "";
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + "...";
+  };
+
+  // Fetch color and size information when component mounts
+  useEffect(() => {
+    const fetchColorAndSizeInfo = async () => {
+      try {
+        // This would normally be an API call, but for simplicity we'll just use the _ref
+        if (item.selectedColor && item.selectedColor._ref) {
+           const colors = await fetchColors([item.selectedColor]);
+           console.log(colors);
+          setColorName(colors[0].name);
+        }
+
+        if (item.selectedSize && item.selectedSize._ref) {
+          const sizes = await fetchColors([item.selectedSize]);
+          setSizeName(sizes[0].name);
+        }
+      } catch (error) {
+        console.error("Error fetching color and size info:", error);
+      }
+    };
+
+    fetchColorAndSizeInfo();
+  }, [item.selectedColor, item.selectedSize]);
 
   // Update the cart in localStorage when quantity is changed
   const updateQuantityInCart = (newQuantity: number) => {
@@ -57,7 +91,10 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
   };
 
   // Use urlFor to build the correct image URL
-  const imageUrl = urlFor(item.images[0].asset).url() || "/placeholder.svg"; // Fallback to placeholder if image URL is empty
+  const imageUrl = urlFor(item.images[0].asset).url() || "/placeholder.svg";
+
+  // Truncate the description
+  const truncatedDescription = truncateText(item.description, 100);
 
   return (
     <div className="grid grid-cols-1 md:flex gap-4 items-center border-b border-[#B5B5B5] pb-8">
@@ -78,6 +115,7 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
             </p>
           </div>
         </Link>
+
 
         <div className="flex items-center justify-end space-x-4">
           <div className="flex items-center">

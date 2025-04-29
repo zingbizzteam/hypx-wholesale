@@ -6,11 +6,11 @@ export default function Sustainability() {
       {/* Hero Section */}
       <section className="relative h-[50vh] flex items-center">
         <div className="container mx-auto px-4 z-10 text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Sustainability</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">Sustainability</h1>
         </div>
         <div className="absolute inset-0 bg-black opacity-50">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/HYPX%20-%20SUSTAINABILITY-gjQhFgaRB3WibffB3S1CALgmkR9MT7.png"
+            src="/Images/Sustainability/sustain.png"
             alt="Sustainability at HYPX"
             fill
             className="object-cover"
@@ -36,7 +36,7 @@ export default function Sustainability() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="relative h-[400px]">
               <Image
-                src="/placeholder.svg?height=400&width=500"
+                src="/Images/Sustainability/sustain-container.png"
                 alt="Eco-friendly materials"
                 fill
                 className="object-cover rounded"

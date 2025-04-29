@@ -169,12 +169,12 @@ const ProductDetails = ({ product }: { product: Product }) => {
             <h3 className="font-light text-base border border-[#B9B9B9] 
             rounded py-2 px-6 hover:border-black
             transition-all ease-in-out duration-200">
-              <Link href={'/our-prints-and-embroidery'}
+              <Link href={'/trims-and-colours'}
               >Trims / Colours</Link></h3>
             <h3 className="font-light text-base border border-[#B9B9B9] 
             rounded py-2 px-6 hover:border-black
             transition-all ease-in-out duration-200">
-              <Link href={'/our-prints-and-embroidery'}
+              <Link href={'/our-fabrics'}
               >Fabrics</Link></h3>
             <h3 className="font-light text-base border border-[#B9B9B9] 
             rounded py-2 px-6 hover:border-black
