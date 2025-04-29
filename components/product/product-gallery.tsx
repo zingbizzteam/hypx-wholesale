@@ -54,23 +54,38 @@ const ProductGallery = ({ images, thumbnails }: ProductGalleryProps) => {
           />
         </Zoom>
         <button
-          className="absolute right-4 top-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md"
-          aria-label="Zoom image"
-          // Zoom handled by react-medium-image-zoom, so no onClick needed
+          className="absolute right-[530px] top-60 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md"
+          onClick={() => {
+            setActiveImage((prev) => {
+              const next = (prev - 1 + images.length) % images.length;
+              // Scroll thumbnails if needed
+              if (next < thumbStart) setThumbStart(next);
+              return next;
+            });
+          }}
+          disabled={images.length <= 1}
+          aria-label="Previous image"
         >
-          <Search size={16} />
+          <ChevronLeft />
+        </button>
+        <button
+          className="absolute right-4 top-60 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md"
+          onClick={() => {
+            setActiveImage((prev) => {
+              const next = (prev + 1) % images.length;
+              // Scroll thumbnails if needed
+              if (next >= thumbEnd) setThumbStart(Math.min(next, thumbnails.length - THUMBNAILS_VISIBLE));
+              return next;
+            });
+          }}
+          disabled={images.length <= 1}
+          aria-label="Next image"
+        >
+          <ChevronRight />
         </button>
       </div>
 
       <div className="flex items-center space-x-2 mt-2">
-        <button
-          onClick={handlePrevThumbs}
-          disabled={thumbStart === 0}
-          className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
-          aria-label="Scroll thumbnails left"
-        >
-          <ChevronLeft />
-        </button>
         <div className="flex space-x-2 overflow-hidden">
           {thumbnails.slice(thumbStart, thumbEnd).map((thumbnail, index) => {
             const realIndex = thumbStart + index
@@ -93,14 +108,6 @@ const ProductGallery = ({ images, thumbnails }: ProductGalleryProps) => {
             )
           })}
         </div>
-        <button
-          onClick={handleNextThumbs}
-          disabled={thumbEnd >= thumbnails.length}
-          className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
-          aria-label="Scroll thumbnails right"
-        >
-          <ChevronRight />
-        </button>
       </div>
     </div>
   )

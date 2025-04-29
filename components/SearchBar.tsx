@@ -55,7 +55,7 @@ export default function SearchBar() {
         <Search />
       </button>
       {open && (
-        <div className="absolute left-0 z-50 mt-2 w-72 bg-white border rounded shadow-lg">
+        <div className="absolute left-0 z-50 mt-2 -ml-10 w-72 bg-white border rounded shadow-lg">
           <input
             ref={inputRef}
             type="text"

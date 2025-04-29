@@ -272,8 +272,10 @@ const Header = () => {
 
         {/* Desktop Search and Contact */}
         <div className="flex gap-3 md:gap-8">
-          <SearchBar />
-          <Link href="/cart">
+          <div className="hidden md:block">
+          <SearchBar/>
+          </div>
+          <Link className="mt-2" href="/cart">
             <ShoppingCartIcon />
           </Link>
           <Link

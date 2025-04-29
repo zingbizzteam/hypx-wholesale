@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { X, ChevronRight, ChevronDown } from "lucide-react"
+import MobileSearchBar from "@/components/MobileSearchBar" 
 
 type MobileMenuProps = {
   onClose: () => void
@@ -22,7 +23,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
   return (
     <div className="w-[80%] fixed inset-0 bg-white z-50 overflow-y-auto">
       <div className="p-4">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center mb-4">
           <Link href="/" className="font-space-grotesk text-xl font-medium">
             HYPX | Wholesale
           </Link>
@@ -30,6 +31,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
             <X size={24} />
           </button>
         </div>
+        <MobileSearchBar />
 
         <nav className="space-y-0">
           <div className="border-b border-gray-200">
