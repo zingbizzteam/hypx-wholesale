@@ -20,7 +20,7 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <div>
+            <div className="pl-10">
               <h3 className="ch3 mb-4">Quick Links</h3>
               <nav>
                 <Link href="/" className="footer-link">
@@ -34,7 +34,7 @@ const Footer = () => {
                       Our story
                       <ChevronDown size={20} />
                     </div>
-                    <ul className="absolute hidden group-hover:block text-white cp3 left-0 top-8 w-44">
+                    <ul className="absolute hidden group-hover:block text-white cp3 left-[90px] md:left-0 top-0 md:top-8 w-44">
                       <li className="w-full px-3 py-1 hover:text-[#858585]">
                         <a href={'about-us'}>About us</a>
                       </li>

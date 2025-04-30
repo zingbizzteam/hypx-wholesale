@@ -5,8 +5,8 @@ export default function CategoryGrid() {
   const categories = [
     { name: "Men", image: "/home/men-home.webp?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
     { name: "Women", image: "/home/women-home.webp?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
-    { name: "Kids", image: "/home/kids-home.webp?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
-    { name: "ACCESSORIES", image: "/home/acc-home.webp?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
+    { name: "Uniforms", image: "/Images/Home/uniforms-home.png?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
+    { name: "Accessories", image: "/home/acc-home.webp?height=400&width=600", cols: "col-span-2", rows: "row-span-1" },
   ]
 
   return (

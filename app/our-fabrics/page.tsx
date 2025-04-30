@@ -11,72 +11,72 @@ const Tabs = () => {
   const materialContent = [
     {
       title: "COTTON",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/cotton.jpg",
       description: "Soft, breathable, and natural—cotton is a timeless fabric loved for its comfort and versatility. Gentle on the skin and perfect for all seasons, it offers durability while keeping you cool in the heat and warm in the cold. Whether in everyday essentials or statement pieces, our premium cotton ensures long-lasting wear and effortless style."
     },
     {
       title: "POLYESTER",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/polyster.jpg",
       description: "Durable, lightweight, and wrinkle-resistant—polyester is a versatile fabric known for its strength and easy maintenance. It retains shape, dries quickly, and resists shrinking and fading, making it perfect for active and everyday wear. Our high-quality polyester blends ensure comfort, breathability, and long-lasting style."
     },
     {
       title: "LYCRA",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/lycra.jpg",
       description: "Stretchy, flexible, and form-fitting—Lycra is designed for maximum comfort and movement. Known for its excellent elasticity, it enhances the fit of clothing while maintaining shape over time. Ideal for activewear and figure-hugging styles, our premium Lycra blends offer superior flexibility, durability, and a smooth, second-skin feel."
     },
     {
       title: "POLY-COTTON",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/poly-cotton.jpg",
       description: "The perfect blend of softness and durability, poly cotton combines the breathability of cotton with the strength of polyester. This fabric is lightweight, wrinkle-resistant, and easy to maintain, making it ideal for everyday wear. Our high-quality poly cotton ensures comfort, longevity, and a smooth, polished look."
     },
     {
       title: "TRI-BLEND",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/tri-blend.png",
       description: "Soft, lightweight, and ultra-comfortable—tri blend fabric is a perfect mix of cotton, polyester, and rayon. This combination offers the breathability of cotton, the durability of polyester, and the silky smoothness of rayon. With a vintage-inspired feel and excellent drape, our triblend fabric provides all-day comfort with a stylish, lived-in look."
     },
     {
       title: "NYLON",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/nylon.png",
       description: "Strong, lightweight, and resistant to wear—nylon is a durable fabric known for its smooth texture and flexibility. It wicks moisture, dries quickly, and maintains its shape, making it ideal for activewear and performance clothing. Our high-quality nylon blends offer comfort, resilience, and a sleek, modern finish."
     },
     {
       title: "SINGLE JERSEY",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/single-jersey.png",
       description: "Single jersey fabric is known for its smooth texture and excellent stretch. Made with a fine knit construction, it offers a comfortable fit and drapes beautifully on the body. Ideal for t-shirts, casual wear, and activewear, our premium single jersey ensures all-day ease and durability."
     },
     {
       title: "DOT KNIT",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/dot-knit.png",
       description: "dot knit fabric features a unique pattern that enhances airflow and comfort. Its soft feel and slight stretch make it ideal for sportswear, casual wear, and stylish layering pieces. Designed for durability and flexibility, our high-quality dot knit ensures a modern look with lasting performance."
     },
     {
       title: "LOOP KNIT",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/loop-knit.jpg",
       description: "Soft, cozy, and flexible—loop knit fabric is known for its plush texture and excellent stretch. Featuring tiny loops on the inside, it provides warmth while remaining breathable and comfortable. Perfect for sweatshirts, hoodies, and loungewear, our high-quality loop knit fabric offers durability and a relaxed fit for everyday wear."
     },
     {
       title: "MARS",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/mars.png",
       description: "Durable, breathable, and stylish—Mars fabric is a high-performance knit known for its unique texture and modern appeal. With a smooth outer surface and a structured feel, it provides excellent shape retention and comfort. Ideal for activewear, casual wear, and trendy streetwear, our premium Mars fabric ensures a sleek look with long-lasting quality."
     },
     {
       title: "COTTON FLEECE",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/cotton-fleece.png",
       description: "Cotton fleece is a plush fabric perfect for layering. With a smooth outer surface and a brushed, fleecy interior, it provides excellent insulation while remaining breathable. Ideal for hoodies, sweatshirts, and loungewear, our high-quality cotton fleece ensures superior comfort and lasting warmth."
     },
     {
       title: "HONEYCOMB",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/honey-comb.png",
       description: "Honeycomb fabric features a unique woven pattern that enhances airflow and adds a modern touch. Known for its lightweight feel and durability, it provides comfort while maintaining structure. Perfect for polos, t-shirts, and athleisure wear, our premium honeycomb fabric ensures a sleek look with all-day ease."
     },
     {
       title: "AIR TEX",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/airtex.jpg",
       description: "Lightweight, breathable, and moisture-wicking—Airtex fabric is designed for ultimate comfort and performance. Its open-weave construction enhances airflow, keeping you cool and dry during any activity. Ideal for sportswear and activewear, our high-quality Airtex fabric ensures durability, flexibility, and a fresh feel all day long."
     },
     {
       title: "LACOSTE",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Material/lacoste.jpg",
       description: "Classic, breathable, and textured—Lacoste fabric is a premium knit known for its signature piqué weave. Soft yet durable, it offers excellent airflow and a structured feel, making it perfect for polo shirts and casual wear. Our high-quality Lacoste fabric ensures comfort, style, and long-lasting elegance."
     },
   ]
@@ -167,7 +167,7 @@ const Tabs = () => {
 
   return (
     <div>
-      <HeroSection Title="Our Fabrics" ImageUrl="/Images/Our-fabrics/.png" />
+      <HeroSection Title="Our Fabrics" ImageUrl="/Images/Our-fabrics/fabric-cover.png" />
       <div className="container1">
         <div className="container2">
           <div className="container3">

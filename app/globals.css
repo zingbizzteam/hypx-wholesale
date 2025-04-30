@@ -198,16 +198,19 @@ textarea {
   .ch1{
     font-size: 48px;
     font-weight: 700;
+    font-family: 'space-grotesk';
   }
   
   .ch2{
     font-size: 32px;
     font-weight: 700;
+    font-family: 'space-grotesk';
   }
   
   .ch3{
     font-size: 24px;
     font-weight: 700;
+    font-family: 'space-grotesk';
   }
   
   .cp1{
@@ -231,36 +234,6 @@ textarea {
     font-size: 16px;
     font-weight: 600;
     font-family: 'roboto', sans-serif;
-  }
-
-  .ah1{
-    font-size: 24px;
-    font-weight: 500;
-    font-family: 'Worksans', sans-serif;
-  }
-
-  .ah1b{
-    font-size: 24px;
-    font-weight: 600;
-    font-family: 'Worksans', sans-serif;
-  }
-
-  .ap1{
-    font-size: 20px;
-    font-weight: 500;
-    font-family: 'Worksans', sans-serif;
-  }
-
-  .ap2{
-    font-size: 16px;
-    font-weight: 400;
-    font-family: 'Worksans', sans-serif;
-  }
-
-  .ap2b{
-    font-size: 16px;
-    font-weight: 500;
-    font-family: 'Worksans', sans-serif;
   }
 
   .container2{
