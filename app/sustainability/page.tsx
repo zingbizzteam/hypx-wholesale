@@ -5,10 +5,11 @@ export default function Sustainability() {
     <div>
       {/* Hero Section */}
       <section className="relative h-[50vh] flex items-center">
-        <div className="container mx-auto px-4 z-10 text-white">
+        <div className="container mx-auto px-4 z-20 text-white">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">Sustainability</h1>
         </div>
-        <div className="absolute inset-0 bg-black opacity-50">
+        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+        <div className="absolute inset-0 ">
           <Image
             src="/Images/Sustainability/sustain.png"
             alt="Sustainability at HYPX"
@@ -19,10 +20,10 @@ export default function Sustainability() {
       </section>
 
       {/* Intro Section */}
-      <section className="py-16">
+      <section className="pt-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6 text-green-600">Sustainability at HYPX</h2>
-          <p className="max-w-3xl mx-auto text-lg">
+          <p className="max-w-4xl mx-auto text-lg">
             At Hypx, we believe streetwear should be bold, stylish, and responsible. As a{" "}
             <strong>wholesale clothing brand</strong>, we are committed to making fashion that not only looks good but
             also does good for the planet.
@@ -31,7 +32,7 @@ export default function Sustainability() {
       </section>
 
       {/* Commitment Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="pt-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="relative h-[400px]">

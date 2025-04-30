@@ -6,9 +6,10 @@ export default function OurPolicies() {
     <div>
       {/* Hero Section */}
       <section className="relative h-[50vh] flex items-center">
-        <div className="container mx-auto px-4 z-10 text-white text-center">
+        <div className="container mx-auto px-4 z-20 text-white text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Policies</h1>
         </div>
+        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
         <div className="absolute inset-0">
           <Image
             src="/Images/OurPolicies/hero_section.png"

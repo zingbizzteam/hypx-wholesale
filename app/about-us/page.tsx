@@ -127,21 +127,21 @@ export default function AboutUs() {
       <div className='container2 justify-items-center'>
         <div className='w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3'>
           <div className='h-[500px]'>
-            <AboutHover Text='T-Shirts' InvisibleText='View' ImageUrl='/Images/About/section4_1.png'></AboutHover>
-            <AboutHover Text='Caps' InvisibleText='View' ImageUrl='/Images/About/section4_2.png'></AboutHover>
+            <Link href={"/shop"}><AboutHover Text='T-Shirts' InvisibleText='View' ImageUrl='/Images/About/section4_1.png'></AboutHover></Link>
+            <Link href={"/shop"}><AboutHover Text='Caps' InvisibleText='View' ImageUrl='/Images/About/section4_2.png'></AboutHover></Link>
           </div>
           <div className='bg-[url(/Images/About/section4_3.png)] bg-cover bg-center h-[500px]'>
             <div className='bg-black/70 place-content-center justify-items-center grid gird-cols-3 gap-1 h-full'>
               <p className='ch3 text-white'>Our Collections</p>
               <p className='cp3 text-white text-justify w-[60%]'>Our collection suits Men, Women, Adults, and Kids, blending customization with the latest streetwear trends for a perfect fit.</p>
               <div className='pt-6'>
-                <ButtonWhite link='/shop?category=men' child='Shop Now' className=''></ButtonWhite>
+                <ButtonWhite link='/shop' child='Shop Now' className=''></ButtonWhite>
               </div>
             </div>
           </div>
           <div className='h-[500px]'>
-            <AboutHover Text='Hoodies' InvisibleText='View' ImageUrl='/Images/About/section4_4.png'></AboutHover>
-            <AboutHover Text='Streetstyle Wear' InvisibleText='View' ImageUrl='/Images/About/section4_5.png'></AboutHover>
+          <Link href={"/shop"}><AboutHover Text='Hoodies' InvisibleText='View' ImageUrl='/Images/About/section4_4.png'></AboutHover></Link>
+          <Link href={"/shop"}><AboutHover Text='Streetstyle Wear' InvisibleText='View' ImageUrl='/Images/About/section4_5.png'></AboutHover></Link>
           </div>
         </div>
       </div>
@@ -207,7 +207,7 @@ export default function AboutUs() {
                 </svg>
               </div>
               <h3 className="text-lg font-bold mb-2">Phone</h3>
-              <p className="text-gray-600 mb-2">+91 97********</p>
+              <p className="text-gray-600 mb-2">+91 9791823980</p>
               <p className="text-sm text-gray-500">Speak directly with our team for quick assistance</p>
             </div>
             <div className="text-center">

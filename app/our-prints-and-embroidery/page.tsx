@@ -101,7 +101,7 @@ const Tabs = () => {
 
   return (
     <div>
-      <HeroSection Title="Our Policies" ImageUrl="/Images/OurPolicy/hero_section.png" />
+      <HeroSection Title="Our Prints  & Embroidery" ImageUrl="/Images/Prints-and-embroidery/hero_section.png" />
       <div className="container2">
         <div className="container3">
           <div className="tab-header mt-6">
