@@ -246,19 +246,25 @@ const Header = () => {
               </Link>
               <Link href={"/our-policies"}>
                 <li className="hover:bg-black hover:text-white w-full px-3 py-3">
-                  Our policy
+                  Our Policy
                 </li>
               </Link>
               <Link href={"/about-us"}>
                 {" "}
                 <li className="hover:bg-black hover:text-white w-full px-3 py-3">
-                  About
+                  About Us
                 </li>
               </Link>
               <Link href={"/terms-and-conditions"}>
                 {" "}
                 <li className="hover:bg-black hover:text-white w-full px-3 py-3">
                   Terms and Conditions
+                </li>
+              </Link>
+              <Link href={"/about-us#our-customizations"}>
+                {" "}
+                <li className="hover:bg-black hover:text-white w-full px-3 py-3">
+                  Our Customizations
                 </li>
               </Link>
             </ul>
@@ -268,7 +274,7 @@ const Header = () => {
         {/* Desktop Search and Contact */}
         <div className="flex gap-3 md:gap-8 items-center">
           <div className="hidden md:block">
-          <SearchBar/>
+            <SearchBar />
           </div>
           <Link href="/cart">
             <ShoppingCartIcon />

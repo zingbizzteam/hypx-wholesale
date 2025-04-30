@@ -130,15 +130,17 @@ const Tabs = () => {
               className=""
             >
               <div className="border-t border-[#B5B5B5]"></div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 
-              gap-x-4 gap-y-10 my-8 justify-items-center">
-                {cardContent.map((card, index) => (
-                  <AccordionCard
-                    key={index}
-                    title={card.title}
-                    imageSrc={card.imageSrc}
-                    description={card.description} />
-                ))}
+              <div className="flex justify-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 
+              gap-x-4 gap-y-10 my-8 justify-items-center w-[94%] md:w-full">
+                  {cardContent.map((card, index) => (
+                    <AccordionCard
+                      key={index}
+                      title={card.title}
+                      imageSrc={card.imageSrc}
+                      description={card.description} />
+                  ))}
+                </div>
               </div>
             </motion.div>
           )}
@@ -157,7 +159,7 @@ const Tabs = () => {
               <div className="my-8 flex flex-col gap-16">
                 {/* EMBROIDERY AND IT TYPES */}
                 <div className="md:flex flex-1 gap-5 md:gap-0 md:justify-between">
-                  <div className="flex flex-col w-full md:w-[30%] items-center md:justify-start">
+                  <div className="flex flex-col w-full md:w-[30%] items-center md:justify-start mb-5 md:mb-0">
                     <Image
                       src="/Images/Prints-and-embroidery/Embroidery/embroidery.png"
                       alt="404"
@@ -188,7 +190,7 @@ const Tabs = () => {
                 </div>
                 {/* Hand Embroidery */}
                 <div className="md:flex flex-1 gap-5 md:gap-0 md:justify-between">
-                  <div className="md:hidden flex flex-col w-full md:w-[30%] items-center md:justify-start">
+                  <div className="md:hidden flex flex-col w-full md:w-[30%] items-center md:justify-start mb-5 md:mb-0">
                     <Image
                       src="/Images/Prints-and-embroidery/Embroidery/hand-embroidery.png"
                       alt="404"
@@ -221,7 +223,7 @@ const Tabs = () => {
                       <p className="cp3b">Cross Stitch – <span className="cp3">X-shaped stitches forming patterns.</span></p>
                     </div>
                   </div>
-                  <div className="md:flex flex-col w-full md:w-[30%] items-center hidden md:justify-start">
+                  <div className="md:flex flex-col w-full md:w-[30%] items-center hidden md:justify-start ">
                     <Image
                       src="/Images/Prints-and-embroidery/Embroidery/hand-embroidery.png"
                       alt="404"
@@ -232,7 +234,7 @@ const Tabs = () => {
                 </div>
                 {/* Machine Embroidery */}
                 <div className="md:flex flex-1 gap-5 md:gap-0 md:justify-between">
-                  <div className="flex flex-col w-full md:w-[30%] items-center md:justify-start">
+                  <div className="flex flex-col w-full md:w-[30%] items-center md:justify-start mb-5 md:mb-0">
                     <Image
                       src="/Images/Prints-and-embroidery/Embroidery/machine-embroidery.png"
                       alt="404"
@@ -268,7 +270,7 @@ const Tabs = () => {
                 </div>
                 {/* Digital Embroidery (Computerized Embroidery) */}
                 <div className="md:flex flex-1 gap-5 md:gap-0 md:justify-between">
-                  <div className="md:hidden flex flex-col w-full md:w-[30%] items-center md:justify-start">
+                  <div className="md:hidden flex flex-col w-full md:w-[30%] items-center md:justify-start mb-5 md:mb-0">
                     <Image
                       src="/Images/Prints-and-embroidery/Embroidery/digital-embroidery.png"
                       alt="404"

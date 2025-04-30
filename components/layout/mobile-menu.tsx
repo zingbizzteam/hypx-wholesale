@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { X, ChevronRight, ChevronDown } from "lucide-react"
-import MobileSearchBar from "@/components/MobileSearchBar" 
+import MobileSearchBar from "@/components/MobileSearchBar"
 
 type MobileMenuProps = {
   onClose: () => void
@@ -145,7 +145,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
 
           <div className="border-b border-gray-200">
             <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("our-story")}>
-                Our Story           
+              Our Story
               <ChevronDown
                 size={20}
                 className={`transition-transform ${expandedItem === "our-story" ? "rotate-180" : ""}`}
@@ -164,6 +164,9 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
                 </Link>
                 <Link href="/terms-and-conditions" className="block py-2">
                   Terms and Conditions
+                </Link>
+                <Link href="/about-us#our-customizations" className="block py-2">
+                  Our Customizations
                 </Link>
               </div>
             )}

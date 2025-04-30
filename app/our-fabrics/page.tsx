@@ -208,8 +208,9 @@ const Tabs = () => {
                     The foundation of great clothing starts with the right fabric. We offer a wide range of high-quality materials, from soft and breathable cotton to durable polyester, stretchable Lycra, and premium blends. Whether you need comfort, performance, or style, our diverse fabric options ensure the perfect fit for every need. Explore our collection and experience the difference in quality and craftsmanship
                   </p>
                 </div>
+                <div className="flex justify-center">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-between justify-items-center 
-              gap-x-4 gap-y-10 my-8">
+              gap-x-4 gap-y-10 my-8 w-[94%] md:w-full">
                   {materialContent.map((material, index) => (
                     <AccordionCard
                       key={index}
@@ -217,6 +218,7 @@ const Tabs = () => {
                       imageSrc={material.imageSrc}
                       description={material.description} />
                   ))}
+                </div>
                 </div>
               </motion.div>
             )}
@@ -237,15 +239,17 @@ const Tabs = () => {
                     Texture plays a key role in how a fabric looks, feels, and drapes. From smooth and silky to rough and structured, different textures add character and functionality to clothing. Whether it’s the softness of fleece, the crispness of piqué, or the stretch of ribbed knits, our diverse range of fabric textures ensures comfort, style, and performance for every occasion.
                   </p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-between justify-items-center 
-              gap-x-4 gap-y-10 my-8">
-                  {textureContent.map((texture, index) => (
-                    <AccordionCard
-                      key={index}
-                      title={texture.title}
-                      imageSrc={texture.imageSrc}
-                      description={texture.description} />
-                  ))}
+                <div className="flex justify-center">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-between justify-items-center 
+              gap-x-4 gap-y-10 my-8 w-[94%] md:w-full">
+                    {textureContent.map((texture, index) => (
+                      <AccordionCard
+                        key={index}
+                        title={texture.title}
+                        imageSrc={texture.imageSrc}
+                        description={texture.description} />
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             )}
@@ -266,8 +270,9 @@ const Tabs = () => {
                     Washing techniques enhance the texture, appearance, and feel of fabrics, giving them a unique character and improved comfort. From softening to creating a worn-in effect, different wash treatments bring out the best in every material.
                   </p>
                 </div>
+                <div className="flex justify-center">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 justify-between justify-items-center 
-              gap-x-4 gap-y-10 my-8">
+              gap-x-4 gap-y-10 my-8 w-[94%] md:w-full">
                   {washContent.map((wash, index) => (
                     <Washcard
                       key={index}
@@ -275,6 +280,7 @@ const Tabs = () => {
                       imageSrc={wash.imageSrc}
                       description={wash.description} />
                   ))}
+                </div>
                 </div>
               </motion.div>
             )}

@@ -12,9 +12,10 @@ const Footer = () => {
             <div className="space-y-4">
               <h2 className="ch2">HYPX</h2>
               <p className="text-sm text-gray-400 text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                ea commodo consequat.
+              At Hypx, we believe in providing more than just clothing – 
+              we deliver value and quality you can count on. Your satisfaction 
+              is our priority, and we’re excited to continue supporting your 
+              business with every order.
               </p>
               <NewsletterForm />
             </div>
@@ -30,7 +31,7 @@ const Footer = () => {
                   contact us
                 </Link>
                 <div className="relative group">
-                    <div className="flex gap-1 items-center cursor-pointer py-1 text-gray-500 hover:text-white transition-colors">
+                    <div className="flex gap-1 items-center cursor-pointer py-1 text-white hover:text-[#858585] transition-colors">
                       Our story
                       <ChevronDown size={20} />
                     </div>
@@ -76,7 +77,7 @@ const Footer = () => {
               <h3 className="ch3 mb-4">Reach us</h3>
               <div className="space-y-4">
                 <Link href={'https://maps.app.goo.gl/fr2PAn23KCYkGhBt7'} target="_blank"
-                  className="flex">
+                  className="flex text-white hover:text-[#858585] transition-colors">
                   <div className="flex-shrink-0 mr-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +100,7 @@ const Footer = () => {
                   </p>
                 </Link>
                 <Link href={"tel:+919791823908"}
-                  className="flex items-center">
+                  className="flex items-center text-white hover:text-[#858585] transition-colors">
                   <div className="flex-shrink-0 mr-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

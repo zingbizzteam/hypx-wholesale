@@ -43,8 +43,6 @@ export async function generateMetadata(): Promise<Metadata> {
     authors: [{ name: "HYPX", url: baseUrl }],
     creator: "HYPX Team",
     publisher: "HYPX",
-    themeColor: "#000000",
-    colorScheme: "light",
     openGraph: {
       title: "HYPX | Wholesale Clothing & Apparel for Retailers",
       description: "Shop HYPX for top-quality wholesale fashion apparel, perfect for resellers and boutique owners.",
