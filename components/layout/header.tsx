@@ -180,7 +180,7 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 bg-white z-50">
-      <div className="lg:min-w-[1250px] lg:max-w-[1920px] w-full flex justify-self-center justify-between place-items-center p-5">
+      <div className="lg:min-w-[1250px] lg:max-w-[1920px] w-full flex justify-self-center justify-between place-items-center p-3">
         {/* Mobile Menu Button */}
         <button
           className="md:hidden"

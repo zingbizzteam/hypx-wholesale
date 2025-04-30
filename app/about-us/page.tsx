@@ -61,64 +61,68 @@ export default function AboutUs() {
       </section>
 
       {/* Welcome Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <Image
-                src="/Images/About/section2.png"
-                alt="Welcome to HYPX"
-                width={500}
-                height={400}
-                className="rounded"
-              />
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Welcome to HYPX</h2>
-              <p className="mb-4">Where Fashion Meets Individuality and luxury streetwear finds its home</p>
-              <p className="mb-4">
-                At HYPX, we believe that style is personal, and your clothes should reflect who you are. That's why
-                we've created a wholesale platform that doesn't just offer quality garments, but gives you the tools to
-                shape the designs with colors, cuts, and personal touch, so they truly express your brand's identity.
-              </p>
-              <p className="font-medium">HYPX is here to elevate your wardrobe.</p>
-              <p className="mt-4">
-                We're not just another wholesale clothing supplier. We're your partner in creating a fashion experience
-                that connects you with the finest fabrics that redefine urban elegance. We've curated a selection of
-                timeless styles, offering you the best in high-end street fashion at a fair price. Our mission is to
-                provide clothing to empower the next iconic street-fashion designers.
-              </p>
+      <section className="container1 py-16">
+        <div className="container2 mx-auto px-4">
+          <div className="container3">
+            <div className="flex justify-between gap-12 items-center">
+              <div>
+                <Image
+                  src="/Images/About/section2.png"
+                  alt="Welcome to HYPX"
+                  width={500}
+                  height={400}
+                  className="rounded"
+                />
+              </div>
+              <div>
+                <h2 className="ch2 mb-5">Welcome to HYPX</h2>
+                <p className="mb-4 cp2">Where Fashion Meets Individuality and luxury streetwear finds its home</p>
+                <p className="mb-4 font-normal text-justify">
+                  At HYPX, we believe that style is personal, and your clothes should reflect who you are. That's why
+                  we've created a wholesale platform that doesn't just offer quality garments, but gives you the tools to
+                  shape the designs with colors, cuts, and personal touch, so they truly express your brand's identity.
+                </p>
+                <p className="cp2">HYPX is here to elevate your wardrobe.</p>
+                <p className="mt-4 font-normal text-justify">
+                  We're not just another wholesale clothing supplier. We're your partner in creating a fashion experience
+                  that connects you with the finest fabrics that redefine urban elegance. We've curated a selection of
+                  timeless styles, offering you the best in high-end street fashion at a fair price. Our mission is to
+                  provide clothing to empower the next iconic street-fashion designers.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Our Mission */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
-              <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
-              <p className="text-xl font-medium mb-4">Create. Express. Inspire. That's the spirit of HYPX.</p>
-              <p className="mb-4">
-                Our mission is to revolutionize the way you express yourself through fashion. We are dedicated to
-                providing premium wholesale streetwear that empowers brands to showcase their unique individuality. By
-                blending creativity with premium quality, we empower you to make your mark in the fashion world.
-              </p>
-              <p className="mb-4">
-                We are also committed to curating the finest in luxury streetwear, connecting style enthusiasts with
-                exclusive brands that shape urban culture. Our goal is to ensure self-expression, celebrate uniqueness,
-                and redefine streetwear as a canvas for personal identity.
-              </p>
-            </div>
-            <div className="order-1 md:order-2">
-              <Image
-                src="/Images/About/section3.png"
-                alt="Our Mission"
-                width={500}
-                height={400}
-                className="rounded"
-              />
+      <section className="container1 py-16">
+        <div className="container2 mx-auto px-4">
+          <div className="container3">
+            <div className="flex justify-between gap-12 items-center">
+              <div className="order-2 md:order-1">
+                <h2 className="ch2 mb-5">Our Mission</h2>
+                <p className="cp2 mb-4">Create. Express. Inspire. That's the spirit of HYPX.</p>
+                <p className="mb-4 text-justify font-normal">
+                  Our mission is to revolutionize the way you express yourself through fashion. We are dedicated to
+                  providing premium wholesale streetwear that empowers brands to showcase their unique individuality. By
+                  blending creativity with premium quality, we empower you to make your mark in the fashion world.
+                </p>
+                <p className="mb-4 text-justify font-normal">
+                  We are also committed to curating the finest in luxury streetwear, connecting style enthusiasts with
+                  exclusive brands that shape urban culture. Our goal is to ensure self-expression, celebrate uniqueness,
+                  and redefine streetwear as a canvas for personal identity.
+                </p>
+              </div>
+              <div className="order-1 md:order-2">
+                <Image
+                  src="/Images/About/section3.png"
+                  alt="Our Mission"
+                  width={500}
+                  height={400}
+                  className="rounded"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -145,9 +149,9 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-      
-{/* Section 5 */}
-<div className='container2 justify-items-center pt-10'>
+
+      {/* Section 5 */}
+      <div className='container2 justify-items-center pt-10'>
         <p className='ch3 text-center pb-5'>Our Customizations</p>
         <div className='w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3'>
           <Aboutcard text='Our Prints and Embroidery' ImageUrl='/Images/About/section5_1.png' linkabt='our-prints-and-embroidery'></Aboutcard>
@@ -158,7 +162,7 @@ export default function AboutUs() {
 
 
       {/* Contact Section */}
-      <section className="py-16">
+      <section className="py-16 bg-[#FFF6EC]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
           <p className="mb-8 max-w-2xl mx-auto">
