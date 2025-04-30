@@ -34,8 +34,8 @@ export default defineType({
       of: [{ type: 'image', options: { hotspot: true } }]
     }),
     defineField({
-      name: 'category',
-      title: 'Category',
+      name: 'categories',
+      title: 'Categories',
       type: 'reference',
       to: [{ type: 'category' }]
     }),

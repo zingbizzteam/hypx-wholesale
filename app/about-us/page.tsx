@@ -3,6 +3,43 @@ import Link from "next/link"
 import AboutHover from "@/components/about/AboutHover"
 import ButtonWhite from "@/components/about/ButtonWhite"
 import Aboutcard from "@/components/about/Aboutcard"
+import { Metadata } from "next"
+
+// SEO 👇
+export async function generateMetadata(): Promise<Metadata> {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  if (!baseUrl) {
+    throw new Error("Missing NEXT_PUBLIC_BASE_URL in environment variables");
+  }
+
+  return {
+    title: "About Us | HYPX Wholesale",
+    description: "Learn more about HYPX, a wholesale platform where fashion meets individuality. Discover our mission, values, and unique offerings.",
+    openGraph: {
+      title: "About Us | HYPX Wholesale",
+      description: "Discover HYPX Wholesale's mission to revolutionize streetwear fashion and help you express your brand's identity.",
+      url: `${baseUrl}/about-us`,
+      siteName: "HYPX",
+      images: [
+        {
+          url: `${baseUrl}/og-image.jpg`, // You can customize this image for the About Us page
+          width: 1200,
+          height: 630,
+          alt: "About HYPX"
+        }
+      ],
+      type: "website"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "About Us | HYPX Wholesale",
+      description: "Learn about HYPX Wholesale, your partner in creating premium, customizable streetwear.",
+      images: [`${baseUrl}/og-image.jpg`]
+    },
+    metadataBase: new URL(baseUrl),
+  };
+}
 
 export default function AboutUs() {
   return (

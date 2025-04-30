@@ -222,11 +222,6 @@ const Header = () => {
           </div>
 
           <div className="relative group  h-10 flex justify-center items-center">
-            <Link href={"/shop?category=kids"} className="hover:text-[#858585]">
-              Kids
-            </Link>
-          </div>
-          <div className="relative group  h-10 flex justify-center items-center">
             <Link href={"/shop?category=accessories"} className="hover:text-[#858585]">
               Accessories
             </Link>
@@ -271,7 +266,7 @@ const Header = () => {
         </div>
 
         {/* Desktop Search and Contact */}
-        <div className="flex gap-3 md:gap-8">
+        <div className="flex gap-3 md:gap-8 items-center">
           <div className="hidden md:block">
           <SearchBar/>
           </div>
