@@ -5,6 +5,7 @@ import Headermenu from "./Megamenu";
 import MobileMenu from "./mobile-menu";
 import { ChevronDown, Menu, SearchIcon, ShoppingCartIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
+import SearchBar from "../SearchBar";
 
 const Men = [
   {
@@ -271,7 +272,9 @@ const Header = () => {
 
         {/* Desktop Search and Contact */}
         <div className="flex gap-3 md:gap-8">
-          <SearchIcon />
+          <div className="hidden md:block">
+          <SearchBar/>
+          </div>
           <Link href="/cart">
             <ShoppingCartIcon />
           </Link>

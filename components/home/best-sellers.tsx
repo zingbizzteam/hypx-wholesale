@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ShoppingCart, ChevronRight } from "lucide-react";
 import { Product, urlFor } from "@/lib/sanity"; // Assuming you have a urlFor function in your lib/sanity.ts
 import ProductCard from "../product/product-card";
+import SkeletonLoader from "../layout/sekelton4";
 
 
 export default function BestSellers() {
@@ -39,8 +40,8 @@ export default function BestSellers() {
                 Explore <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
             </div>
-            <div className="col-span-full flex justify-center py-12">
-              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-black"></div>
+            <div className=" flex justify-center py-12">
+              <SkeletonLoader/>
             </div>
           </div>
         </div>
