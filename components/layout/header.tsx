@@ -203,7 +203,7 @@ const Header = () => {
             <Link href="/shop?category=men" className="hover:text-[#858585]">
               Men
             </Link>
-            <div className="fixed hidden group-hover:flex left-0 top-16 w-screen h-[65vh] bg-white justify-center items-start z-40">
+            <div className="fixed hidden group-hover:flex left-0 top-16 w-screen h-[50vh] bg-white justify-center items-start z-40">
               <div className="flex gap-10 justify-center items-start w-full h-full">
                 <Headermenu categories={Men} />
               </div>
@@ -214,7 +214,7 @@ const Header = () => {
             <Link href={"/shop?category=women"} className="hover:text-[#858585]">
               Women
             </Link>
-            <div className="fixed hidden group-hover:flex left-0 top-16 w-screen h-[65vh] bg-white justify-center items-start z-40">
+            <div className="fixed hidden group-hover:flex left-0 top-16 w-screen h-[50vh] bg-white justify-center items-start z-40">
               <div className="flex gap-10 justify-center items-start w-full h-full">
                 <Headermenu categories={Women} />
               </div>

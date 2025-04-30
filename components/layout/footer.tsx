@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Instagram, Youtube, Facebook } from "lucide-react"
+import { Instagram, Youtube, Facebook, ChevronDown } from "lucide-react"
 import NewsletterForm from "../ui/newsletter-form"
 
 const Footer = () => {
@@ -26,12 +26,29 @@ const Footer = () => {
                 <Link href="/" className="footer-link">
                   Home
                 </Link>
-                <Link href="/our-story" className="footer-link">
-                  Our Story
-                </Link>
                 <Link href="/contact-us" className="footer-link">
                   contact us
                 </Link>
+                <div className="relative group">
+                    <div className="flex gap-1 items-center cursor-pointer py-1 text-gray-500 hover:text-white transition-colors">
+                      Our story
+                      <ChevronDown size={20} />
+                    </div>
+                    <ul className="absolute hidden group-hover:block text-white cp3 left-0 top-8 w-44">
+                      <li className="w-full px-3 py-1 hover:text-[#858585]">
+                        <a href={'about-us'}>About us</a>
+                      </li>
+                      <li className="w-full px-3 py-1 hover:text-[#858585]">
+                        <a href={'sustainability'}>sustainability</a>
+                      </li>
+                      <li className="w-full px-3 py-1 hover:text-[#858585]">
+                        <a href={'our-policies'}>Quality policy</a>
+                      </li>
+                      <li className="w-full px-3 py-1 hover:text-[#858585]">
+                        <a href={'terms-and-conditions'}>T&C</a>
+                      </li>
+                    </ul>
+                  </div>
               </nav>
             </div>
 
@@ -45,7 +62,7 @@ const Footer = () => {
                 <Link href="/shop?category=women" className="footer-link">
                   Women
                 </Link>
-                <Link href="/shop?category=uniforms" className="footer-link">
+                <Link href="/shop?category=uniform" className="footer-link">
                   Uniforms
                 </Link>
                 <Link href="/shop?category=accessories" className="footer-link">

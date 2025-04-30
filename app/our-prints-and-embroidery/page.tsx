@@ -130,8 +130,8 @@ const Tabs = () => {
               className=""
             >
               <div className="border-t border-[#B5B5B5]"></div>
-              <div className="grid grid-cols-3 justify-between justify-items-center 
-              gap-x-4 gap-y-10 my-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 
+              gap-x-4 gap-y-10 my-8 justify-items-center">
                 {cardContent.map((card, index) => (
                   <AccordionCard
                     key={index}
@@ -156,8 +156,8 @@ const Tabs = () => {
               <div className="border-t border-[#B5B5B5]"></div>
               <div className="my-8 flex flex-col gap-16">
                 {/* EMBROIDERY AND IT TYPES */}
-                <div className="flex justify-between">
-                  <div className="flex flex-col w-[30%] justify-start">
+                <div className="md:flex flex-1 gap-5 md:gap-0 md:justify-between">
+                  <div className="flex flex-col w-full md:w-[30%] items-center md:justify-start">
                     <Image
                       src="/Images/Prints-and-embroidery/Embroidery/embroidery.png"
                       alt="404"
@@ -165,7 +165,7 @@ const Tabs = () => {
                       height={395}
                     />
                   </div>
-                  <div className="w-[65%] flex flex-col justify-start gap-5">
+                  <div className="md:w-[65%] w-full flex flex-col justify-start gap-5">
                     <h2 className="text-left font-bold text-2xl uppercase">
                       EMBROIDERY AND IT TYPES
                     </h2>

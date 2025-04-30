@@ -145,9 +145,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
 
           <div className="border-b border-gray-200">
             <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("our-story")}>
-              <Link href="/our-story" className="text-lg">
-                Our Story
-              </Link>
+                Our Story           
               <ChevronDown
                 size={20}
                 className={`transition-transform ${expandedItem === "our-story" ? "rotate-180" : ""}`}
