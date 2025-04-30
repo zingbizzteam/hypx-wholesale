@@ -21,7 +21,7 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <div className="pl-10">
+            <div className="md:pl-10">
               <h3 className="ch3 mb-4">Quick Links</h3>
               <nav>
                 <Link href="/" className="footer-link">

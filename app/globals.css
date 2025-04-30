@@ -103,16 +103,19 @@ textarea {
   .ch1{
     font-size: 48px;
     font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
   }
   
   .ch2{
     font-size: 32px;
     font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
   }
   
   .ch3{
     font-size: 24px;
     font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
   }
   
   .cp1{
@@ -198,19 +201,19 @@ textarea {
   .ch1{
     font-size: 48px;
     font-weight: 700;
-    font-family: 'space-grotesk';
+    font-family: 'space-grotesk', sans-serif;
   }
   
   .ch2{
     font-size: 32px;
     font-weight: 700;
-    font-family: 'space-grotesk';
+    font-family: 'space-grotesk', sans-serif;
   }
   
   .ch3{
     font-size: 24px;
     font-weight: 700;
-    font-family: 'space-grotesk';
+    font-family: 'space-grotesk', sans-serif;
   }
   
   .cp1{
@@ -256,16 +259,19 @@ textarea {
   .ch1{
     font-size: 32px;
     font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
   }
   
   .ch2{
     font-size: 24px;
     font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
   }
   
   .ch3{
     font-size: 18px;
     font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
   }
   
   .cp1{

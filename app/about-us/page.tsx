@@ -166,7 +166,7 @@ export default function AboutUs() {
           <Aboutcard text='Our Prints and Embroidery' ImageUrl='/Images/About/section5_1.png' linkabt='our-prints-and-embroidery'/>
           <Aboutcard text='Trims and Colours' ImageUrl='/Images/About/section5_2.png' linkabt='trims-and-colours'/>
           <Aboutcard text='Our Fabrics' ImageUrl='/Images/About/section5_3.png' linkabt='our-fabrics'/>
-          <Aboutcard text='Cap Customization ' ImageUrl='/Images/About/cap .png' linkabt='cap-customization'/>
+          <Aboutcard text='Cap Customization ' ImageUrl='/Images/About/cap.png' linkabt='cap-customization'/>
         </div>
       </div>
                                

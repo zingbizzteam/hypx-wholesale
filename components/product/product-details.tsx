@@ -8,7 +8,7 @@ import {
   fetchCategories,
 } from "@/lib/productFeatureFetch"; // Import the functions from the API file
 import ProductGallery from "./product-gallery";
-import { useRouter } from "next/navigation"; // To handle redirection
+import { useRouter, usePathname } from "next/navigation"; // To handle redirection
 import { updateCart } from "@/lib/localStorage"; // Import the helper functions
 import { toast } from "react-toastify";
 import Link from "next/link";
@@ -47,6 +47,8 @@ const ProductDetails = ({ product }: { product: Product }) => {
     updateCart(product,  100);
     router.push("/checkout"); // Navigate to the quote page
   };
+
+  const pathname = usePathname();
  const imageUrls: string[] = product.images.map(img => urlFor(img.asset._ref).url());
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -76,6 +78,13 @@ const ProductDetails = ({ product }: { product: Product }) => {
             transition-all ease-in-out duration-200">
               <Link href={'/our-prints-and-embroidery'}
               >Printing / Embroidery</Link></h3>
+              {pathname.includes('cap') && (
+          <h3 className="font-light text-base border border-[#B9B9B9] 
+            rounded py-2 px-6 hover:border-black
+            transition-all ease-in-out duration-200">
+            <Link href="/cap-customization">Cap Customization</Link>
+          </h3>
+        )}
           </div>
         </div>
 

@@ -84,52 +84,52 @@ const Tabs = () => {
   const textureContent = [
     {
       title: "WAFFLE KNIT",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Texture/waffle.png",
       description: "Waffle knit fabric is known for its signature square-patterned weave that enhances insulation and airflow. Lightweight yet cozy, it provides warmth without bulk, making it perfect for layering. Ideal for loungewear, casual wear, and thermal clothing, our high-quality waffle knit offers comfort with a stylish, modern look."
     },
     {
       title: "PIQUE KNIT",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Texture/pique.png",
       description: "Piqué knit fabric features a subtle raised pattern, offering a refined look with excellent airflow. Known for its durability and slight stretch, it provides comfort while maintaining structure. Commonly used in polo shirts and sportswear, our premium piqué knit ensures a polished appearance with long-lasting wear."
     },
     {
       title: "RIB KNIT",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Texture/rib.jpg",
       description: "Rib knit fabric is designed with parallel ridges that provide excellent elasticity and shape retention. Soft and comfortable, it offers a snug fit while allowing ease of movement. Ideal for cuffs, collars, turtlenecks, and fitted garments, our high-quality rib knit ensures durability and a stylish, structured look."
     },
     {
       title: "THERMAL KNIT",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Texture/thermal.png",
       description: "Thermal knit fabric features a unique honeycomb or waffle-like pattern that traps heat while allowing airflow. Designed for insulation without added bulk, it’s perfect for layering in cooler weather. Ideal for loungewear, activewear, and winter essentials, our premium thermal knit ensures cozy comfort with lasting durability."
     },
     {
       title: "DOUBLE KNIT",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Texture/double.png",
       description: "Thick, durable, and structured—double knit fabric is made with two layers of interwoven fabric, providing extra strength and stability. With a smooth finish on both sides, it offers excellent shape retention, wrinkle resistance, and a comfortable stretch. Ideal for jackets, dresses, and activewear, our premium double knit fabric ensures a polished look with long-lasting wear."
     },
     {
       title: "WARP KNIT",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Texture/wrap.jpg",
       description: "Strong, lightweight, and resistant to wear—nylon is a durable fabric known for its smooth texture and flexibility. It wicks moisture, dries quickly, and maintains its shape, making it ideal for activewear and performance clothing. Our high-quality nylon blends offer comfort, resilience, and a sleek, modern finish."
     },
     {
       title: "RASCHEL FABRIC",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Texture/raschel.jpg",
       description: "Intricate, durable, and versatile—Raschel fabric is a type of warp knit known for its open, lacy, or textured patterns. It offers excellent strength and flexibility while maintaining a lightweight feel. Commonly used in lace, mesh, and decorative textiles, our high-quality Raschel fabric ensures elegance, breathability, and lasting durability"
     },
     {
       title: "PURL KNIT FABRIC",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Texture/purl.jpg",
       description: "Purl knit fabric features textured loops on both sides, offering excellent elasticity and comfort. Known for its superior drape and flexibility, it retains shape while allowing free movement. Ideal for sweaters, scarves, and cozy knitwear, our premium purl knit fabric ensures warmth, durability, and a stylish, relaxed look."
     },
     {
       title: "WAFFLE JERSEY",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Texture/waffle-jersey.png",
       description: "Waffle jersey fabric combines the softness of jersey with the distinct square-patterned texture of a waffle weave. This unique design enhances airflow and insulation, making it perfect for comfortable, all-season wear. Ideal for loungewear, casual tops, and layering pieces, our high-quality waffle jersey ensures a stylish look with lasting comfort"
     },
     {
       title: "WAFFLE FLEECE",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Texture/waffle-fleece.png",
       description: "Waffle fleece combines the insulating properties of fleece with the breathable, grid-like texture of a waffle weave. This unique construction traps heat while allowing airflow, making it perfect for cozy yet lightweight layering. Ideal for hoodies, jackets, and winter essentials, our premium waffle fleece ensures warmth, comfort, and durability."
     },
   ]
@@ -137,22 +137,22 @@ const Tabs = () => {
   const washContent = [
     {
       title: "BIO WASH",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Wash/bio.png",
       description: "Bio wash, also known as enzyme wash, is a fabric treatment that enhances softness, smoothness, and durability. Using natural enzymes, it removes excess fibers, reduces pilling, and gives fabrics a refined, premium feel. This eco-friendly process not only improves comfort but also helps retain color and texture for long-lasting quality."
     },
     {
       title: "LAVA WASH",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Wash/lava.png",
       description: "Lava wash is a special garment treatment that gives fabrics a slightly distressed, vintage look while maintaining softness and durability. This process enhances texture, adds subtle fading, and creates a worn-in, rugged appearance, making it ideal for casual and trendy clothing styles."
     },
     {
       title: "SOFTENER WASH",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Wash/softener.png",
       description: "Softener wash is a fabric treatment that enhances the softness and comfort of garments. By using special softening agents, this wash improves the fabric’s texture, making it feel smoother and more luxurious. It also "
     },
     {
       title: "ACID WASH",
-      imageSrc: "/Images/OurPolicy/dummy.png",
+      imageSrc: "/Images/Our-fabrics/Wash/acid.png",
       description: "Acid wash is a fabric treatment that creates a bold, vintage look by using an acid or bleach solution to produce unique, high-contrast color variations. This process gives garments a rugged, worn-in appearance, adding a distinctive edge to casual and statement pieces."
     },
   ]

@@ -5,7 +5,7 @@ import React from 'react'
 function page() {
     return (
         <div>
-            <HeroSection Title="Cap Customisations" ImageUrl="/Images/Our-fabrics/.png" />
+            <HeroSection Title="Cap Customisations" ImageUrl="/Images/Caps/cap_cover.png" />
             <div className="container1 py-8 md:py-12">
                 <div className="container2">
                     <div className="container3">
@@ -26,13 +26,13 @@ function page() {
                         </div>
                         <div className='flex flex-col justify-center items-center gap-6 py-8'>
                             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-[94%]'>
-                                <CapCard imageSrc={'/Images/Our-fabrics/.png'} label={'Adjustable Velcro'} />
-                                <CapCard imageSrc={'/Images/Our-fabrics/.png'} label={'Plastic Strap'} />
-                                <CapCard imageSrc={'/Images/Our-fabrics/.png'} label={'H-Buckle'} />
+                                <CapCard imageSrc={'/Images/Caps/adjustable_velcro.png'} label={'Adjustable Velcro'} />
+                                <CapCard imageSrc={'/Images/Caps/plastic_strap.png'} label={'Plastic Strap'} />
+                                <CapCard imageSrc={'/Images/Caps/h_buckle.png'} label={'H-Buckle'} />
                             </div>
                             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6 w-[94%] md:w-[66%]'>
-                                <CapCard imageSrc={'/Images/Our-fabrics/.png'} label={'Full Closure'} />
-                                <CapCard imageSrc={'/Images/Our-fabrics/.png'} label={'Metal Buckle'} />
+                                <CapCard imageSrc={'/Images/Caps/full_closure.png'} label={'Full Closure'} />
+                                <CapCard imageSrc={'/Images/Caps/metal_buckle.png'} label={'Metal Buckle'} />
                             </div>
                         </div>
 
@@ -52,9 +52,9 @@ function page() {
                                 the panel setup to match.
                             </p>
                             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-[94%] pt-8'>
-                                <CapCard imageSrc={'/Images/About/cap.png'} label={'5 - Panel'} />
-                                <CapCard imageSrc={'/Images/Our-fabrics/.png'} label={'6 - Panel'} />
-                                <CapCard imageSrc={'/Images/Our-fabrics/.png'} label={'7 - Panel'} />
+                                <CapCard imageSrc={'/Images/Caps/5_panel.png'} label={'5 - Panel'} />
+                                <CapCard imageSrc={'/Images/Caps/6_panel.png'} label={'6 - Panel'} />
+                                <CapCard imageSrc={'/Images/Caps/7_panel.png'} label={'7 - Panel'} />
                             </div>
                         </div>
                     </div>
