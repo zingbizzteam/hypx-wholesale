@@ -187,8 +187,16 @@ const Tabs = () => {
                   </div>
                 </div>
                 {/* Hand Embroidery */}
-                <div className="flex justify-between w-full">
-                  <div className="w-[65%] flex flex-col justify-start gap-5">
+                <div className="md:flex flex-1 gap-5 md:gap-0 md:justify-between">
+                  <div className="md:hidden flex flex-col w-full md:w-[30%] items-center md:justify-start">
+                    <Image
+                      src="/Images/Prints-and-embroidery/Embroidery/hand-embroidery.png"
+                      alt="404"
+                      width={380}
+                      height={395}
+                    />
+                  </div>
+                  <div className="md:w-[65%] w-full flex flex-col justify-start gap-5">
                     <h2 className="text-left font-bold text-2xl uppercase">
                       Hand Embroidery
                     </h2>
@@ -213,7 +221,7 @@ const Tabs = () => {
                       <p className="cp3b">Cross Stitch – <span className="cp3">X-shaped stitches forming patterns.</span></p>
                     </div>
                   </div>
-                  <div className="flex flex-col w-[30%] items-end">
+                  <div className="md:flex flex-col w-full md:w-[30%] items-center hidden md:justify-start">
                     <Image
                       src="/Images/Prints-and-embroidery/Embroidery/hand-embroidery.png"
                       alt="404"
@@ -223,8 +231,8 @@ const Tabs = () => {
                   </div>
                 </div>
                 {/* Machine Embroidery */}
-                <div className="flex justify-between">
-                  <div className="flex flex-col w-[30%] justify-start">
+                <div className="md:flex flex-1 gap-5 md:gap-0 md:justify-between">
+                  <div className="flex flex-col w-full md:w-[30%] items-center md:justify-start">
                     <Image
                       src="/Images/Prints-and-embroidery/Embroidery/machine-embroidery.png"
                       alt="404"
@@ -232,7 +240,7 @@ const Tabs = () => {
                       height={395}
                     />
                   </div>
-                  <div className="w-[65%] flex flex-col justify-start gap-5">
+                  <div className="md:w-[65%] w-full flex flex-col justify-start gap-5">
                     <h2 className="text-left font-bold text-2xl uppercase">
                       Machine Embroidery
                     </h2>
@@ -259,8 +267,16 @@ const Tabs = () => {
                   </div>
                 </div>
                 {/* Digital Embroidery (Computerized Embroidery) */}
-                <div className="flex justify-between">
-                  <div className="w-[65%] flex flex-col justify-start gap-5">
+                <div className="md:flex flex-1 gap-5 md:gap-0 md:justify-between">
+                  <div className="md:hidden flex flex-col w-full md:w-[30%] items-center md:justify-start">
+                    <Image
+                      src="/Images/Prints-and-embroidery/Embroidery/digital-embroidery.png"
+                      alt="404"
+                      width={380}
+                      height={395}
+                    />
+                  </div>
+                  <div className="md:w-[65%] w-full flex flex-col justify-start gap-5">
                     <h2 className="text-left font-bold text-2xl uppercase">
                       Digital Embroidery (Computerized Embroidery)
                     </h2>
@@ -277,7 +293,7 @@ const Tabs = () => {
                       <p className="cp3b">Photo Stitch Embroidery – <span className="cp3">Creates detailed, realistic images using multiple thread shades</span></p>
                     </div>
                   </div>
-                  <div className="flex flex-col w-[30%] items-end">
+                  <div className="md:flex flex-col w-full md:w-[30%] items-center hidden md:justify-start">
                     <Image
                       src="/Images/Prints-and-embroidery/Embroidery/digital-embroidery.png"
                       alt="404"

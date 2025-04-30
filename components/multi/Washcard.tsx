@@ -9,7 +9,7 @@ type Washcardprops = {
 
 export const Washcard: React.FC<Washcardprops> = ({ title, imageSrc, description }) => {
     return (
-        <div className='w-[480px]'>
+        <div className='w-full md:w-[480px]'>
             <Image
                 src={imageSrc}
                 alt="404"
