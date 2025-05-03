@@ -20,10 +20,52 @@ const roboto = Roboto({
   variable: "--font-roboto",
 })
 
-export const metadata: Metadata = {
-  title: "HYPX | Wholesale",
-  description: "Wholesale clothing and apparel for retailers",
-    generator: 'v0.dev'
+export async function generateMetadata(): Promise<Metadata> {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  if (!baseUrl) {
+    throw new Error("Missing NEXT_PUBLIC_BASE_URL in environment variables");
+  }
+
+  return {
+    title: "HYPX | Wholesale Clothing & Apparel for Retailers",
+    description: "Discover top-quality wholesale fashion at unbeatable prices. Shop HYPX for bulk clothing, trendy apparel, and accessories perfect for retailers and resellers.",
+    generator: "v0.dev",
+    keywords: [
+      "wholesale clothing",
+      "bulk apparel",
+      "fashion for retailers",
+      "HYPX wholesale",
+      "cheap clothing bulk",
+      "ecommerce wholesale store",
+      "retail fashion supply"
+    ],
+    authors: [{ name: "HYPX", url: baseUrl }],
+    creator: "HYPX Team",
+    publisher: "HYPX",
+    openGraph: {
+      title: "HYPX | Wholesale Clothing & Apparel for Retailers",
+      description: "Shop HYPX for top-quality wholesale fashion apparel, perfect for resellers and boutique owners.",
+      url: baseUrl,
+      siteName: "HYPX",
+      images: [
+        {
+          url: `${baseUrl}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: "HYPX Wholesale Clothing Banner"
+        }
+      ],
+      type: "website"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "HYPX | Wholesale Clothing",
+      description: "Wholesale fashion & apparel at the best prices for resellers. Shop HYPX today.",
+      images: [`${baseUrl}/og-image.jpg`]
+    },
+    metadataBase: new URL(baseUrl)
+  };
 }
 
 export default function RootLayout({

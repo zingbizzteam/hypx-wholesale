@@ -126,7 +126,7 @@ const CheckoutForm = () => {
       </div>
 
       <div className="flex w-full justify-between gap-5">
-        <div className="w-full">
+        <div className="w-[50%] md:w-full">
           <label htmlFor="email" className="block text-2xl font-bold text-[#333333] mb-1">
             E-mail
           </label>

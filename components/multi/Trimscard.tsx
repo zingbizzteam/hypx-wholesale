@@ -9,8 +9,8 @@ type Trimscardprops = {
 
 export const Trimscard: React.FC<Trimscardprops> = ({ title, imageSrc, description }) => {
     return (
-        <div className='w-[300px] h-auto'>
-            <div className='w-[300px] h-[280px] bg-center bg-cover' style={{
+        <div className='w-full md:w-[300px] h-auto'>
+            <div className='md:w-[300px] md:h-[280px] aspect-square bg-center bg-cover' style={{
                 backgroundImage: `url('${imageSrc}')`
             }}></div>
             <h2 className='text-center font-bold text-2xl pt-4 pb-2 uppercase'>

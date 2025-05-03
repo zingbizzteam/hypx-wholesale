@@ -1,28 +1,29 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { X, ChevronRight, ChevronDown } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import { X, ChevronRight, ChevronDown } from "lucide-react";
+import MobileSearchBar from "@/components/MobileSearchBar";
 
 type MobileMenuProps = {
-  onClose: () => void
-}
+  onClose: () => void;
+};
 
 const MobileMenu = ({ onClose }: MobileMenuProps) => {
-  const [expandedItem, setExpandedItem] = useState<string | null>(null)
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
 
   const toggleExpand = (item: string) => {
     if (expandedItem === item) {
-      setExpandedItem(null)
+      setExpandedItem(null);
     } else {
-      setExpandedItem(item)
+      setExpandedItem(item);
     }
-  }
+  };
 
   return (
     <div className="w-[80%] fixed inset-0 bg-white z-50 overflow-y-auto">
       <div className="p-4">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center mb-4">
           <Link href="/" className="font-space-grotesk text-xl font-medium">
             HYPX | Wholesale
           </Link>
@@ -30,27 +31,34 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
             <X size={24} />
           </button>
         </div>
+        <MobileSearchBar />
 
         <nav className="space-y-0">
           <div className="border-b border-gray-200">
-            <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("men")}>
+            <div
+              className="py-4 flex justify-between items-center"
+              onClick={() => toggleExpand("men")}
+            >
               <Link href="/shop?category=men" className="text-lg">
                 Men
               </Link>
-              <ChevronRight size={20} className={`transition-transform ${expandedItem === "men" ? "rotate-90" : ""}`} />
+              <ChevronRight
+                size={20}
+                className={`transition-transform ${expandedItem === "men" ? "rotate-90" : ""}`}
+              />
             </div>
             {expandedItem === "men" && (
               <div className="pl-4 pb-4 space-y-2">
-                <Link href="/shop?category=men/t-shirts" className="block py-2">
+                <Link href="/shop?category=men" className="block py-2">
                   T-Shirts
                 </Link>
-                <Link href="/shop?category=men/hoodies" className="block py-2">
+                <Link href="/shop?category=men" className="block py-2">
                   Hoodies
                 </Link>
-                <Link href="/shop?category=men/pants" className="block py-2">
+                <Link href="/shop?category=men" className="block py-2">
                   Pants
                 </Link>
-                <Link href="/shop?category=men/jackets" className="block py-2">
+                <Link href="/shop?category=men" className="block py-2">
                   Jackets
                 </Link>
               </div>
@@ -58,7 +66,10 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
           </div>
 
           <div className="border-b border-gray-200">
-            <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("women")}>
+            <div
+              className="py-4 flex justify-between items-center"
+              onClick={() => toggleExpand("women")}
+            >
               <Link href="/shop?category=women" className="text-lg">
                 Women
               </Link>
@@ -69,16 +80,16 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
             </div>
             {expandedItem === "women" && (
               <div className="pl-4 pb-4 space-y-2">
-                <Link href="/shop?category=women/t-shirts" className="block py-2">
+                <Link href="/shop?category=women" className="block py-2">
                   T-Shirts
                 </Link>
-                <Link href="/shop?category=women/blouses" className="block py-2">
+                <Link href="/shop?category=women" className="block py-2">
                   Blouses
                 </Link>
-                <Link href="/shop?category=women/dresses" className="block py-2">
+                <Link href="/shop?category=women" className="block py-2">
                   Dresses
                 </Link>
-                <Link href="/shop?category=women/skirts" className="block py-2">
+                <Link href="/shop?category=women" className="block py-2">
                   Skirts
                 </Link>
               </div>
@@ -86,7 +97,10 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
           </div>
 
           <div className="border-b border-gray-200">
-            <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("kids")}>
+            <div
+              className="py-4 flex justify-between items-center"
+              onClick={() => toggleExpand("kids")}
+            >
               <Link href="/shop?category=kids" className="text-lg">
                 Kids
               </Link>
@@ -97,16 +111,16 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
             </div>
             {expandedItem === "kids" && (
               <div className="pl-4 pb-4 space-y-2">
-                <Link href="/shop?category=kids/t-shirts" className="block py-2">
+                <Link href="/shop?category=kids" className="block py-2">
                   T-Shirts
                 </Link>
-                <Link href="/shop?category=kids/hoodies" className="block py-2">
+                <Link href="/shop?category=kids" className="block py-2">
                   Hoodies
                 </Link>
-                <Link href="/shop?category=kids/pants" className="block py-2">
+                <Link href="/shop?category=kids" className="block py-2">
                   Pants
                 </Link>
-                <Link href="/shop?category=kids/school-wear" className="block py-2">
+                <Link href="/shop?category=kids" className="block py-2">
                   School Wear
                 </Link>
               </div>
@@ -114,7 +128,10 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
           </div>
 
           <div className="border-b border-gray-200">
-            <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("accessories")}>
+            <div
+              className="py-4 flex justify-between items-center"
+              onClick={() => toggleExpand("accessories")}
+            >
               <Link href="/shop?category=accessories" className="text-lg">
                 Accessories
               </Link>
@@ -125,16 +142,16 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
             </div>
             {expandedItem === "accessories" && (
               <div className="pl-4 pb-4 space-y-2">
-                <Link href="/shop?category=accessories/caps" className="block py-2">
+                <Link href="/shop?category=accessories" className="block py-2">
                   Caps
                 </Link>
-                <Link href="/shop?category=accessories/bags" className="block py-2">
+                <Link href="/shop?category=accessories" className="block py-2">
                   Bags
                 </Link>
-                <Link href="/shop?category=accessories/socks" className="block py-2">
+                <Link href="/shop?category=accessories" className="block py-2">
                   Socks
                 </Link>
-                <Link href="/shop?category=accessories/masks" className="block py-2">
+                <Link href="/shop?category=accessories" className="block py-2">
                   Masks
                 </Link>
               </div>
@@ -142,10 +159,11 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
           </div>
 
           <div className="border-b border-gray-200">
-            <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("our-story")}>
-              <Link href="/our-story" className="text-lg">
-                Our Story
-              </Link>
+            <div
+              className="py-4 flex justify-between items-center"
+              onClick={() => toggleExpand("our-story")}
+            >
+              Our Story
               <ChevronDown
                 size={20}
                 className={`transition-transform ${expandedItem === "our-story" ? "rotate-180" : ""}`}
@@ -165,19 +183,28 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
                 <Link href="/terms-and-conditions" className="block py-2">
                   Terms and Conditions
                 </Link>
+                <Link
+                  href="/about-us#our-customizations"
+                  className="block py-2"
+                >
+                  Our Customizations
+                </Link>
               </div>
             )}
           </div>
 
           <div className="pt-4">
-            <Link href="/contact-us" className="btn btn-primary block text-center">
+            <Link
+              href="/contact-us"
+              className="btn btn-primary block text-center"
+            >
               Contact us
             </Link>
           </div>
         </nav>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MobileMenu
+export default MobileMenu;

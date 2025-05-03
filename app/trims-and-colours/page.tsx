@@ -52,7 +52,7 @@ const page = () => {
                 <span className='font-semibold'>Trims</span> are the small yet essential details that enhance both the functionality and aesthetics of a garment. From buttons and zippers to labels, threads, and decorative accents, trims add the perfect finishing touch to clothing. Whether for style, durability, or branding, our carefully selected trims ensure high-quality craftsmanship and a refined look in every piece.
               </p>
             </div>
-            <div className='w-full m-0 p-0 grid grid-cols-3 gap-10 justify-items-center'>
+            <div className='w-full m-0 p-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center'>
               {trimsContent.map((trims, index) => (
                 <Trimscard
                   key={index}

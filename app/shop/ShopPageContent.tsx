@@ -6,6 +6,7 @@ import Link from "next/link";
 import CategoryFilters from "@/components/category/category-filters";
 import ProductCard from "@/components/product/product-card";
 import { Product } from "@/lib/sanity";
+import SkeletonLoader from "@/components/layout/sekelton3";
 
 export default function ShopPage() {
   const searchParams = useSearchParams();
@@ -79,10 +80,13 @@ export default function ShopPage() {
 
   return (
     <div className="max-w-[100rem] mx-auto px-10 lg:px-24 py-12">
-      <h1 className="text-3xl font-bold mb-2">{title}</h1>
-      <p className="mb-4 text-gray-600">Get a Quote Now</p>
-      <p className="mb-8 text-sm">{totalCount} Products</p>
-
+      <div className="flex">
+        <div className="flex-1">
+          <h1 className="text-3xl font-bold mb-2">{title}</h1>
+          <p className="mb-4 text-gray-600 cursor-default">Get a Quote Now</p>
+        </div>
+        <h2 className="mb-8 text-sm"><span className="font-bold">({totalCount}) </span>Products</h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="md:col-span-1">
           <CategoryFilters />
@@ -90,9 +94,7 @@ export default function ShopPage() {
 
         <div className="md:col-span-3">
           {loading ? (
-            <div className="col-span-full flex justify-center py-12">
-              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-black"></div>
-            </div>
+              <SkeletonLoader />
           ) : (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

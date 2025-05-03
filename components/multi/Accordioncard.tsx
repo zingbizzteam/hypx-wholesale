@@ -22,7 +22,7 @@ const AccordionCard: React.FC<AccordionCardProps> = ({
   };
 
   return (
-    <div className="w-[330px] h-[470px] mx-auto overflow-hidden bg-[#F0F0F0] border border-gray-200 rounded-md shadow-sm">
+    <div className="md:w-[330px] h-[470px] w-full mx-auto overflow-hidden bg-[#F0F0F0] border border-gray-200 rounded-[8px] shadow-sm">
       {isExpanded ? (
         <div className="flex flex-col">
           {/* Expanded View */}
@@ -47,7 +47,7 @@ const AccordionCard: React.FC<AccordionCardProps> = ({
           {/* Collapsed View */}
           <div className="p-4 flex-grow flex flex-col justify-center items-center mt-2">
             <h2 className="text-center font-bold uppercase mb-2">{title}</h2>
-            <div className="overflow-hidden rounded-sm w-80 h-80">
+            <div className="overflow-hidden rounded w-[340px] h-[340px] md:w-[300px] md:h-[300px]">
               <Image
                 src={imageSrc}
                 alt={`${title} image`}

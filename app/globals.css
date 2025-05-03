@@ -27,40 +27,6 @@ h6 {
   max-width: 1280px;
 }
 
-.container1{
-  width: 100%;
-  justify-items: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.container2{
-  min-width: 1250px;
-  max-width: 1920px;
-  margin-left: auto;
-  margin-right: auto;
-  justify-items: center;
-}
-
-.container3{
-  width: 80%;
-}
-
-.ch1{
-  font-size: 48px;
-  font-weight: 700;
-}
-
-.ch2{
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.ch3{
-  font-size: 24px;
-  font-weight: 700;
-}
-
 /* Form Elements */
 input,
 textarea {
@@ -85,7 +51,7 @@ textarea {
 }
 
 .footer-link {
-  @apply block py-1 text-gray-500 hover:text-white transition-colors;
+  @apply block py-1 text-white hover:text-[#858585] transition-colors;
 }
 
 /* Custom Styles */
@@ -137,16 +103,19 @@ textarea {
   .ch1{
     font-size: 48px;
     font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
   }
   
   .ch2{
     font-size: 32px;
     font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
   }
   
   .ch3{
     font-size: 24px;
     font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
   }
   
   .cp1{
@@ -220,6 +189,152 @@ textarea {
 
   .container3{
     width: 80%;
+  }
+
+  .cc{
+    justify-items: center;
+    place-content: center;
+  }
+}
+
+@media (max-width: 1024px){
+  .ch1{
+    font-size: 48px;
+    font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
+  }
+  
+  .ch2{
+    font-size: 32px;
+    font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
+  }
+  
+  .ch3{
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
+  }
+  
+  .cp1{
+    font-size: 32px;
+    font-weight: 400;
+    font-family: 'roboto', sans-serif;
+  }
+  
+  .cp2{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'roboto', sans-serif;
+  }
+
+  .cp3{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'roboto', sans-serif;
+  }
+  .cp3b{
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'roboto', sans-serif;
+  }
+
+  .container2{
+    margin-left: auto;
+    margin-right: auto;
+    justify-items: center;
+  }
+
+  .container3{
+    width: 80%;
+  }
+
+  .cc{
+    justify-items: center;
+    place-content: center;
+  }
+}
+
+@media (max-width: 768px){
+  .ch1{
+    font-size: 32px;
+    font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
+  }
+  
+  .ch2{
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
+  }
+  
+  .ch3{
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'space-grotesk', sans-serif;
+  }
+  
+  .cp1{
+    font-size: 22px;
+    font-weight: 400;
+    font-family: 'roboto', sans-serif;
+  }
+  
+  .cp2{
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'roboto', sans-serif;
+  }
+
+  .cp3{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'roboto', sans-serif;
+  }
+  .cp3b{
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'roboto', sans-serif;
+  }
+
+  .ah1{
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Worksans', sans-serif;
+  }
+
+  .ah1b{
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Worksans', sans-serif;
+  }
+
+  .ap1{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Worksans', sans-serif;
+  }
+
+  .ap2{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Worksans', sans-serif;
+  }
+
+  .ap2b{
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Worksans', sans-serif;
+  }
+
+  .container2{
+    margin-left: auto;
+    margin-right: auto;
+    justify-items: center;
+  }
+  
+  .container3{
+    width: 95%;
   }
 
   .cc{

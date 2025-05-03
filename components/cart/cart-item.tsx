@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
 import { updateCart, removeFromCart } from "@/lib/localStorage";
@@ -16,8 +16,7 @@ type CartItemProps = {
     quantity: number;
     slug: { current: string };
     images: { asset: { _ref: string }; hotspot: boolean }[];
-
-    productId?: number; // Added this in case item already has a productId property
+    productId?: number;
   };
   onRemove: (id: number) => void;
 };
@@ -25,77 +24,58 @@ type CartItemProps = {
 const CartItem = ({ item, onRemove }: CartItemProps) => {
   const [quantity, setQuantity] = useState(item.quantity);
 
-  // Function to truncate text with ellipsis
   const truncateText = (text: string, maxLength: number = 100) => {
     if (!text) return "";
     if (text.length <= maxLength) return text;
     return text.substring(0, maxLength) + "...";
   };
 
-  // Update the cart in localStorage when quantity is changed
   const updateQuantityInCart = (newQuantity: number) => {
-    // Ensure quantity is between 10 and 10,000
-    if (newQuantity >= 10 && newQuantity <= 10000) {
+    if (newQuantity >= 1 && newQuantity <= 100000) {
       setQuantity(newQuantity);
       updateCart(item, newQuantity);
     }
   };
 
-
-
-  // Handle removing the item from the cart
   const handleRemoveItem = () => {
     const productId = item.productId || item._id;
-    // Call the removeFromCart function
     removeFromCart(productId);
-    // Also call the parent's onRemove function to update the UI
     onRemove(productId);
   };
 
-  // Use urlFor to build the correct image URL
   const imageUrl = urlFor(item.images[0].asset).url() || "/placeholder.svg";
-
-  // Truncate the description
   const truncatedDescription = truncateText(item.description, 100);
 
   return (
-    <div className="grid grid-cols-1 md:flex gap-4 items-center border-b border-[#B5B5B5] pb-8">
-      <div className="md:flex justify-between items-center md:w-5/6">
-        <Link
-          href={`/product/${item.slug.current}`}
-          className="flex items-center space-x-4"
-        >
-          <div className="relative w-24 h-24 flex-shrink-0">
-            <Image
-              src={imageUrl}
-              alt={item.name}
-              fill
-              className="object-cover"
-            />
+    <div className="flex flex-col md:flex-row gap-4 items-start md:items-center border-b border-[#B5B5B5] pb-8">
+      {/* Product info */}
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center md:w-full w-full gap-4">
+        <Link href={`/product/${item.slug.current}`} className="flex items-center gap-4 flex-1 min-w-0">
+          <div className="relative w-20 h-20 md:w-24 md:h-24 flex-shrink-0">
+            <Image src={imageUrl} alt={item.name} fill className="object-cover rounded-md" />
           </div>
-          <div>
-            <h3 className="text-xl font-medium">{item.name}</h3>
-            <p className="text-sm text-gray-600 mt-1">{item.description}</p>
+          <div className="min-w-0">
+            <h3 className="text-md font-medium truncate">{item.name}</h3>
+            <p className="text-sm text-gray-600 mt-1 line-clamp-2">{truncatedDescription}</p>
           </div>
         </Link>
 
-        <QuantityAdjuster
-          value={quantity}
-          setValue={updateQuantityInCart}
-          min={100}
-          max={100000}
-        />
-      </div>
-
-      <div className="md:w-1/6 md:flex md:justify-center">
-        <button
-          className="text-[#FF0000] flex gap-2 flex-col items-center justify-end mt-2 text-sm"
-          aria-label="Remove item"
-          onClick={handleRemoveItem}
-        >
-          <Trash2 size={22} className="text-black" />
-          <span className="mr-1">Remove</span>
-        </button>
+        {/* Quantity adjuster and remove button container */}
+        <div className="flex flex-row items-center gap-6 w-full md:w-auto">
+          <div className="md:w-auto">
+            <QuantityAdjuster value={quantity} setValue={updateQuantityInCart} min={1} max={100000} />
+          </div>
+          <div className="flex justify-start md:justify-center">
+            <button
+              className="text-[#FF0000] flex items-center gap-2 text-sm hover:underline"
+              aria-label="Remove item"
+              onClick={handleRemoveItem}
+            >
+              <Trash2 size={20} className="text-black" />
+              <span>Remove</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
