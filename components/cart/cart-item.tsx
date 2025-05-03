@@ -31,7 +31,7 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
   };
 
   const updateQuantityInCart = (newQuantity: number) => {
-    if (newQuantity >= 10 && newQuantity <= 10000) {
+    if (newQuantity >= 1 && newQuantity <= 100000) {
       setQuantity(newQuantity);
       updateCart(item, newQuantity);
     }
@@ -47,68 +47,35 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
   const truncatedDescription = truncateText(item.description, 100);
 
   return (
-    <div className="
-      flex flex-col md:flex-row
-      gap-4
-      items-start md:items-center
-      border-b border-[#B5B5B5] pb-8
-    ">
+    <div className="flex flex-col md:flex-row gap-4 items-start md:items-center border-b border-[#B5B5B5] pb-8">
       {/* Product info */}
-      <div className="
-        flex flex-row 
-        md:flex-row md:justify-between md:items-center
-        md:w-5/6
-        w-full
-        gap-2
-      ">
-        <Link
-          href={`/product/${item.slug.current}`}
-          className="flex items-center gap-4"
-        >
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center md:w-full w-full gap-4">
+        <Link href={`/product/${item.slug.current}`} className="flex items-center gap-4 flex-1 min-w-0">
           <div className="relative w-20 h-20 md:w-24 md:h-24 flex-shrink-0">
-            <Image
-              src={imageUrl}
-              alt={item.name}
-              fill
-              className="object-cover"
-            />
+            <Image src={imageUrl} alt={item.name} fill className="object-cover rounded-md" />
           </div>
-          <div>
-            <h3 className="text-md font-medium w-[150px] md:w-auto">{item.name}</h3>
-            <p className="text-sm text-gray-600 mt-1 line-clamp-2 w-[150px] md:w-auto">{truncatedDescription}</p>
+          <div className="min-w-0">
+            <h3 className="text-md font-medium truncate">{item.name}</h3>
+            <p className="text-sm text-gray-600 mt-1 line-clamp-2">{truncatedDescription}</p>
           </div>
         </Link>
-      
-      {/* Quantity adjuster: full width on mobile, auto on desktop */}
-      <div className="justify-end flex flex-col md:flex-row md:gap-5">
-      <div className="w-[120px] md:w-auto mt-2 md:mt-0">
-        <QuantityAdjuster
-          value={quantity}
-          setValue={updateQuantityInCart}
-          min={100}
-          max={100000}
-        />
-      </div>
-      {/* Remove button: full width on mobile, centered on desktop */}
-      <div className=" md:w-1/6 flex justify-center md:justify-center">
-        <button
-          className="
-            text-[#FF0000]
-            flex flex-row md:flex-col
-            items-center md:items-center
-            gap-2 md:gap-2
-            justify-center md:justify-center
-            mt-2 md:mt-0
-            text-sm
-          "
-          aria-label="Remove item"
-          onClick={handleRemoveItem}
-        >
-          <Trash2 size={22} className="text-black" />
-          <span>Remove</span>
-        </button>
-      </div>
-      </div>
+
+        {/* Quantity adjuster and remove button container */}
+        <div className="flex flex-row items-center gap-6 w-full md:w-auto">
+          <div className="md:w-auto">
+            <QuantityAdjuster value={quantity} setValue={updateQuantityInCart} min={1} max={100000} />
+          </div>
+          <div className="flex justify-start md:justify-center">
+            <button
+              className="text-[#FF0000] flex items-center gap-2 text-sm hover:underline"
+              aria-label="Remove item"
+              onClick={handleRemoveItem}
+            >
+              <Trash2 size={20} className="text-black" />
+              <span>Remove</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

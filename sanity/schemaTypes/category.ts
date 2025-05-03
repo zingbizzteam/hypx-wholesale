@@ -1,9 +1,11 @@
 import { defineField, defineType } from 'sanity'
+import {UlistIcon} from '@sanity/icons'
 
 export default defineType({
   name: 'category',
   title: 'Category',
   type: 'document',
+  icon: UlistIcon,
   fields: [
     defineField({
       name: 'name',

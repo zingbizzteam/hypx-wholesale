@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { client } from "@/lib/sanity";
-import { v4 as uuidv4 } from 'uuid';
-import { getCustomerEmailHtml, getQuoteTeamEmailHtml, sendEmail } from "@/lib/email";
+import { v4 as uuidv4 } from "uuid";
+import {
+  getCustomerEmailHtml,
+  getQuoteTeamEmailHtml,
+  sendEmail,
+} from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   try {
@@ -28,6 +32,9 @@ export async function POST(req: NextRequest) {
     const orderDoc = {
       _type: "order",
       orderNumber,
+      customerName: body.customerName,
+      customerEmail: body.customerEmail,
+      customerPhone: body.customerPhone,
       orderDate: new Date().toISOString(),
       items,
       status: "pending",
@@ -82,8 +89,16 @@ export async function POST(req: NextRequest) {
     const teamHtml = getQuoteTeamEmailHtml(orderForEmail, customer);
 
     await Promise.all([
-      sendEmail(customer.email, `Your Quote Confirmation - ${orderNumber}`, customerHtml),
-      sendEmail("hypxwholesaleofficial@gmail.com", `New Quote Request - ${orderNumber}`, teamHtml),
+      sendEmail(
+        customer.email,
+        `Your Quote Confirmation - ${orderNumber}`,
+        customerHtml
+      ),
+      sendEmail(
+        "hypxwholesaleofficial@gmail.com",
+        `New Quote Request - ${orderNumber}`,
+        teamHtml
+      ),
     ]);
 
     return NextResponse.json({

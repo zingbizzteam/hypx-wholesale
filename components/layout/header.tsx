@@ -7,7 +7,7 @@ import { ChevronDown, Menu, SearchIcon, ShoppingCartIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import SearchBar from "../SearchBar";
 
-const Men = [
+export const Men = [
   {
     title: "T-Shirts",
     href: "/shop?category=t-shirt",
@@ -38,7 +38,7 @@ const Men = [
   },
 ];
 
-const Women = [
+export const Women = [
   {
     title: "T-Shirts",
     href: "/shop?category=t-shirt",
@@ -73,7 +73,7 @@ const Women = [
   },
 ];
 
-const Uniform = [
+export const Uniform = [
   {
     title: "School Uniform",
     href: "/shop?category=school-uniforms",
@@ -92,7 +92,7 @@ const Uniform = [
   },
 ]
 
-const Accessories = [
+export const Accessories = [
   {
     title: "Bags",
     href: "/shop?category=bags",

@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: "Shop | HYPX Wholesale",
       description: "Explore high-quality wholesale products at unbeatable prices from HYPX.",
-      url: `${baseUrl}/category/${slug}`,
+      url: `${baseUrl}/shop`,
       siteName: "HYPX",
       images: [
         {

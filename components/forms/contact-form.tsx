@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
 
@@ -15,28 +14,49 @@ const ContactForm = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState("")
+  const [error, setError] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setMessage("")
+    setError("")
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setMessage("Your message has been sent. We'll get back to you soon!")
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        countryCode: "+91",
-        address: "",
-      })
-    }, 1000)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setMessage("Thank you for your message! We'll get back to you soon.");
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          countryCode: "+91",
+          address: "",
+        });
+      } else {
+        setError(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("Failed to submit the form. Please try again later.");
+      console.error("Form submission error:", err);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -57,23 +77,22 @@ const ContactForm = () => {
         />
       </div>
 
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium mb-1">
-          E-mail
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Enter Your E-mail"
-          required
-          className="w-full"
-        />
-      </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium mb-1">
+            E-mail
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter Your E-mail"
+            required
+            className="w-full"
+          />
+        </div>
         <div>
           <label htmlFor="phone" className="block text-sm font-medium mb-1">
             Phone Number
@@ -131,6 +150,7 @@ const ContactForm = () => {
       </button>
 
       {message && <div className="mt-4 p-3 bg-green-50 text-green-800 rounded">{message}</div>}
+      {error && <div className="mt-4 p-3 bg-red-50 text-red-800 rounded">{error}</div>}
     </form>
   )
 }
