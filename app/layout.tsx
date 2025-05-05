@@ -76,7 +76,7 @@ export default function RootLayout({
       <head>
         <meta
           name="google-site-verification"
-          content="google-site-verification: google485ccfa4c02f3a70.html"
+          content="k9iAtDmkxl8YoYkay1tHY_e-NxUaQtpjQ2JfAon8_4M"
         />
       </head>
       <body className={`${spaceGrotesk.variable} ${roboto.variable}`}>
