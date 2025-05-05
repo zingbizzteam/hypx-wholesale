@@ -73,6 +73,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="google-site-verification: google485ccfa4c02f3a70.html"
+        />
+      </head>
       <body className={`${spaceGrotesk.variable} ${roboto.variable}`}>
       <ToastContainer />
         <Header />
