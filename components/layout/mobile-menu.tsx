@@ -36,7 +36,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
         <nav className="space-y-0">
           <div className="border-b border-gray-200">
             <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("men")}>
-              <Link href="/category/men" className="text-lg">
+              <Link href="/shop?category=men" className="text-lg">
                 Men
               </Link>
               <ChevronRight size={20} className={`transition-transform ${expandedItem === "men" ? "rotate-90" : ""}`} />
@@ -61,7 +61,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
 
           <div className="border-b border-gray-200">
             <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("women")}>
-              <Link href="/category/women" className="text-lg">
+              <Link href="/shop?category=women" className="text-lg">
                 Women
               </Link>
               <ChevronRight
@@ -89,8 +89,8 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
 
           <div className="border-b border-gray-200">
             <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("kids")}>
-              <Link href="/category/kids" className="text-lg">
-                Kids
+              <Link href="/shop?category=uniform" className="text-lg">
+                Uniform
               </Link>
               <ChevronRight
                 size={20}
@@ -117,7 +117,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
 
           <div className="border-b border-gray-200">
             <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("accessories")}>
-              <Link href="/category/accessories" className="text-lg">
+              <Link href="/shop?category=accessories" className="text-lg">
                 Accessories
               </Link>
               <ChevronRight
@@ -132,12 +132,6 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
                 </Link>
                 <Link href="/category/accessories/bags" className="block py-2">
                   Bags
-                </Link>
-                <Link href="/category/accessories/socks" className="block py-2">
-                  Socks
-                </Link>
-                <Link href="/category/accessories/masks" className="block py-2">
-                  Masks
                 </Link>
               </div>
             )}
