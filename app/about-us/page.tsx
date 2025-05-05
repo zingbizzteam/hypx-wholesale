@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "HYPX",
       images: [
         {
-          url: `${baseUrl}/og-image.jpg`, // You can customize this image for the About Us page
+          url: `/hypx.png`, // You can customize this image for the About Us page
           width: 1200,
           height: 630,
           alt: "About HYPX"
@@ -35,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "About Us | HYPX Wholesale",
       description: "Learn about HYPX Wholesale, your partner in creating premium, customizable streetwear.",
-      images: [`${baseUrl}/og-image.jpg`]
+      images: [`/hypx.png`],
     },
     metadataBase: new URL(baseUrl),
   };
@@ -112,12 +112,12 @@ export default function AboutUs() {
               <div className="w-full md:w-[65%]">
                 <h2 className="ch2 mb-5 leading-none">Our Mission</h2>
                 <p className="cp2 mb-4">Create. Express. Inspire. That's the spirit of HYPX.</p>
-                <p className="mb-4 text-justify text-sm">
+                <p className="mb-4 text-justify text-sm leading-normal">
                   Our mission is to revolutionize the way you express yourself through fashion. We are dedicated to
                   providing premium wholesale streetwear that empowers brands to showcase their unique individuality. By
                   blending creativity with premium quality, we empower you to make your mark in the fashion world.
                 </p>
-                <p className="mb-4 text-justify text-sm">
+                <p className="mb-4 text-justify text-sm leading-normal">
                   We are also committed to curating the finest in luxury streetwear, connecting style enthusiasts with
                   exclusive brands that shape urban culture. Our goal is to ensure self-expression, celebrate uniqueness,
                   and redefine streetwear as a canvas for personal identity.

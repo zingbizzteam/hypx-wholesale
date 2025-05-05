@@ -36,24 +36,33 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
         <nav className="space-y-0">
           <div className="border-b border-gray-200">
             <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("men")}>
-              <Link href="/category/men" className="text-lg">
+              <Link href="/shop?category=men" className="text-lg">
                 Men
               </Link>
               <ChevronRight size={20} className={`transition-transform ${expandedItem === "men" ? "rotate-90" : ""}`} />
             </div>
             {expandedItem === "men" && (
               <div className="pl-4 pb-4 space-y-2">
-                <Link href="/category/men/t-shirts" className="block py-2">
+                <Link href="/shop?category=t-shirt" className="block py-2">
                   T-Shirts
                 </Link>
-                <Link href="/category/men/hoodies" className="block py-2">
-                  Hoodies
+                <Link href="/shop?category=tank" className="block py-2">
+                  Tank
                 </Link>
-                <Link href="/category/men/pants" className="block py-2">
+                <Link href="/shop?category=jacket" className="block py-2">
+                  Jacket
+                </Link>
+                <Link href="/shop?category=sweatshirt" className="block py-2">
+                  Sweatshirt
+                </Link>
+                <Link href="/shop?category=hoodie" className="block py-2">
+                  Hoodie
+                </Link>
+                <Link href="/shop?category=shorts" className="block py-2">
+                  Shorts
+                </Link>
+                <Link href="/shop?category=pants" className="block py-2">
                   Pants
-                </Link>
-                <Link href="/category/men/jackets" className="block py-2">
-                  Jackets
                 </Link>
               </div>
             )}
@@ -61,7 +70,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
 
           <div className="border-b border-gray-200">
             <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("women")}>
-              <Link href="/category/women" className="text-lg">
+              <Link href="/shop?category=women" className="text-lg">
                 Women
               </Link>
               <ChevronRight
@@ -71,17 +80,29 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
             </div>
             {expandedItem === "women" && (
               <div className="pl-4 pb-4 space-y-2">
-                <Link href="/category/women/t-shirts" className="block py-2">
+                <Link href="/shop?category=t-shirt" className="block py-2">
                   T-Shirts
                 </Link>
-                <Link href="/category/women/blouses" className="block py-2">
-                  Blouses
+                <Link href="/shop?category=tank" className="block py-2">
+                  Tank
                 </Link>
-                <Link href="/category/women/dresses" className="block py-2">
-                  Dresses
+                <Link href="/shop?category=crop-tee" className="block py-2">
+                  Crop Tee
                 </Link>
-                <Link href="/category/women/skirts" className="block py-2">
-                  Skirts
+                <Link href="/shop?category=jacket" className="block py-2">
+                  Jacket
+                </Link>
+                <Link href="/shop?category=sweatshirt" className="block py-2">
+                  Sweatshirt
+                </Link>
+                <Link href="/shop?category=hoodie" className="block py-2">
+                  Hoodie
+                </Link>
+                <Link href="/shop?category=shorts" className="block py-2">
+                  Shorts
+                </Link>
+                <Link href="/shop?category=pants" className="block py-2">
+                  Pants
                 </Link>
               </div>
             )}
@@ -89,8 +110,8 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
 
           <div className="border-b border-gray-200">
             <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("kids")}>
-              <Link href="/category/kids" className="text-lg">
-                Kids
+              <Link href="/shop?category=uniform" className="text-lg">
+                Uniform
               </Link>
               <ChevronRight
                 size={20}
@@ -99,17 +120,17 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
             </div>
             {expandedItem === "kids" && (
               <div className="pl-4 pb-4 space-y-2">
-                <Link href="/category/kids/t-shirts" className="block py-2">
-                  T-Shirts
+                <Link href="/shop?category=school-uniforms" className="block py-2">
+                  School Uniform
                 </Link>
-                <Link href="/category/kids/hoodies" className="block py-2">
-                  Hoodies
+                <Link href="/shop?category=corporate-uniforms" className="block py-2">
+                  Corporate Uniform
                 </Link>
-                <Link href="/category/kids/pants" className="block py-2">
-                  Pants
+                <Link href="/shop?category=chef-uniform" className="block py-2">
+                  Chef Uniform
                 </Link>
-                <Link href="/category/kids/school-wear" className="block py-2">
-                  School Wear
+                <Link href="/shop?category=construction-wear,surgical-wear" className="block py-2">
+                  Construction & Medical Wear
                 </Link>
               </div>
             )}
@@ -117,7 +138,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
 
           <div className="border-b border-gray-200">
             <div className="py-4 flex justify-between items-center" onClick={() => toggleExpand("accessories")}>
-              <Link href="/category/accessories" className="text-lg">
+              <Link href="/shop?category=accessories" className="text-lg">
                 Accessories
               </Link>
               <ChevronRight
@@ -127,17 +148,11 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
             </div>
             {expandedItem === "accessories" && (
               <div className="pl-4 pb-4 space-y-2">
-                <Link href="/category/accessories/caps" className="block py-2">
+                <Link href="/shop?category=caps" className="block py-2">
                   Caps
                 </Link>
-                <Link href="/category/accessories/bags" className="block py-2">
+                <Link href="/shop?category=bags" className="block py-2">
                   Bags
-                </Link>
-                <Link href="/category/accessories/socks" className="block py-2">
-                  Socks
-                </Link>
-                <Link href="/category/accessories/masks" className="block py-2">
-                  Masks
                 </Link>
               </div>
             )}

@@ -62,7 +62,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
         {/* Fabric field */}
         <div className="mt-8">
           <h2 className="text-base font-semibold mb-2">Fabrics:</h2>
-          <div className="flex w-full space-x-2">
+          <div className="w-full grid grid-cols-2 gap-4 md:flex md:space-x-4">
             <h3 className="font-light text-base border border-[#B9B9B9] 
             rounded py-2 px-6 hover:border-black
             transition-all ease-in-out duration-200">

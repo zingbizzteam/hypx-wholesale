@@ -50,9 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "HYPX",
       images: [
         {
-          url: `${baseUrl}/og-image.jpg`,
-          width: 1200,
-          height: 630,
+          url: `/hypx.png`,
           alt: "HYPX Wholesale Clothing Banner"
         }
       ],
@@ -62,7 +60,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "HYPX | Wholesale Clothing",
       description: "Wholesale fashion & apparel at the best prices for resellers. Shop HYPX today.",
-      images: [`${baseUrl}/og-image.jpg`]
+      images: [`/hypx.png`],
     },
     metadataBase: new URL(baseUrl)
   };
