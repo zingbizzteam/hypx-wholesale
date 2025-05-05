@@ -13,6 +13,7 @@ const Men = [
   { title: "Jacket", href: "/shop?category=jacket" },
   { title: "Sweatshirt", href: "/shop?category=sweatshirt" },
   { title: "Hoodie", href: "/shop?category=hoodie" },
+  { title: "Gym Wear", href: "/shop?category=gym-wear" },
   { title: "Shorts", href: "/shop?category=shorts" },
   { title: "Pants", href: "/shop?category=pants" },
 ];
@@ -24,6 +25,7 @@ const Women = [
   { title: "Jacket", href: "/shop?category=jacket" },
   { title: "Sweatshirt", href: "/shop?category=sweatshirt" },
   { title: "Hoodie", href: "/shop?category=hoodie" },
+  { title: "Gym Wear", href: "/shop?category=gym-wear" },
   { title: "Shorts", href: "/shop?category=shorts" },
   { title: "Pants", href: "/shop?category=pants" },
 ];

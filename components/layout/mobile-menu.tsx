@@ -58,6 +58,9 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
                 <Link href="/shop?category=hoodie" className="block py-2">
                   Hoodie
                 </Link>
+                <Link href="/shop?category=gym-wear" className="block py-2">
+                  Gym Wear
+                </Link>
                 <Link href="/shop?category=shorts" className="block py-2">
                   Shorts
                 </Link>
@@ -97,6 +100,9 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
                 </Link>
                 <Link href="/shop?category=hoodie" className="block py-2">
                   Hoodie
+                </Link>
+                <Link href="/shop?category=gym-wear" className="block py-2">
+                  Gym Wear
                 </Link>
                 <Link href="/shop?category=shorts" className="block py-2">
                   Shorts
