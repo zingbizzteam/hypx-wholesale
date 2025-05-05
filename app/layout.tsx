@@ -6,6 +6,7 @@ import Header from "@/components/layout/header"
 import Footer from "@/components/layout/footer"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Script from "next/script"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -78,9 +79,26 @@ export default function RootLayout({
           name="google-site-verification"
           content="MHPddiEcFc76aZDTRmsLYYQ1LpNiBCLab3MzhP2RxXs"
         />
+         {/* Google Analytics */}
+         <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-0RQY8Z9P6W"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-0RQY8Z9P6W');
+            `,
+          }}
+        />
       </head>
       <body className={`${spaceGrotesk.variable} ${roboto.variable}`}>
-      <ToastContainer />
+        <ToastContainer />
         <Header />
         <main className="">{children}</main>
         <Footer />
