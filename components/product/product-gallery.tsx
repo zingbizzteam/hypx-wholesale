@@ -18,7 +18,6 @@ const ProductGallery = ({ images, thumbnails }: ProductGalleryProps) => {
   const [thumbStart, setThumbStart] = useState(0)
   const thumbEnd = Math.min(thumbStart + THUMBNAILS_VISIBLE, thumbnails.length)
 
-  // Keyboard navigation for main image
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
@@ -29,24 +28,19 @@ const ProductGallery = ({ images, thumbnails }: ProductGalleryProps) => {
     }
     window.addEventListener("keydown", handleKey)
     return () => window.removeEventListener("keydown", handleKey)
-    // eslint-disable-next-line
   }, [activeImage, thumbStart, thumbEnd])
 
-  // Change main image to previous
   const handlePrevImage = () => {
     setActiveImage(prev => {
       const newIndex = (prev - 1 + images.length) % images.length
-      // Scroll thumbnails if needed
       if (newIndex < thumbStart) setThumbStart(Math.max(0, newIndex))
       return newIndex
     })
   }
 
-  // Change main image to next
   const handleNextImage = () => {
     setActiveImage(prev => {
       const newIndex = (prev + 1) % images.length
-      // Scroll thumbnails if needed
       if (newIndex >= thumbEnd) setThumbStart(Math.min(thumbnails.length - THUMBNAILS_VISIBLE, newIndex - THUMBNAILS_VISIBLE + 1))
       return newIndex
     })
@@ -54,7 +48,6 @@ const ProductGallery = ({ images, thumbnails }: ProductGalleryProps) => {
 
   return (
     <div>
-      {/* Main Image with arrows */}
       <div className="relative mb-4 aspect-square">
         <Zoom>
           <Image
