@@ -63,7 +63,10 @@ export async function generateMetadata(): Promise<Metadata> {
       description: "Wholesale fashion & apparel at the best prices for resellers. Shop HYPX today.",
       images: [`/hypx.png`],
     },
-    metadataBase: new URL(baseUrl)
+    metadataBase: new URL(baseUrl),
+    verification: {
+      google:"hqBx-Q3itadKdKdRIwMOQ4-Pdl5MCbCtkqThdfynRmU",
+    }
   };
 }
 
