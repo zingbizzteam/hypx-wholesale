@@ -34,6 +34,8 @@ const Uniform = [
   { title: "School Uniform", href: "/shop?category=school-uniforms" },
   { title: "Corporate Uniform", href: "/shop?category=corporate-uniforms" },
   { title: "Chef Uniform", href: "/shop?category=chef-uniform" },
+
+
   {
     title: "Construction & Medical Wear",
     href: "/shop?category=construction-wear,surgical-wear",
@@ -44,6 +46,7 @@ const Accessories = [
   { title: "Bags", href: "/shop?category=bags" },
   { title: "Caps", href: "/shop?category=caps" },
 ];
+
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
