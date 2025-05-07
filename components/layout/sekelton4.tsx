@@ -4,9 +4,9 @@ import React from 'react';
 
 export default function SkeletonLoader() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full p-0">
       {/* Product Card 1 */}
-      <div className="bg-white border border-[#B5B5B5] overflow-hidden w-56">
+      <div className="bg-white border border-[#B5B5B5] overflow-hidden">
         <div className="aspect-square bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse"></div>
         <div className="p-5">
           <div className="h-6 w-4/5 mb-5 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded animate-pulse"></div>
@@ -18,7 +18,7 @@ export default function SkeletonLoader() {
       </div>
 
       {/* Product Card 2 */}
-      <div className="bg-white border border-[#B5B5B5] overflow-hidden w-56">
+      <div className="bg-white border border-[#B5B5B5] overflow-hidden">
         <div className="aspect-square bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse"></div>
         <div className="p-5">
           <div className="h-6 w-4/5 mb-5 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded animate-pulse"></div>
@@ -30,7 +30,7 @@ export default function SkeletonLoader() {
       </div>
 
       {/* Product Card 3 */}
-      <div className="bg-white border border-[#B5B5B5] overflow-hidden w-56">
+      <div className="bg-white border border-[#B5B5B5] overflow-hidden">
         <div className="aspect-square bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse"></div>
         <div className="p-5">
           <div className="h-6 w-4/5 mb-5 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded animate-pulse"></div>
@@ -41,7 +41,7 @@ export default function SkeletonLoader() {
         </div>
       </div>
       {/* Product Card 4 */}
-      <div className="bg-white border border-[#B5B5B5] overflow-hidden w-56">
+      <div className="bg-white border border-[#B5B5B5] overflow-hidden">
         <div className="aspect-square bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse"></div>
         <div className="p-5">
           <div className="h-6 w-4/5 mb-5 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded animate-pulse"></div>

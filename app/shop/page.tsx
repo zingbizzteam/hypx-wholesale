@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: "HYPX",
       images: [
         {
-          url: `${baseUrl}/og-image.jpg`,
+          url: `hypx.png`,
           width: 1200,
           height: 630,
           alt: `shop Category Image`
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: "Shop | HYPX Wholesale",
       description: `Shop bulk wholesale for your store at HYPX.`,
-      images: [`${baseUrl}/og-image.jpg`]
+      images: [`/hypx.png`]
     },
     metadataBase: new URL(baseUrl),
   };

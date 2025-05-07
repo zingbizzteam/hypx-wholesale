@@ -11,7 +11,7 @@ export default function ContactUs() {
             <ContactForm />
           </div>
         </div>
-        <div className="relative h-[50vh] md:w-[30%] md:h-auto bg-gray-100 justify-last">
+        <div className="hidden md:relative h-[50vh] md:w-[30%] md:h-auto bg-gray-100 justify-last">
           <Image
             src="Images/Contact/contact.png"
             alt="Contact HYPX Wholesale"

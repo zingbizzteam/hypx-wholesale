@@ -6,6 +6,7 @@ import Header from "@/components/layout/header"
 import Footer from "@/components/layout/footer"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Script from "next/script"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -50,9 +51,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "HYPX",
       images: [
         {
-          url: `${baseUrl}/og-image.jpg`,
-          width: 1200,
-          height: 630,
+          url: `/hypx.png`,
           alt: "HYPX Wholesale Clothing Banner"
         }
       ],
@@ -62,9 +61,12 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "HYPX | Wholesale Clothing",
       description: "Wholesale fashion & apparel at the best prices for resellers. Shop HYPX today.",
-      images: [`${baseUrl}/og-image.jpg`]
+      images: [`/hypx.png`],
     },
-    metadataBase: new URL(baseUrl)
+    metadataBase: new URL(baseUrl),
+    verification: {
+      google:"hqBx-Q3itadKdKdRIwMOQ4-Pdl5MCbCtkqThdfynRmU",
+    }
   };
 }
 
@@ -75,8 +77,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="MHPddiEcFc76aZDTRmsLYYQ1LpNiBCLab3MzhP2RxXs"
+        />
+         {/* Google Analytics */}
+         <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-0RQY8Z9P6W"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-0RQY8Z9P6W');
+            `,
+          }}
+        />
+      </head>
       <body className={`${spaceGrotesk.variable} ${roboto.variable}`}>
-      <ToastContainer />
+        <ToastContainer />
         <Header />
         <main className="">{children}</main>
         <Footer />

@@ -4,10 +4,10 @@ export default function ValueProposition() {
   return (
     <section className="container1">
       <div className="container2">
-        <div className="container3 flex flex-col">
+        <div className="container3 flex flex-col test">
           <h2 className='ch2 mb-2'>About us</h2>
           <div className="w-full bg-[#B3AEAE] bg-blend-overlay bg-[url(/Images/Home/fabric.png)] bg-no-repeat 
-            bg-cover bg-center text-left y-10 p-7 h-[65vh] flex flex-col gap-4 justify-center place-items-start">
+            bg-cover bg-center text-left y-10 p-7 h-[35vh] md:h-[40vh] lg:h-[65vh] flex flex-col gap-4 justify-center place-items-start">
             <h1 className="ch1 leading-normal">
               HYPX - where bulk <br /> meets value!
             </h1>

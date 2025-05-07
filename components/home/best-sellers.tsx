@@ -40,7 +40,7 @@ export default function BestSellers() {
                 Explore <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
             </div>
-            <div className=" flex justify-center py-12">
+            <div className="flex justify-center w-full p-0">
               <SkeletonLoader/>
             </div>
           </div>

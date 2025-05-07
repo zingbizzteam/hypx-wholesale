@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
-import { Search, ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import Zoom from "react-medium-image-zoom"
 import "react-medium-image-zoom/dist/styles.css"
 
@@ -11,34 +11,39 @@ type ProductGalleryProps = {
   thumbnails: string[]
 }
 
-const THUMBNAILS_VISIBLE = 5 // Number of thumbnails visible at once
+const THUMBNAILS_VISIBLE = 5
 
 const ProductGallery = ({ images, thumbnails }: ProductGalleryProps) => {
   const [activeImage, setActiveImage] = useState(0)
   const [thumbStart, setThumbStart] = useState(0)
   const thumbEnd = Math.min(thumbStart + THUMBNAILS_VISIBLE, thumbnails.length)
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
-        setActiveImage((prev) => (prev - 1 + images.length) % images.length)
-        if (activeImage === thumbStart && thumbStart > 0) setThumbStart(thumbStart - 1)
+        handlePrevImage()
       } else if (e.key === "ArrowRight") {
-        setActiveImage((prev) => (prev + 1) % images.length)
-        if (activeImage === thumbEnd - 1 && thumbEnd < thumbnails.length) setThumbStart(thumbStart + 1)
+        handleNextImage()
       }
     }
     window.addEventListener("keydown", handleKey)
     return () => window.removeEventListener("keydown", handleKey)
-  }, [activeImage, images.length, thumbStart, thumbEnd, thumbnails.length])
+  }, [activeImage, thumbStart, thumbEnd])
 
-  // Arrow navigation for thumbnails
-  const handlePrevThumbs = () => {
-    setThumbStart((prev) => Math.max(0, prev - 1))
+  const handlePrevImage = () => {
+    setActiveImage(prev => {
+      const newIndex = (prev - 1 + images.length) % images.length
+      if (newIndex < thumbStart) setThumbStart(Math.max(0, newIndex))
+      return newIndex
+    })
   }
-  const handleNextThumbs = () => {
-    setThumbStart((prev) => Math.min(thumbnails.length - THUMBNAILS_VISIBLE, prev + 1))
+
+  const handleNextImage = () => {
+    setActiveImage(prev => {
+      const newIndex = (prev + 1) % images.length
+      if (newIndex >= thumbEnd) setThumbStart(Math.min(thumbnails.length - THUMBNAILS_VISIBLE, newIndex - THUMBNAILS_VISIBLE + 1))
+      return newIndex
+    })
   }
 
   return (
@@ -53,24 +58,28 @@ const ProductGallery = ({ images, thumbnails }: ProductGalleryProps) => {
             style={{ borderRadius: "8px" }}
           />
         </Zoom>
+        {/* Right Arrow */}
         <button
-          className="absolute right-4 top-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md"
-          aria-label="Zoom image"
-          // Zoom handled by react-medium-image-zoom, so no onClick needed
+          onClick={handleNextImage}
+          className="gallery-arrow absolute right-4 top-[280px] w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md"
+          aria-label="Next image"
+          type="button"
         >
-          <Search size={16} />
+          <ChevronRight />
         </button>
-      </div>
-
-      <div className="flex items-center space-x-2 mt-2">
+        {/* Left Arrow */}
         <button
-          onClick={handlePrevThumbs}
-          disabled={thumbStart === 0}
-          className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
-          aria-label="Scroll thumbnails left"
+          onClick={handlePrevImage}
+          className="gallery-arrow absolute right-[530px] top-[280px] w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md"
+          aria-label="Previous image"
+          type="button"
         >
           <ChevronLeft />
         </button>
+      </div>
+
+      {/* Thumbnails */}
+      <div className="flex items-center space-x-2 mt-2">
         <div className="flex space-x-2 overflow-hidden">
           {thumbnails.slice(thumbStart, thumbEnd).map((thumbnail, index) => {
             const realIndex = thumbStart + index
@@ -81,6 +90,7 @@ const ProductGallery = ({ images, thumbnails }: ProductGalleryProps) => {
                 onClick={() => setActiveImage(realIndex)}
                 aria-label={`View image ${realIndex + 1}`}
                 tabIndex={0}
+                type="button"
               >
                 <Image
                   src={thumbnail || "/placeholder.svg"}
@@ -93,14 +103,6 @@ const ProductGallery = ({ images, thumbnails }: ProductGalleryProps) => {
             )
           })}
         </div>
-        <button
-          onClick={handleNextThumbs}
-          disabled={thumbEnd >= thumbnails.length}
-          className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
-          aria-label="Scroll thumbnails right"
-        >
-          <ChevronRight />
-        </button>
       </div>
     </div>
   )

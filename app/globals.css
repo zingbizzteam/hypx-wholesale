@@ -99,7 +99,10 @@ textarea {
   @apply absolute right-0 top-1/2 -translate-y-1/2 text-white;
 }
 
-@media (min-width: 1024px){
+@media (min-width: 1240px){
+  .desktop-hero-bg {
+    background-image: url('/home/hero-sample.webp');
+  }
   .ch1{
     font-size: 48px;
     font-weight: 700;
@@ -180,7 +183,7 @@ textarea {
   }
 
   .container2{
-    min-width: 1250px;
+    min-width: 1240px;
     max-width: 1920px;
     margin-left: auto;
     margin-right: auto;
@@ -197,7 +200,10 @@ textarea {
   }
 }
 
-@media (max-width: 1024px){
+@media (max-width: 1240px){
+  .desktop-hero-bg {
+    background-image: url('/home/hero-sample-mobile.webp');
+  }
   .ch1{
     font-size: 48px;
     font-weight: 700;
@@ -240,6 +246,7 @@ textarea {
   }
 
   .container2{
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     justify-items: center;
@@ -256,6 +263,9 @@ textarea {
 }
 
 @media (max-width: 768px){
+  .desktop-hero-bg {
+    background-image: url('/home/hero-sample-mobile.webp');
+  }
   .ch1{
     font-size: 32px;
     font-weight: 700;
@@ -297,40 +307,12 @@ textarea {
     font-family: 'roboto', sans-serif;
   }
 
-  .ah1{
-    font-size: 24px;
-    font-weight: 500;
-    font-family: 'Worksans', sans-serif;
-  }
-
-  .ah1b{
-    font-size: 24px;
-    font-weight: 600;
-    font-family: 'Worksans', sans-serif;
-  }
-
-  .ap1{
-    font-size: 20px;
-    font-weight: 500;
-    font-family: 'Worksans', sans-serif;
-  }
-
-  .ap2{
-    font-size: 16px;
-    font-weight: 400;
-    font-family: 'Worksans', sans-serif;
-  }
-
-  .ap2b{
-    font-size: 16px;
-    font-weight: 500;
-    font-family: 'Worksans', sans-serif;
-  }
-
   .container2{
+    display: flex;
+    flex-direction: column;
     margin-left: auto;
     margin-right: auto;
-    justify-items: center;
+    align-items: center;
   }
   
   .container3{
@@ -391,3 +373,8 @@ dd {
   box-shadow: none !important;
 }
 
+@media (max-width: 767px) {
+  .gallery-arrow {
+    display: none !important;
+  }
+}

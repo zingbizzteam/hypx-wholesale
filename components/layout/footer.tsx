@@ -1,8 +1,21 @@
+'use client'
 import Link from "next/link"
 import { Instagram, Youtube, Facebook, ChevronDown } from "lucide-react"
 import NewsletterForm from "../ui/newsletter-form"
+import { useState } from "react"
 
 const Footer = () => {
+
+  const [expandedItem, setExpandedItem] = useState<string | null>(null)
+  
+    const toggleExpand = (item: string) => {
+      if (expandedItem === item) {
+        setExpandedItem(null)
+      } else {
+        setExpandedItem(item)
+      }
+    }
+    
   return (
     <footer className="container1 bg-black text-white">
       <div className="container2 mx-auto py-12">
@@ -11,11 +24,11 @@ const Footer = () => {
             {/* Logo and About */}
             <div className="space-y-4">
               <h2 className="ch2">HYPX</h2>
-              <p className="text-sm text-gray-400 text-justify">
-              At Hypx, we believe in providing more than just clothing – 
-              we deliver value and quality you can count on. Your satisfaction 
-              is our priority, and we’re excited to continue supporting your 
-              business with every order.
+              <p className="text-sm text-[#b5b5b5] text-justify w-[95%]">
+                At Hypx, we believe in providing more than just clothing –
+                we deliver value and quality you can count on. Your satisfaction
+                is our priority, and we’re excited to continue supporting your
+                business with every order.
               </p>
               <NewsletterForm />
             </div>
@@ -30,26 +43,57 @@ const Footer = () => {
                 <Link href="/contact-us" className="footer-link">
                   contact us
                 </Link>
-                <div className="relative group">
-                    <div className="flex gap-1 items-center cursor-pointer py-1 text-white hover:text-[#858585] transition-colors">
-                      Our story
-                      <ChevronDown size={20} />
-                    </div>
-                    <ul className="absolute hidden group-hover:block text-white cp3 left-[90px] md:left-0 top-0 md:top-8 w-44">
-                      <li className="w-full px-3 py-1 hover:text-[#858585]">
-                        <a href={'about-us'}>About us</a>
-                      </li>
-                      <li className="w-full px-3 py-1 hover:text-[#858585]">
-                        <a href={'sustainability'}>sustainability</a>
-                      </li>
-                      <li className="w-full px-3 py-1 hover:text-[#858585]">
-                        <a href={'our-policies'}>Quality policy</a>
-                      </li>
-                      <li className="w-full px-3 py-1 hover:text-[#858585]">
-                        <a href={'terms-and-conditions'}>T&C</a>
-                      </li>
-                    </ul>
+                <div className="hidden md:relative group">
+                  <div className="flex gap-1 items-center cursor-pointer py-1 text-white hover:text-[#858585] transition-colors">
+                    Our story
+                    <ChevronDown size={20} />
                   </div>
+                  <ul className="absolute hidden group-hover:block text-white cp3 left-[90px] md:left-0 top-0 md:top-8 w-44">
+                    <li className="w-full px-3 py-1 hover:text-[#858585]">
+                      <a href={'about-us'}>About us</a>
+                    </li>
+                    <li className="w-full px-3 py-1 hover:text-[#858585]">
+                      <a href={'sustainability'}>sustainability</a>
+                    </li>
+                    <li className="w-full px-3 py-1 hover:text-[#858585]">
+                      <a href={'our-policies'}>Quality policy</a>
+                    </li>
+                    <li className="w-full px-3 py-1 hover:text-[#858585]">
+                      <a href={'terms-and-conditions'}>T&C</a>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* mobile */}
+
+                <div className="md:hidden">
+                  <div className="py-2 gap-3 flex items-center" onClick={() => toggleExpand("our-story")}>
+                    Our Story
+                    <ChevronDown
+                      size={20}
+                      className={`transition-transform ${expandedItem === "our-story" ? "rotate-180" : ""}`}
+                    />
+                  </div>
+                  {expandedItem === "our-story" && (
+                    <div className="pl-4 pb-4 space-y-2">
+                      <Link href="/about-us" className="block py-2">
+                        About Us
+                      </Link>
+                      <Link href="/sustainability" className="block py-2">
+                        Sustainability
+                      </Link>
+                      <Link href="/our-policies" className="block py-2">
+                        Our Policy
+                      </Link>
+                      <Link href="/terms-and-conditions" className="block py-2">
+                        Terms and Conditions
+                      </Link>
+                      <Link href="/about-us#our-customizations" className="block py-2">
+                        Our Customizations
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </nav>
             </div>
 
@@ -95,7 +139,7 @@ const Footer = () => {
                       <circle cx="12" cy="10" r="3" />
                     </svg>
                   </div>
-                  <p className="text-sm text-justify">
+                  <p className="text-sm text-justify w-4/5">
                     990,TNHB Main Rd, TamilNadu Housing Board Colony, TNHB Colony, Velachery, Chennai, Tamil Nadu 600042
                   </p>
                 </Link>
@@ -123,11 +167,11 @@ const Footer = () => {
             </div>
           </div>
 
-          <hr className="my-8 border-gray-800" />
+          <hr className="my-4 md:my-8 border-gray-800" />
 
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-400">@HYPX.STORE 2025</p>
-            <div className="flex space-x-4 mt-4 md:mt-0">
+          <div className="flex justify-between items-center">
+            <p className="text-sm text-[#b5b5b5]">@HYPX.STORE 2025</p>
+            <div className="flex space-x-4 mt-0">
               <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <Instagram size={20} />
               </Link>
